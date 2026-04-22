@@ -1,0 +1,94 @@
+{
+  "_comment": "Windows (WSL2) Claude Code Settings Template",
+  "_instructions": "Copy this to ~/.claude/settings.json inside your WSL2/Ubuntu terminal. Replace op:// references with your actual 1Password paths. Replace YOURUSERNAME with your Linux username. Remove _comment and _instructions keys before using.",
+
+  "mcpServers": {
+    "brave-search": {
+      "_comment": "Get API key from brave.com/search/api — free tier available",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "op://Personal/Brave Search API Key/credential"
+      }
+    },
+
+    "gmail": {
+      "_comment": "Requires Google Cloud project with Gmail API enabled. See guides/04-mcp-servers.md. Path is WSL2 Linux path.",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gmail"],
+      "env": {
+        "GMAIL_CREDENTIALS_FILE": "/home/YOURUSERNAME/.claude/credentials/gmail-credentials.json"
+      }
+    },
+
+    "google-calendar": {
+      "_comment": "Uses same Google Cloud credentials as Gmail",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-google-calendar"],
+      "env": {
+        "GOOGLE_CREDENTIALS_FILE": "/home/YOURUSERNAME/.claude/credentials/gmail-credentials.json"
+      }
+    },
+
+    "notion": {
+      "_comment": "Create integration at notion.so/my-integrations, then share pages with it",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-notion"],
+      "env": {
+        "NOTION_TOKEN": "op://Personal/Notion Claude Integration/credential"
+      }
+    },
+
+    "slack": {
+      "_comment": "Create Slack app at api.slack.com/apps with channels:read, chat:write, channels:history scopes",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "op://Personal/Slack Claude Bot Token/credential"
+      }
+    },
+
+    "filesystem": {
+      "_comment": "Gives Claude access to specific directories. WSL2 paths shown. Your Windows C: drive is at /mnt/c/ in WSL2.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/YOURUSERNAME",
+        "/mnt/c/Users/WINDOWS_USERNAME/Documents"
+      ]
+    }
+  },
+
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(pwd:*)",
+      "Bash(mkdir:*)"
+    ]
+  },
+
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"[$(date)] Session ended\" >> ~/logs/claude-sessions.log"
+          }
+        ]
+      }
+    ]
+  },
+
+  "_windows_notes": [
+    "All paths in this file should use Linux paths (/home/... or /mnt/c/...)",
+    "Your Windows files are accessible at /mnt/c/Users/[WindowsUsername]/",
+    "WSL2 cron runs only when WSL2 is active. For true scheduled tasks, use Windows Task Scheduler to invoke WSL2.",
+    "Claude Code runs inside WSL2 — always open your Ubuntu terminal to use it",
+    "The 1Password CLI (op) runs inside WSL2 separately from the 1Password Windows app"
+  ]
+}

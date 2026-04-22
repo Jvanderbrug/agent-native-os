@@ -1,0 +1,86 @@
+{
+  "_comment": "Mac Claude Code Settings Template",
+  "_instructions": "Copy this to ~/.claude/settings.json. Replace op:// references with your actual 1Password paths. Remove _comment and _instructions keys before using.",
+
+  "mcpServers": {
+    "brave-search": {
+      "_comment": "Get API key from brave.com/search/api — free tier available",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "op://Personal/Brave Search API Key/credential"
+      }
+    },
+
+    "gmail": {
+      "_comment": "Requires Google Cloud project with Gmail API enabled. See guides/04-mcp-servers.md",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gmail"],
+      "env": {
+        "GMAIL_CREDENTIALS_FILE": "/Users/YOURUSERNAME/.claude/credentials/gmail-credentials.json"
+      }
+    },
+
+    "google-calendar": {
+      "_comment": "Uses same Google Cloud credentials as Gmail",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-google-calendar"],
+      "env": {
+        "GOOGLE_CREDENTIALS_FILE": "/Users/YOURUSERNAME/.claude/credentials/gmail-credentials.json"
+      }
+    },
+
+    "notion": {
+      "_comment": "Create integration at notion.so/my-integrations, then share pages with it",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-notion"],
+      "env": {
+        "NOTION_TOKEN": "op://Personal/Notion Claude Integration/credential"
+      }
+    },
+
+    "slack": {
+      "_comment": "Create Slack app at api.slack.com/apps with channels:read, chat:write, channels:history scopes",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "op://Personal/Slack Claude Bot Token/credential"
+      }
+    },
+
+    "filesystem": {
+      "_comment": "Gives Claude access to specific local directories. Adjust paths to your needs.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/YOURUSERNAME/Documents",
+        "/Users/YOURUSERNAME/Desktop"
+      ]
+    }
+  },
+
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(pwd:*)",
+      "Bash(mkdir:*)"
+    ]
+  },
+
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"[$(date)] Session ended\" >> ~/logs/claude-sessions.log"
+          }
+        ]
+      }
+    ]
+  }
+}

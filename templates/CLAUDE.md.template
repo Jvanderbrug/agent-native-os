@@ -1,0 +1,208 @@
+# My Agent OS — Claude Context File
+
+> INSTRUCTIONS: Fill in the [brackets] with your real information.
+> Delete these instruction lines when you're done.
+> Save this as CLAUDE.md in your workshop folder.
+> The more specific you are, the more useful Claude becomes.
+
+---
+
+## Who I Am
+
+**Name:** [Your full name]
+
+**Role / Title:** [Your job title]
+
+**Company:** [Your company or "Self-employed / Solo"]
+
+**What I actually do day to day:**
+[2–3 honest sentences about your work. What does a normal Tuesday look like? What decisions do you make? What problems land on your desk?]
+
+**Industry:** [e.g., Real estate, SaaS, Consulting, Healthcare, Education...]
+
+**Team size:** [Just me / 2–5 / 5–20 / 20+]
+
+---
+
+## My Machines
+
+**Primary computer:**
+- Type: [MacBook Pro M3 / Mac Mini / Dell XPS / custom PC / etc.]
+- OS: [macOS Sonoma 14.x / Windows 11 / etc.]
+
+---
+
+## Why I'm Here — Workshop Goals
+
+1. [Specific goal #1]
+2. [Specific goal #2]
+3. [Specific goal #3]
+
+**The one thing I most want to be able to do after this weekend:**
+[One concrete sentence]
+
+---
+
+## My Autonomy Level
+
+**Current setting: Safe Mode (Director's Cut)**
+
+Claude will always:
+- Tell me what it's about to do before doing it
+- Ask before sending any communication
+- Ask before creating or deleting anything permanent
+- Explain its reasoning when asked
+
+*Update this when you're ready to move to Co-Pilot or Autopilot.*
+
+---
+
+## How I Like to Communicate
+
+**Format:** [Bullet points / full paragraphs / mix]
+
+**When I ask a question:** [Give me options / give me your best recommendation / explain your reasoning]
+
+**Tone:** [Direct and businesslike / warm and collaborative / casual]
+
+**Pet peeves:**
+- [What drives you crazy — e.g., "Long preambles before getting to the point"]
+- [Another thing Claude should avoid]
+
+---
+
+## My Tools and Accounts
+
+**Email:** [Gmail / Outlook — account: yourname@...]
+**Calendar:** [Google Calendar / Outlook / Apple]
+**Communication:** [Slack workspace: ... / Teams / Discord]
+**Project management:** [Notion / Asana / Linear / Trello]
+**File storage:** [Google Drive / Dropbox / OneDrive]
+**Note-taking:** [Obsidian vault at: ~/Documents/... / Notion]
+
+**Other tools I use every day:**
+- [Tool 1]
+- [Tool 2]
+
+**MCP Servers installed:**
+- [ ] Brave Search
+- [ ] Gmail
+- [ ] Google Calendar
+- [ ] Notion
+- [ ] Slack
+- [ ] (add more as you install them)
+
+---
+
+## My Business Context
+
+**My most valuable recurring tasks (things I do every week):**
+1. [Task — e.g., "Send client updates every Friday"]
+2. [Task]
+3. [Task]
+
+**Things I want to delegate to Claude:**
+1. [e.g., "First draft of all outbound emails"]
+2. [e.g., "Summarizing long documents and threads"]
+3. [e.g., "Scheduling and calendar tetris"]
+
+**Industry vocabulary Claude should know:**
+[Any terms, acronyms, or phrases specific to your field. e.g., "LTV means customer lifetime value, not loan-to-value. ARR is annual recurring revenue."]
+
+---
+
+## My Obsidian Vault
+
+[After completing Guide 06, fill in your vault path]
+
+**Location:**
+- Mac: `/Users/[yourname]/Documents/[VaultName]/`
+- Windows: `/mnt/c/Users/[yourname]/Documents/[VaultName]/`
+
+**Structure:**
+- `Inbox/` — Quick captures, unprocessed
+- `Areas/` — Ongoing responsibilities
+- `Projects/` — Active projects
+- `Resources/` — Reference material
+- `Archive/` — Completed items
+- `Daily Notes/` — Daily logs
+
+**Rules:**
+- When I say "note this" → add to Inbox/ with today's date as title
+- When capturing a meeting → Projects/[project]/Meetings/
+- When I ask you to search my notes → check vault before web
+
+---
+
+## My Custom Commands
+
+[After completing Guide 07, list your commands here]
+
+| Command | What It Does |
+|---------|-------------|
+| /morning | Daily briefing: calendar + email + Obsidian inbox + top 3 priorities |
+| [add yours] | |
+
+---
+
+## Rules for This Agent
+
+1. Always confirm before sending any email, Slack message, or other external communication
+2. Always confirm before deleting any file or record
+3. If my request is ambiguous, ask one clarifying question before proceeding
+4. Match my communication style — don't write like a press release
+5. If you're not sure about something, say so. Don't guess and present it as fact.
+6. [Your rule]
+7. [Your rule]
+
+---
+
+## Things NOT to Do
+
+- Do not send any message outside this computer without my explicit approval
+- Do not delete files without confirmation
+- Do not make any purchases or sign up for services
+- Do not share or reference client names or confidential information in examples
+- [Add your own]
+
+---
+
+## Current Projects
+
+[Update this regularly — it's one of the most valuable things to keep current]
+
+**Active right now:**
+- [Project name]: [one-sentence description + current status]
+- [Project name]: [description + status]
+
+**Coming up (next 30 days):**
+- [What's on the horizon]
+
+**Waiting on others:**
+- [Anything blocked — useful context for why things move slowly]
+
+---
+
+## Key People
+
+[Claude works better knowing who's who]
+
+| Name | Relationship / Role | Notes |
+|------|-------------------|-------|
+| [Name] | [e.g., Business partner] | [Any useful context] |
+| [Name] | [e.g., Key client] | [Preferred communication style, context] |
+| [Name] | [e.g., Assistant / VA] | |
+
+---
+
+## Notes and Reminders to Self
+
+[Running log of things you want Claude to remember across sessions]
+
+- Workshop attended: Agent Native OS Weekend [date]
+- [Other notes]
+
+---
+
+*Version: 1.0*
+*Last updated: [date]*
