@@ -1,4 +1,4 @@
-# Windows Setup — Before Day 1
+# Windows Setup, Before Workshop Day
 
 Windows takes a few more steps than Mac, but don't let that intimidate you. The key is WSL2 — a lightweight Linux environment that runs inside Windows. Once that's set up, everything else works exactly like the Mac instructions.
 
@@ -132,7 +132,7 @@ sudo apt update && sudo apt install gh -y
   - Log in with your Claude.ai account (attached to your Claude Max subscription)
   - Type `/exit` when done
 
-> You need a **Claude Max subscription** (~$100/month). If you haven't subscribed yet, go to claude.ai and upgrade before Day 1.
+> You need a **Claude Max subscription** (~$100/month). If you haven't subscribed yet, go to claude.ai and upgrade before workshop day.
 
 ---
 
@@ -214,4 +214,4 @@ If you get stuck on any step, post in the community Slack with:
 2. Which step you're on
 3. Your Windows version (Settings > About)
 
-We'll get you sorted before Saturday.
+We'll get you sorted before workshop day.

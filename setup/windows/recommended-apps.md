@@ -41,7 +41,7 @@ An AI-first editor worth exploring if you want to go deeper post-workshop.
 ### Obsidian
 **Free | obsidian.md**
 
-Download the Windows installer from obsidian.md. Store your Obsidian vault in your Windows Documents folder (not in WSL2) so it syncs with Obsidian Sync if you use it. We'll set this up on Day 2.
+Download the Windows installer from obsidian.md. Store your Obsidian vault in your Windows Documents folder (not in WSL2) so it syncs with Obsidian Sync if you use it. We'll set this up during Install Block Two.
 
 ---
 
@@ -88,7 +88,7 @@ Screenshots and screen recording on Windows. Excellent for documenting your setu
 ### AutoHotkey
 **Free | autohotkey.com**
 
-Windows automation scripting. Once you're comfortable with Claude Code, AutoHotkey can complement it for desktop-level automation. Advanced — don't worry about this for Day 1.
+Windows automation scripting. Once you're comfortable with Claude Code, AutoHotkey can complement it for desktop-level automation. Advanced. Don't worry about it for workshop day.
 
 ---
 

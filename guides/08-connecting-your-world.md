@@ -1,6 +1,6 @@
 # Guide 08 — Connecting Your World
 
-**Session time:** 2:00 PM – 3:15 PM (Day 2)
+**When we cover this:** Lesson + Demo: Wiring Your OS Into the World (1:45 PM CDT, 2:45 PM EDT) and Install Block Three: Connect Data Sources + First Fleet Run (2:15 PM CDT, 3:15 PM EDT). See the README for the full agenda.
 
 ---
 

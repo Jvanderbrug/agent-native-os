@@ -1,6 +1,6 @@
 # Guide 09 — Autonomous Workflows
 
-**Session time:** 3:15 PM – 4:15 PM (Day 2)
+**When we cover this:** Install Block Four: Schedule the Fleet + First /build (2:45 PM CDT, 3:45 PM EDT). See the README for the full agenda.
 
 ---
 

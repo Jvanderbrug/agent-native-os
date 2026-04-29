@@ -36,7 +36,7 @@ Install: `brew install --cask visual-studio-code`
 ### Cursor
 **Free tier + paid | cursor.com**
 
-An AI-first code editor. If you want to go deeper into AI-assisted development after the workshop, Cursor is worth exploring. Not required for Day 1.
+An AI-first code editor. If you want to go deeper into AI-assisted development after the workshop, Cursor is worth exploring. Not required for workshop day.
 
 Install: `brew install --cask cursor`
 
@@ -47,7 +47,7 @@ Install: `brew install --cask cursor`
 ### Obsidian
 **Free (with paid sync option) | obsidian.md**
 
-A note-taking app that stores everything as plain text files on your computer. We use it as the foundation for your second brain — a searchable knowledge base that Claude can read and write. We'll set this up on Day 2.
+A note-taking app that stores everything as plain text files on your computer. We use it as the foundation for your second brain, a searchable knowledge base that Claude can read and write. We'll set this up during Install Block Two.
 
 Install: `brew install --cask obsidian` or download from obsidian.md
 

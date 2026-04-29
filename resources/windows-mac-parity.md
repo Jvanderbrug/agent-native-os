@@ -2,13 +2,13 @@
 **AI Build Lab — Claude Code Workshop**
 **Audience:** Non-technical operators | **Last updated:** 2026-04-22
 
-This document maps every Mac-specific tool and concept in the curriculum to its Windows equivalent, flags gaps, and gives instructors a clear recommended action for each item. Use it as the authoritative reference when prepping Windows students before or during Day 1.
+This document maps every Mac-specific tool and concept in the curriculum to its Windows equivalent, flags gaps, and gives instructors a clear recommended action for each item. Use it as the authoritative reference when prepping Windows students before or during workshop day.
 
 ---
 
 ## Table of Contents
 
-1. [Windows Prerequisites (Do Before Day 1)](#windows-prerequisites)
+1. [Windows Prerequisites (Do Before Workshop Day)](#windows-prerequisites)
 2. [Tool-by-Tool Parity Matrix](#tool-by-tool-parity-matrix)
 3. [Things That Simply Don't Work on Windows Without WSL2](#things-that-dont-work-without-wsl2)
 4. [Windows-First Recommendations](#windows-first-recommendations)
@@ -19,7 +19,7 @@ This document maps every Mac-specific tool and concept in the curriculum to its 
 
 ## Windows Prerequisites
 
-These are the steps a Windows student must complete **before Day 1** that a Mac student does not need to worry about. Budget 30–60 minutes. The curriculum assumes these are done.
+These are the steps a Windows student must complete **before workshop day** that a Mac student does not need to worry about. Budget 30 to 60 minutes. The curriculum assumes these are done.
 
 ### 1. Enable WSL2 (Windows Subsystem for Linux)
 
@@ -594,8 +594,8 @@ Avoid explaining WSL2 as "a virtual machine" or "Linux inside Windows" in techni
 
 ### Classroom Setup Strategy
 
-- **Before Day 1:** Email Windows students the Prerequisites checklist from this document. Ask them to confirm WSL2 is installed and `claude --version` works inside Ubuntu.
-- **Day 1 buffer:** Build 15-20 extra minutes into Day 1 for Windows students who hit setup issues. The most common: installed Node.js on Windows side instead of WSL2 side.
+- **Before workshop day:** Email Windows students the Prerequisites checklist from this document. Ask them to confirm WSL2 is installed and `claude --version` works inside Ubuntu.
+- **Workshop day buffer:** Build 15-20 extra minutes into the morning for Windows students who hit setup issues. The most common: installed Node.js on Windows side instead of WSL2 side.
 - **Pairing:** If possible, seat Windows students next to Mac students for the first session. Most issues can be resolved with "run that command inside the Ubuntu terminal, not PowerShell."
 
 ### The One Sentence to Memorize
@@ -630,7 +630,7 @@ ssh-keygen -V        # should show OpenSSH version (if installed)
 echo $SHELL          # should show /bin/zsh (after switching to zsh)
 ```
 
-If all six pass, the student is ready for Day 1.
+If all six pass, the student is ready for workshop day.
 
 ---
 

@@ -1,6 +1,6 @@
 # Guide 02 — The Three Ways to Use Claude
 
-**Session time:** 12:00 PM – 12:30 PM (Day 1, overlap with terminal session)
+**When we cover this:** Lesson + Demo: Claude Code Is Not a Chatbot (10:20 AM CDT, 11:20 AM EDT). See the README for the full agenda.
 
 ---
 
@@ -20,7 +20,7 @@ Let's set each one up and understand when to use it.
 
 ## Interface 1 — Claude Code CLI (Terminal)
 
-This is the one we focus on all weekend. It's the most powerful because:
+This is the one we focus on all day. It's the most powerful because:
 
 - It can read, write, and edit files directly on your computer
 - It can run commands on your behalf

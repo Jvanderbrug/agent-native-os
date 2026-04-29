@@ -1,6 +1,6 @@
 # Guide 03 — Your First CLAUDE.md
 
-**Session time:** 2:00 PM – 3:15 PM (Day 1)
+**When we cover this:** Install Block One: CLAUDE.md, Brain of Your OS (10:45 AM CDT, 11:45 AM EDT). See the README for the full agenda.
 **This is the AHA moment of the whole workshop.**
 
 ---

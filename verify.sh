@@ -3,7 +3,7 @@
 # ============================================================
 # Agent Native OS — Setup Verification Script
 # ============================================================
-# Run this before Day 1 to confirm your machine is ready.
+# Run this before workshop day to confirm your machine is ready.
 # Usage: bash verify.sh
 #
 # Windows users: Run this inside WSL2 (Ubuntu terminal).
@@ -157,7 +157,7 @@ if command -v claude &>/dev/null; then
     check_pass "Claude Code config directory found (~/.claude)"
   else
     check_warn "Claude Code CLI installed but no config found yet" \
-      "You may need to run 'claude' once and log in. That's normal — we'll do this on Day 1."
+      "You may need to run 'claude' once and log in. That's normal, we'll do this during the workshop."
   fi
 else
   check_fail "Claude Code CLI not found" \
@@ -229,15 +229,15 @@ echo -e "  ${RED}Failed:${RESET}   $FAIL"
 echo ""
 
 if [[ $FAIL -eq 0 ]]; then
-  echo -e "${GREEN}${BOLD}You're all set for Day 1! See you Saturday.${RESET}"
+  echo -e "${GREEN}${BOLD}You're all set for the workshop! See you Sunday.${RESET}"
 elif [[ $FAIL -le 2 ]]; then
   echo -e "${YELLOW}${BOLD}Almost there — fix the items above and run this again.${RESET}"
   echo -e "${YELLOW}If you get stuck, post in the community Slack and someone will help.${RESET}"
 else
-  echo -e "${RED}${BOLD}A few things need attention before Day 1.${RESET}"
+  echo -e "${RED}${BOLD}A few things need attention before workshop day.${RESET}"
   echo -e "Work through the fixes above, then run this script again."
   echo -e "If you're stuck, see setup/mac/prerequisites.md or setup/windows/prerequisites.md"
-  echo -e "or post in the community Slack — we're happy to help before the weekend."
+  echo -e "or post in the community Slack. We're happy to help before workshop day."
 fi
 
 echo ""

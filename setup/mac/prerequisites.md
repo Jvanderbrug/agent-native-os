@@ -1,6 +1,6 @@
-# Mac Setup — Before Day 1
+# Mac Setup, Before Workshop Day
 
-Complete this checklist at least one day before the workshop. Each step links to exactly what you need. If something breaks or confuses you, post in the community Slack — we check it regularly before the weekend.
+Complete this checklist at least one day before the workshop. Each step links to exactly what you need. If something breaks or confuses you, post in the community Slack. We check it regularly in the days before workshop day.
 
 **Estimated time:** 45–60 minutes (most of it is download/install time, not active work)
 
@@ -78,7 +78,7 @@ git config --global user.email "you@youremail.com"
 
 ### 6. Claude Code CLI
 
-This is the main thing we're building on all weekend.
+This is the main thing we're building on all day.
 
 - [ ] Install: `npm install -g @anthropic-ai/claude-code`
 - [ ] Verify: `claude --version` — should show a version number
@@ -87,7 +87,7 @@ This is the main thing we're building on all weekend.
   - Follow the browser prompts
   - Type `/exit` to close Claude Code after you've logged in
 
-> You need a **Claude Max subscription** (~$100/month) for this workshop. If you haven't subscribed yet, go to claude.ai and upgrade before Day 1.
+> You need a **Claude Max subscription** (~$100/month) for this workshop. If you haven't subscribed yet, go to claude.ai and upgrade before workshop day.
 
 ---
 
@@ -138,7 +138,7 @@ bash verify.sh
 
 ### 10. Optional but Recommended
 
-These aren't required for Day 1, but we'll touch them during the workshop:
+These aren't required for workshop day, but we'll touch them during the workshop:
 
 - [ ] **Obsidian** (knowledge base app): `brew install --cask obsidian` — free at obsidian.md
 - [ ] **Visual Studio Code** (code editor): `brew install --cask visual-studio-code`
@@ -164,4 +164,4 @@ Run: `xcode-select --install` and follow the prompts.
 
 ---
 
-If you hit something not on this list, post it in the community Slack with a screenshot of the error. We'll get you sorted before Saturday.
+If you hit something not on this list, post it in the community Slack with a screenshot of the error. We'll get you sorted before workshop day.

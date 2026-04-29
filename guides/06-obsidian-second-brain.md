@@ -1,6 +1,6 @@
 # Guide 06 — Obsidian: Your Second Brain
 
-**Session time:** 11:30 AM – 12:30 PM (Day 2)
+**When we cover this:** Install Block Two: Custom Commands + Second Brain (12:15 PM CDT, 1:15 PM EDT). See the README for the full agenda.
 
 ---
 

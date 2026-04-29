@@ -1,6 +1,6 @@
 # Guide 04 — MCP Servers
 
-**Session time:** 3:15 PM – 4:15 PM (Day 1)
+**When we cover this:** Install Block Three: Connect Data Sources + First Fleet Run (2:15 PM CDT, 3:15 PM EDT). See the README for the full agenda.
 
 ---
 

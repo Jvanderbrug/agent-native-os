@@ -1,6 +1,6 @@
 # Guide 01 — Terminal Basics
 
-**Session time:** 11:30 AM – 12:30 PM (Day 1)
+**When we cover this:** Welcome + Architecture / Lesson + Demo: Claude Code Is Not a Chatbot (10:00 to 10:45 AM CDT, 11:00 to 11:45 AM EDT). See the agenda in the README for the full day.
 **Track adjustments:** Beginners go slower here. Builders and Architects can move faster.
 
 ---

@@ -1,13 +1,13 @@
 # Guide 10 — Your Agent OS
 
-**Session time:** 4:15 PM – 5:00 PM (Day 2)
+**When we cover this:** Showcase + Surprise Magic Show + Bonus Blueprint (4:15 PM CDT, 5:15 PM EDT). See the README for the full agenda.
 **This is the capstone. We're putting it all together.**
 
 ---
 
 ## What You've Built
 
-Take a moment to look at what you've assembled over this weekend. You have:
+Take a moment to look at what you've assembled today. You have:
 
 - **A terminal** you're comfortable in
 - **Claude Code** installed and authenticated, with your CLAUDE.md giving it full context about who you are
@@ -52,7 +52,7 @@ You are the director. CLAUDE.md is the briefing. The MCP servers are the connect
 
 ## The Mindset Shift
 
-Here's what this weekend was actually teaching you, underneath all the technical stuff:
+Here's what today was actually teaching you, underneath all the technical stuff:
 
 **Old mindset:** "Let me use AI to help me do my job faster."
 
@@ -62,7 +62,7 @@ The old mindset makes you faster. The new mindset multiplies you.
 
 An employee who types faster is marginally more productive. An operator who builds systems is compoundingly more productive — because each system they build keeps running whether they're working or not.
 
-You've moved from user to operator this weekend.
+You've moved from user to operator today.
 
 ---
 
@@ -85,7 +85,7 @@ Every week, there's one new thing to try. A new MCP. A new command. A workflow y
 
 **Week 1 — Stabilize**
 
-Don't add anything new. Let what you built this weekend settle into your daily routine. Run your morning briefing every day. Use your Obsidian vault for everything you'd normally note down. Ask Claude for help before you would have done something manually.
+Don't add anything new. Let what you built today settle into your daily routine. Run your morning briefing every day. Use your Obsidian vault for everything you'd normally note down. Ask Claude for help before you would have done something manually.
 
 Notice what's working and what feels clunky.
 

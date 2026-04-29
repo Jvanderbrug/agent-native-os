@@ -632,7 +632,7 @@ echo "Bootstrap complete. Run 'claude' to start."
 
 ### Exercise 10C: Contribute Back
 
-The most interesting thing you built this weekend — document it clearly and consider contributing to the blueprints library or sharing in the community.
+The most interesting thing you built today, document it clearly and consider contributing to the blueprints library or sharing in the community.
 
 What would be genuinely useful for other people to have?
 

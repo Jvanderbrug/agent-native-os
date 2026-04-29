@@ -1,6 +1,6 @@
 # Guide 07 — Custom Commands (Slash Commands)
 
-**Session time:** 12:30 PM – 1:15 PM (Day 2, before lunch)
+**When we cover this:** Install Block Two: Custom Commands + Second Brain (12:15 PM CDT, 1:15 PM EDT, right before the co-working block). See the README for the full agenda.
 
 ---
 

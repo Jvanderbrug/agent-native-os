@@ -224,7 +224,7 @@ If it works: your secrets are now secure.
 
 ### Beginner Checkpoint 05
 
-Before Day 2:
+Before the next install block:
 - [ ] At least one secret stored in 1Password
 - [ ] At least one op:// reference in your settings.json
 - [ ] Your CLAUDE.md has real content about who you are
@@ -247,7 +247,7 @@ Install Obsidian. Create a vault. Set up the PARA folders:
 ### Exercise 6B: Create Your First Notes
 
 Create three notes in Obsidian:
-1. In `Inbox/`: "Workshop Day 1 Thoughts" — write down 2–3 things that clicked for you today
+1. In `Inbox/`: "Workshop Thoughts", write down 2 to 3 things that clicked for you today
 2. In `Projects/`: A note about a real current project
 3. In `Resources/`: A note about something you want to remember
 
@@ -356,7 +356,7 @@ Draw (or type out) what you've built. List:
 
 Finish this sentence: "My agent OS automatically _______ so I don't have to."
 
-That's your weekend's work in one sentence.
+That's your day's work in one sentence.
 
 ### Exercise 10C: What's Next?
 
@@ -368,6 +368,6 @@ Write down one thing you want to add or improve in the next 30 days. Keep it spe
 
 You came in not knowing the terminal. You're leaving with a working agent OS.
 
-That's a real transformation. Don't underestimate what you've built this weekend.
+That's a real transformation. Don't underestimate what you've built today.
 
 *See you in the community Slack.*

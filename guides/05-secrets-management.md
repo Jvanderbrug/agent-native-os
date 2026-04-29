@@ -1,6 +1,6 @@
 # Guide 05 — Secrets Management
 
-**Session time:** 4:15 PM – 5:00 PM (Day 1)
+**When we cover this:** Install Block Three: Connect Data Sources + First Fleet Run (2:15 PM CDT, 3:15 PM EDT). Secrets management is part of wiring tools in safely. See the README for the full agenda.
 
 ---
 
@@ -79,7 +79,7 @@ Now when Claude Code starts, it automatically resolves any `op://` references by
 
 ### Mac Keychain (Advanced)
 
-For extra security, you can also store the 1Password service account token itself in the Mac Keychain (your system's secure credential storage). This is covered in the Architect track exercises — don't worry about it for Day 1.
+For extra security, you can also store the 1Password service account token itself in the Mac Keychain (your system's secure credential storage). This is covered in the Architect track exercises. Don't worry about it during the live workshop.
 
 ---
 
@@ -208,6 +208,4 @@ See `tracks/[your-track]/exercises.md` — Exercise Set 05.
 
 ---
 
-*That's Day 1! See you Sunday at 11 AM EDT.*
-
-*Tomorrow: Obsidian, custom commands, connecting your world, and putting it all together.*
+*That wraps the secrets block. Coming up: Obsidian, custom commands, connecting your world, and putting it all together.*

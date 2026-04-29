@@ -1,6 +1,6 @@
 # Troubleshooting — Common Issues and Fixes
 
-This covers the most common problems that come up on Day 1 and Day 2, on both Mac and Windows.
+This covers the most common problems that come up during the workshop, on both Mac and Windows.
 
 **Rule #1:** Copy the exact error message. Then ask Claude: "I'm getting this error. What does it mean and how do I fix it?" — that's usually faster than Googling.
 

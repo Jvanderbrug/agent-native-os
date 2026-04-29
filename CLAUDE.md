@@ -1,8 +1,8 @@
 # My Agent OS — Claude Context File
 
-> This is YOUR CLAUDE.md. Fill it in during Day 1 of the workshop.
+> This is YOUR CLAUDE.md. Fill it in during the workshop.
 > The more you put here, the more useful Claude becomes.
-> Nothing here is permanent — update it anytime as you learn more.
+> Nothing here is permanent. Update it anytime as you learn more.
 
 ---
 
@@ -44,7 +44,7 @@
 2. [Goal 2]
 3. [Goal 3]
 
-**The one thing I most want to be able to do after this weekend:**
+**The one thing I most want to be able to do after this workshop:**
 [One sentence. This is your north star.]
 
 **What's been frustrating me about AI tools before now:**
@@ -189,11 +189,11 @@ This means:
 > Use this section for anything you want to remember across sessions.
 > Claude will reference this when it helps.
 
-- [Workshop Day 1 notes]
+- [Workshop notes]
 - [Something that clicked]
 - [A command or technique you want to remember]
 
 ---
 
 *Last updated: [date you fill this in]*
-*Workshop: Agent Native OS Weekend — [your cohort/date]*
+*Workshop: Agent Native OS, [your cohort/date]*
