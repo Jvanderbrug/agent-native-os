@@ -106,15 +106,15 @@ claude
 # After logging in, try again
 ```
 
-Make sure your Claude.ai account has **Claude Max** — the free tier and Pro tier don't support Claude Code.
+Make sure your Claude.ai account is on **Claude Max 5x ($100/mo)** at minimum. Pro tier ($20/mo) technically has Claude Code access but rate limits will hit fast during a workshop day. Free tier won't work.
 
 ---
 
 ### "Claude Code requires a paid subscription"
 
-**What's happening:** Your account isn't on Claude Max.
+**What's happening:** Your account isn't on a plan that includes Claude Code, or you're on Pro and have hit the rate limit.
 
-**Fix:** Go to **claude.ai** in a browser > Settings > Plans > Upgrade to Max ($100/month). Then restart Claude Code.
+**Fix:** Go to **claude.ai** in a browser > Settings > Plans > Upgrade to **Max 5x ($100/month)** at minimum. Max 20x ($200/month) is recommended for power users. Then restart Claude Code.
 
 ---
 

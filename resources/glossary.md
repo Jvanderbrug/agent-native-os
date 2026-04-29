@@ -50,7 +50,7 @@ The AI assistant made by Anthropic. Claude Code is the version that can take act
 The agentic version of Claude that runs in your terminal and can read/write files, run commands, and connect to external services via MCP servers.
 
 **Claude Max**
-The premium subscription tier for Claude (~$100/month) required for Claude Code. Includes higher usage limits and access to all Claude models.
+The paid subscription tier required to use Claude Code comfortably. Comes in two flavors: **Max 5x ($100/month)** is the workshop minimum, and **Max 20x ($200/month)** is recommended for power users. Pro ($20/month) technically has Claude Code access too, but rate limits hit fast on a workshop day.
 
 **CLAUDE.md**
 A markdown file that gives Claude persistent context about who you are. Automatically read at the start of every session. The foundation of your agent OS.

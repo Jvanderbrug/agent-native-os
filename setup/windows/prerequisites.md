@@ -129,10 +129,10 @@ sudo apt update && sudo apt install gh -y
 - [ ] Install: `npm install -g @anthropic-ai/claude-code`
 - [ ] Verify: `claude --version`
 - [ ] Start Claude Code once to log in: `claude`
-  - Log in with your Claude.ai account (attached to your Claude Max subscription)
+  - Log in with your Claude.ai account (attached to your Claude Max 5x or Max 20x subscription)
   - Type `/exit` when done
 
-> You need a **Claude Max subscription** (~$100/month). If you haven't subscribed yet, go to claude.ai and upgrade before workshop day.
+> You need a **Claude Max 5x subscription ($100/month minimum)**. **Max 20x ($200/month)** is recommended if you plan to use Claude Code seriously after the workshop. Pro ($20/month) technically has Claude Code access but rate limits will hit fast on a workshop day. If you haven't subscribed yet, go to claude.ai and upgrade before workshop day.
 
 ---
 

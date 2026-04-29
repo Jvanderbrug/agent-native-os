@@ -11,7 +11,7 @@ The goal here is simple: show up on workshop day with your machine ready, your r
 ### The Non-Negotiables
 
 **1. Claude Max Subscription**
-Everything in this workshop runs on Claude Max. Go to **claude.ai**, sign in or create an account, and upgrade to Max (~$100/month). This is your AI engine.
+Everything in this workshop runs on Claude Code. Sign in at **claude.ai** and upgrade to **Claude Max 5x ($100/month minimum)** or **Max 20x ($200/month, recommended)**. Pro ($20/month) technically has Claude Code but rate limits hit fast on workshop day. This is your AI engine.
 
 **2. A GitHub Account**
 Free at **github.com**. GitHub is where your workshop files live, and we use it throughout. If you already have one, you're set.

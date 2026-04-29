@@ -83,11 +83,11 @@ This is the main thing we're building on all day.
 - [ ] Install: `npm install -g @anthropic-ai/claude-code`
 - [ ] Verify: `claude --version` — should show a version number
 - [ ] Start Claude Code once to trigger setup: `claude`
-  - It will prompt you to log in — use your Claude.ai account (the one attached to your Claude Max subscription)
+  - It will prompt you to log in. Use your Claude.ai account (the one attached to your Claude Max 5x or Max 20x subscription)
   - Follow the browser prompts
   - Type `/exit` to close Claude Code after you've logged in
 
-> You need a **Claude Max subscription** (~$100/month) for this workshop. If you haven't subscribed yet, go to claude.ai and upgrade before workshop day.
+> You need a **Claude Max 5x subscription ($100/month minimum)** for this workshop. **Max 20x ($200/month)** is recommended if you plan to use Claude Code seriously after the workshop. Pro ($20/month) technically has Claude Code access but rate limits will hit fast on a workshop day. If you haven't subscribed yet, go to claude.ai and upgrade before workshop day.
 
 ---
 
@@ -157,7 +157,7 @@ Homebrew installed but isn't on your PATH. Run: `echo 'eval "$(/opt/homebrew/bin
 You may need to use `sudo` before some commands, or your Mac may need your administrator password.
 
 **Claude Code asks me to log in but I don't have an account**
-Go to claude.ai and sign up. Then upgrade to Claude Max under Settings > Plans.
+Go to claude.ai and sign up. Then upgrade to **Max 5x ($100/month)** at minimum (or **Max 20x ($200/month)** for power users) under Settings > Plans.
 
 **"xcrun: error: invalid active developer path"**
 Run: `xcode-select --install` and follow the prompts.

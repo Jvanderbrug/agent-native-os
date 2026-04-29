@@ -95,7 +95,7 @@ Your track exercises are in the `tracks/` folder.
 
 Before workshop day, you need:
 
-- A **Claude Max subscription** (~$100/month). This is what powers everything.
+- A **Claude Max 5x** subscription ($100/month, the workshop minimum). Max 20x ($200/month) is recommended if you plan to use Claude Code seriously after the workshop. Pro ($20/month) technically works but rate limits will hit fast on workshop day.
 - A **GitHub account** (free at github.com). Where your code and files live.
 - A **Mac or Windows PC**. See `setup/mac/` or `setup/windows/` for your checklist.
 
