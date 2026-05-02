@@ -291,3 +291,20 @@ Add the redaction rule (above) to the template students install in Component 1. 
 **Sara's April 30 experience:** Tried to decline a recurring team meeting via iMessage remote control. Claude asked "which meeting?" four times across the conversation because each reply arrived with no context. The meeting was never declined via remote control — had to be declined manually via Calendar MCP. Total time: ~20 minutes for a 30-second task.
 
 **Curriculum recommendation for Tyler:** Component 11 must either (a) demo ONLY one-shot commands in the workshop (e.g. "What's on my calendar today?" — no clarification needed), or (b) be redesigned around Slack which supports threaded conversation context.
+
+---
+
+### 11. Native iMessage Channels can collapse into self-chat
+
+**Likelihood:** Medium for Mac students testing iMessage with their own Apple ID.
+**Severity:** Medium - it works technically, but the experience can feel confusing or unserious.
+
+| | |
+|---|---|
+| **Symptom** | Student texts the native iMessage Channel and gets replies in the same self-message thread, as if they are talking to themselves. Messages can look doubled or hard to distinguish from the user's own texts. |
+| **Real cause** | The native iMessage Channel is using the same Apple Messages identity and local Messages surface as the user. That is convenient for setup, but it does not create a separate agent persona or separate contact. |
+| **Diagnostic** | Ask: does the thread show the student messaging themselves, or does it show a separate agent contact? If it is the self-thread, this is expected for the simple native setup. |
+| **Fix** | For workshop demos, use native Remote Control, Telegram, fakechat, or native iMessage only as a quick demo. For production, use the dedicated agent identity pattern: a separate Apple ID/iMessage identity on a dedicated host machine, like Gigawatt on the M1 Max. |
+| **Pre-work mitigation** | Tell students the self-chat behavior is normal for the simple path. Frame dedicated-agent iMessage as an 8D/Lab upgrade, not a required Sunday setup. |
+
+**Tyler's setup note:** The original native iMessage Channel felt wonky because it replied in the same self-thread. The better AI Build Lab pattern is Gigawatt as its own agent entity with its own iCloud/iMessage identity, so Tyler sees messages from Gigawatt as a separate contact.

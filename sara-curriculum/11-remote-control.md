@@ -18,6 +18,7 @@ Use the native path first. Add the others only when you have a reason.
 |---|---|---|
 | Remote Control | Continue a local Claude Code session from Claude mobile or `claude.ai/code` | Everyone |
 | Channels | Send messages into a running local Claude Code session from iMessage, Telegram, Discord, or fakechat | 8D students and Lab members |
+| Dedicated agent identity | Run the agent through its own iCloud/phone identity so messages come from the agent, not from you talking to yourself | 8D fleet builders and production personal agents |
 | Custom Slack app | Build your own Gigawatt-style Slack mention listener and agent control plane | 8D fleet builders |
 
 The old iOS Shortcut plus queue-folder pattern is now a fallback, not the main path. It still teaches queues and workers, but Anthropic's native Remote Control and Channels are the right first stop.
@@ -113,6 +114,8 @@ claude --channels plugin:imessage@claude-plugins-official
 
 Then text yourself from Messages. Self-chat is allowed by default.
 
+Important caveat: native iMessage Channels are convenient, but the self-chat version can feel odd. In Tyler's first setup, replies landed in the same thread as his own self-messages, so the agent did not feel like a separate entity. That is fine for a workshop demo and quick tests, but it is not the cleanest production pattern.
+
 The first run may ask for:
 
 - Full Disk Access for the terminal app that launched Claude
@@ -123,6 +126,27 @@ Allow another sender:
 ```text
 /imessage:access allow +15551234567
 ```
+
+### Dedicated agent identity
+
+The cleaner 8D pattern is to give the agent its own communication identity.
+
+AI Build Lab runs Gigawatt this way:
+
+- Gigawatt has its own iCloud/iMessage identity and phone number/email surface.
+- The sending machine is the M1 Max, not Tyler's main workstation.
+- Tyler receives messages from Gigawatt as a separate contact.
+- Replies feel like talking to an agent, not texting yourself.
+
+Use this pattern when you want a personal or team agent to feel real, durable, and distinct:
+
+1. Create or use a dedicated Apple ID for the agent.
+2. Sign that Apple ID into Messages on the Mac that will host outbound iMessage.
+3. Give the agent a clear contact name and avatar in your phone.
+4. Route outbound messages through that machine only.
+5. Add a signature or visible identity marker so humans know the message is automated.
+
+This is more setup than native Channels, so do not make it the 4D path. Teach native Remote Control and native Channels first. Then show the dedicated identity pattern as the fleet-builder upgrade.
 
 ### Telegram
 
@@ -247,7 +271,7 @@ The scratchpad is not the memory. It is the inbox. Cairns is the memory.
 | | 4D | 8D |
 |---|---|---|
 | Required | Try native Remote Control | Try Remote Control plus one Channel |
-| Best channel | Claude mobile or browser | iMessage, Telegram, Discord, or fakechat |
+| Best channel | Claude mobile or browser | Telegram, fakechat, native iMessage for demos, or dedicated-agent iMessage for production |
 | Slack | Understand the pattern | Build or inspect the Slack app/listener pattern |
 | Deliverable | Can continue a local session from another device | Can send a message from a channel into a running session |
 
