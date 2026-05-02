@@ -1,5 +1,5 @@
 ---
-description: Run a memory consolidation pass — distill recent activity into L2 cards and update L1 waypoints
+description: Run a memory consolidation pass — distill recent activity into L2 Chain-of-Density cards and propose L1 waypoint updates
 ---
 
 You are running the consolidation pass that promotes raw activity into structured memory. The metaphor is sleep memory consolidation: during the day you accumulate; during /dream you distill, organize, and pin what matters.
@@ -29,14 +29,15 @@ Depending on scope, gather:
 
 Cap at ~50K tokens of input — if scope is too big, sample.
 
-## Step 3: Distill into L2 card candidates
+## Step 3: Distill into L2 Card Catalog candidates
 
-For each cluster of related raw activity, generate a chain-of-density summary suitable for an L2 Card Catalog entry:
+For each source or tight cluster of related raw activity, generate a Chain-of-Density summary suitable for an L2 Card Catalog entry:
 
-- 3-5 sentences max per card
-- Includes specific facts, not vague summaries
-- Includes backlinks to L3 sources (file paths, commit hashes, message timestamps)
-- Tagged with the relevant L1 category
+- One source per card when possible
+- 120-180 word dense summary after 3-5 density passes
+- Specific facts, entities, decisions, constraints, and retrieval hooks
+- Backlinks to L3 sources (file paths, commit hashes, message timestamps)
+- Tagged with the relevant L1 categories
 
 Example L2 card:
 
@@ -51,7 +52,8 @@ step before Sunday's workshop. Orchestrator merged PR #1 overnight 2026-05-02
 Source: PR #1 squash commit, decision logged to
 ~/Documents/second-brain/decisions/2026-05-02-merge-personalize-pr.md.
 
-Category: Work-Builds, Decisions-In-Flight (resolved).
+Cairns: Work-Builds, Decisions-In-Flight (resolved).
+L3 sources: PR #1 squash commit, decision log path.
 ```
 
 ## Step 4: Propose L1 waypoint updates
@@ -67,7 +69,7 @@ Char-cap each proposed L1 entry at 220.
 For each L2 card candidate, ask the user:
 - "Approve this L2 card? (yes / no / edit)"
 
-On approve: write to `~/Documents/second-brain/cairns/L2/<category>/<topic-slug>.md`.
+On approve: write to `~/Documents/second-brain/cairns/L2/cards/YYYY-MM-DD-<source-or-topic-slug>.md`.
 
 On edit: take the user's revisions, then write.
 

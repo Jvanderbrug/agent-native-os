@@ -10,7 +10,7 @@ next: 04-build-your-own-mini-cairns.md
 
 If Librarian is how things come out of Cairns, Flow is how things go in. Flow is the named sub-tool inside the Cairns repo (locked in ADR 0002 at `~/GitHub/cairns/decisions/0002-naming.md`). When Tyler says "send it to Flow," he means push it into this pipeline.
 
-Reminder: **Cairns is not built yet.** The Flow pipeline below is the spec from `~/GitHub/cairns/ARCHITECTURE.md` and the dormant production spec at `~/GitHub/AI-Build-Lab-Founders-Lounge/Content-Strategy/AGENT-SPECIFICATIONS/cairns-rag-architecture.md`. Some pieces (YouTube pipeline, Slack archive sync) are already running and will become Flow sources once the rest of Cairns ships.
+Reminder: **the full Flow pipeline is not what you are installing today.** The student version uses `cairns-ingest` manually. The production version automates capture, triage, enrichment, storage, intelligence, and output.
 
 ## The shape
 
@@ -70,7 +70,7 @@ Every step has a single job. The pipeline is opinionated. Each step is small eno
 
 **The five passes.**
 
-1. **Summarize.** Chain-of-density summary at the L2 layer. The agent rewrites the summary 3-5 times, each pass denser than the last.
+1. **Summarize.** Chain-of-Density summary at the L2 layer. The agent writes a sparse first summary, identifies missing salient entities/details, then rewrites the same-length summary 3-5 times until it is dense enough to act as a Card Catalog entry.
 2. **Entities.** Pull people, organizations, places, dates, concepts. These become graph nodes in Neo4j.
 3. **Perspectives.** This is the value-add layer. For Tyler, the five perspectives are: builds, business, students, personal, agents. Each captured entry gets analyzed across all five so the agent can later answer "show me everything that touched Cohort 1" or "show me everything relevant to my next client engagement."
 4. **Embedding.** Vectorize for pgvector. The summary, the perspectives, and the original content each get their own embedding.
@@ -91,7 +91,7 @@ Every step has a single job. The pipeline is opinionated. Each step is small eno
 | Layer | Where it lives |
 |---|---|
 | L3 raw | NAS + git + per-source store |
-| L2 card | Obsidian markdown vault, viewable as graph |
+| L2 card | Obsidian markdown vault, one Chain-of-Density card per source |
 | L1 waypoint | Curated waypoint files; daemon proposes, human approves |
 | Vectors | pgvector (Supabase) |
 | Graph | Neo4j (Hostinger) |
@@ -143,7 +143,7 @@ Tyler watches a 45-minute YouTube video at lunch. Here is where it ends up in 90
 12:00:03 - Triage agent: dedupe check (not seen), three-pass dedupe clears
 12:00:05 - Fetch: Downie pulls video to ~/Movies/MacWhisper Queue/
 12:00:10 - Fetch: yt-dlp pulls captions if available (otherwise Whisper transcribes)
-12:00:30 - Enrich pass 1 (Ollama): chain-of-density summary written to L2
+12:00:30 - Enrich pass 1 (Ollama or Claude): Chain-of-Density L2 card written
 12:00:45 - Enrich pass 2 (Haiku): entities extracted, graph nodes proposed
 12:01:00 - Enrich pass 3 (Sonnet): 5-perspective analysis (builds, business, students, personal, agents)
 12:01:15 - Enrich pass 4: embeddings generated for summary + perspectives + raw transcript

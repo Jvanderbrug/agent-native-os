@@ -10,7 +10,7 @@ next: 01-the-three-tiers.md
 
 Cairns are stacked stone markers used for wayfinding in wilderness terrain. They mark the path when there is no trail. Tyler Fisk has been designing a knowledge system by that name since September 2024. This guide is your first contact with the pattern.
 
-Important up front: **Cairns is not built yet.** The production system is still gated on a stack of stakeholder questions Tyler has not finished answering. What you are learning here is the architecture and the thinking, not a system you can install. By the end of this 5-doc series you will know enough to build a student-scale version of the pattern for yourself (see `04-build-your-own-mini-cairns.md`).
+Important up front: **Cairns is not a single app you install.** It is an architecture for making your agents use memory well. The full production system has more automation than this repo ships, but the student-scale version is concrete: an Obsidian vault, three memory layers, and a few agent skills that know how to write and query those layers. By the end of this series you will know enough to build the pattern for yourself (see `04-build-your-own-mini-cairns.md`, `05-card-catalog-chain-of-density.md`, and `06-agent-skill-templates.md`).
 
 ## Why Tyler built it
 
@@ -28,11 +28,11 @@ For the deeper origin story and the 18-month design history, see `~/GitHub/agent
 
 ## The 3 tiers in plain English
 
-**L1 Cairns (always on).** Roughly 6,000 tokens of high-signal waypoints across about 16 categories of your life. Work builds, work business, family, health, decisions in flight, brand voice. Every agent loads this into context at session start. It answers 60 to 70 percent of queries before any retrieval happens.
+**L1 Cairns (always on).** A small set of high-signal route-map notes. They are not summaries of everything. They are selective waypoints that tell the agent what matters, what exists, and where to look next.
 
-**L2 Card Catalog (deliberately fetched).** Markdown summaries of everything in L3. Backlinks to source. Written by an LLM, read by humans. The agent only loads an L2 file when a query touches that topic.
+**L2 Card Catalog (deliberately fetched).** One Chain-of-Density card per meaningful L3 source. Each card compresses the source into a dense, source-linked summary that is good for retrieval, browsing, and deciding whether to fetch the raw evidence.
 
-**L3 Raw Data (everything).** Every video you watched, every paper you saved, every Slack message, every email, every voice memo. Never edited. Backed up. Searched only when L1 and L2 cannot answer.
+**L3 Raw Data (immutable evidence).** Every video transcript, paper, meeting note, Slack export, email, voice memo, or article. Never edited by the agent. L2 points back to it. L3 is only loaded when the answer needs the full source.
 
 For a concrete walk-through with examples mapped to your own life, read `01-the-three-tiers.md` next.
 
@@ -56,6 +56,8 @@ In April 2026, Andrej Karpathy published a viral gist called "LLM Knowledge Base
 - `02-the-librarian-agent.md` - the agentic-RAG mediator pattern
 - `03-flow-the-capture-pipeline.md` - how content gets into Cairns
 - `04-build-your-own-mini-cairns.md` - your first prototype
+- `05-card-catalog-chain-of-density.md` - the corrected L2 Card Catalog pattern
+- `06-agent-skill-templates.md` - installable agent skills for ingestion, query, and linting
 - `~/GitHub/agent-native-os-hq/architecture/CAIRNS-CURRENT-STATE.md` - the canonical "what Cairns is now" doc
 - `~/GitHub/agent-native-os-hq/architecture/MEMORY-TIERING-AND-SOUL-PATTERN.md` - how Cairns marries the HOT/WARM/COLD memory framework
 - `~/GitHub/cairns/ARCHITECTURE.md` - the v0 architecture in the dedicated repo

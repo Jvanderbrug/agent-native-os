@@ -10,11 +10,19 @@ next: 02-the-librarian-agent.md
 
 Every tier of Cairns increases in volume and decreases in curation. Agents query top down. They start with curated waypoints, descend to summaries for discovery, and only touch raw data when they need direct source material. This is the cache-miss pattern applied to personal knowledge.
 
-Reminder: **Cairns is not built yet.** What follows is the architecture as currently specified. The numbers below (sizes, hit rates, category counts) are design targets pulled from `~/GitHub/cairns/ARCHITECTURE.md` and `~/GitHub/agent-native-os-hq/architecture/CAIRNS-CURRENT-STATE.md`.
+Reminder: **the full production Cairns service is not what you are installing today.** What follows is the architecture. The student version uses local markdown and skills; the production version adds automated ingestion, vector search, graph retrieval, and a Librarian service.
 
-## L1 Cairns (always-on waypoints)
+## L1 Cairns (always-on route map)
 
-**What it is.** Roughly 6,000 tokens of pre-curated, high-signal knowledge chunks across about 16 whole-person categories. Always loaded into the agent's context at session start. The first stop for any query. Designed to resolve 60 to 70 percent of questions before any retrieval happens.
+**What it is.** A small, pre-curated route map of high-signal waypoints across your life and work. Always loaded into the agent's context at session start. The first stop for any query.
+
+L1 is not where you summarize every source. L1 tells the agent:
+
+- What matters right now
+- Which categories exist
+- Which L2 cards or folders are worth checking
+- Which decisions, constraints, people, and projects should shape the answer
+- What must stay human-approved because it changes the agent's standing memory
 
 **The 16 categories (proposed, not yet locked).**
 
@@ -41,31 +49,33 @@ Reminder: **Cairns is not built yet.** What follows is the architecture as curre
 
 **Per-category staleness thresholds.** Decisions in Flight should be under 24 hours fresh. Brand and Voice can sit for 90 days. Tools and Setup can sit longer. The point is each category has a different rhythm.
 
-**What L1 looks like in practice.** A line in your top-level memory that says "Active workshop: Sunday May 3 11am CDT, 4D + 8D tracks. Open: Component 11 architecture (Sara), Capstone build design." That is a waypoint. The agent does not need to grep your filesystem to know that. It is already in context.
+**What L1 looks like in practice.** A note in your top-level memory that says: "Active workshop: Sunday May 3 11am CDT, 4D + 8D tracks. Relevant L2 cards: workshop-run-of-day, morning-brief-capstone, onboarding-friction. Open decisions: capstone surface, 4D/8D split." That is a waypoint. The agent does not need to grep your filesystem to know where to begin.
 
-## L2 Card Catalog (deliberately fetched summaries)
+## L2 Card Catalog (Chain-of-Density source cards)
 
-**What it is.** A searchable index of every meaningful thing in your knowledge ecosystem. Not the full content. Just enough metadata to find it, assess relevance, and decide whether to fetch L3.
+**What it is.** A searchable index of every meaningful source in your knowledge ecosystem. One L2 card per L3 source, written with a Chain-of-Density loop. It is not the full content. It is the best dense summary of the source, plus metadata, retrieval hooks, entities, tags, and backlinks to L3.
 
 Think of an actual library card catalog. Each card tells you what exists, where it lives, what it is about, and how to get the full thing. The agent uses L2 to navigate without loading everything into context.
 
-**What goes in.** Per-entry chain-of-density summaries (compressed but information-dense paragraphs) of every transcript, every Slack thread worth keeping, every paper, every prompt library entry. Each entry has structured metadata: tags, people mentioned, concepts covered, source path, retrieval priority, and backlinks to L3.
+**What goes in.** Per-source Chain-of-Density summaries of every transcript, Slack thread worth keeping, paper, meeting, prompt library entry, or captured article. Each entry has structured metadata: source path, date, type, people mentioned, entities, concepts covered, tags, retrieval questions, related L1 Cairns, and backlinks to L3.
 
-**Where it lives.** Markdown files in git, viewable in Obsidian. Karpathy calls this "the wiki." Same idea.
+**Why Chain of Density.** The first summary pass is usually too vague. A Chain-of-Density loop repeatedly asks: "what important entities and details are missing?" Then it rewrites the same-length summary with more signal and less filler. The result is a short card that still preserves the source's useful facts.
+
+**Where it lives.** Markdown files in git, viewable in Obsidian. Karpathy calls a related pattern "the wiki." In Cairns, the L2 Card Catalog is the agent-readable bridge between route-map memory and raw evidence.
 
 **Map it to your own life.** Every YouTube video you actually watched, every podcast you listened to, every important Slack thread, every meeting that mattered. Each becomes one L2 card. The card has the 200-word summary, the date, the people, the topic tags, and a link to the raw source.
 
-**The discipline that makes L2 work.** Each L2 file is named so it does not auto-load. The L1 waypoint for a category tells the agent which L2 to fetch when relevant. This is the soul.md pattern (see `~/GitHub/agent-native-os-hq/architecture/MEMORY-TIERING-AND-SOUL-PATTERN.md` section 2). Map, not contents.
+**The discipline that makes L2 work.** Each L2 file is named and linked so it does not auto-load. The L1 waypoint for a category tells the agent which L2 cards or folders to fetch when relevant. L2 is the map of source cards, not a pile of raw transcripts.
 
-## L3 Raw Data (everything that ever crossed your radar)
+## L3 Raw Data (immutable evidence)
 
-**What it is.** The complete, unprocessed source material. Every video file. Every PDF. Every Slack export. Every transcript. Every email. Every voice memo. Never edited by an LLM. Always backed up.
+**What it is.** The complete, unprocessed source material. Every video transcript, PDF, Slack export, meeting note, email, voice memo, article, or screenshot. Never edited by an LLM. Always backed up.
 
 **What goes in.** Live session transcripts (Fathom, Whisper). Slack archive (potentially 42K+ messages). Curriculum modules. Voice and brand docs. Student wins. Meeting recordings on the NAS. YouTube transcripts (Tyler's pipeline currently has 56,647). Granola transcripts (1,200+).
 
 **Where it lives.** NAS plus git plus per-source storage. Chunked for retrieval, embedded for semantic search, versioned for traceability.
 
-**Map it to your own life.** Your existing Documents folder. Your Downloads. Your Notes app. Your email. Your screenshots. The point of L3 is you do not throw any of it away. You also do not try to organize it perfectly. You leave it where it lives, you index it, and you let L2 cards point to it.
+**Map it to your own life.** Your existing Documents folder, downloads, exported notes, email, screenshots, and transcripts. The point of L3 is you do not throw useful evidence away. You also do not try to hand-organize all of it. You preserve it, index it, and let L2 cards point to it.
 
 ## How an agent uses all three
 
@@ -77,7 +87,7 @@ User asks a question
     Resolved? Return answer.
         |
         v (cache miss)
-[2] Search L2 card catalog
+[2] Search L2 Card Catalog
     Find 5-10 relevant cards.
     Resolved? Return answer with card content.
         |

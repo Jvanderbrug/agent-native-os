@@ -1,6 +1,6 @@
 ---
 name: second-brain-capture
-description: Use when the user says "remember this", "save this", "add this to my second brain", drops a scratchpad item, or shares a link/thought that should become durable memory. Writes raw capture first, asks follow-up questions only when needed, and optionally updates Cairns L1.
+description: Use when the user says "remember this", "save this", "add this to my second brain", drops a scratchpad item, or shares a link/thought that should become durable memory. Writes raw capture first, asks follow-up questions only when needed, and hands source-worthy items to Cairns L2/L1 flow.
 ---
 
 # Second Brain Capture
@@ -23,6 +23,7 @@ Use this starter structure:
   inbox/scratchpad/
   decisions/
   cairns/L1/
+  cairns/L2/cards/
   cairns/L3/articles/
   cairns/L3/notes/
   cairns/L3/transcripts/
@@ -108,13 +109,23 @@ Use these default files:
 
 Keep the L1 line under 220 characters.
 
-## Step 5: Confirm
+## Step 5: Hand off to Cairns ingest when the item is source-worthy
+
+If the capture is a transcript, article, paper, meeting, substantial note, or other source that should be useful later, create or suggest an L2 Card Catalog entry using the `cairns-ingest` skill.
+
+Do not write only raw text and stop when the item is clearly source-worthy. The corrected Cairns flow is:
+
+```text
+L3 raw first -> L2 Chain-of-Density card -> optional human-approved L1 waypoint
+```
+
+## Step 6: Confirm
 
 Report:
 
 - Raw capture file path
+- L2 card path, if created
 - L1 file updated, if any
 - Follow-up question, if needed
 
 Do not over-explain. The user needs to know where it went and whether anything is blocked.
-

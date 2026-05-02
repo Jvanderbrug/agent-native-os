@@ -72,6 +72,18 @@ Your Vault/
 
 This structure is based on the PARA method by Tiago Forte — one of the most widely used second-brain frameworks.
 
+For the workshop Cairns pattern, add this folder too:
+
+```text
+Your Vault/
+└── cairns/
+    ├── L1/          <- selective route-map waypoints
+    ├── L2/cards/    <- Chain-of-Density Card Catalog entries
+    └── L3/          <- immutable raw evidence
+```
+
+PARA is a good human browsing structure. Cairns is the agent retrieval structure. You can use both in the same Obsidian vault.
+
 ---
 
 ## Connecting Obsidian to Claude Code
@@ -151,6 +163,11 @@ Once your vault is connected, here's what becomes possible:
 > Do I have any notes about pricing strategy?
 ```
 
+**Cairns query:**
+```
+> Use the cairns-query skill. Start with my L1 route map, search my L2 Card Catalog, then open L3 raw evidence only if needed. What do I know about pricing strategy?
+```
+
 ---
 
 ## The Obsidian Daily Note
@@ -218,6 +235,8 @@ For the workshop, local is fine. Think about sync when you're ready to use this 
 - An Obsidian vault set up with the PARA structure
 - Claude Code knows where your vault is and can read/write it
 - The pattern for using natural language to capture, retrieve, and organize your knowledge
+
+For the advanced Cairns layer, read `guides/cairns/00-what-is-cairns.md` through `guides/cairns/06-agent-skill-templates.md`.
 
 ---
 

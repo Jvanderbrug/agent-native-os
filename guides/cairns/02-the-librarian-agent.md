@@ -10,7 +10,7 @@ next: 03-flow-the-capture-pipeline.md
 
 This is the piece that turns Cairns from "a 3-tier knowledge store" into "agentic RAG." Without the Librarian, Cairns is just a clever filing system. With the Librarian, every other agent in your fleet gets a single mediated entry point to the entire knowledge fabric.
 
-Reminder: **Cairns is not built yet.** The Librarian is specified in the Hey Gigawatt v2 Vision doc and reaffirmed in the current-state architecture, but it has not shipped. What follows is the design.
+Reminder: **the full Librarian service is not what you are installing today.** The student version uses the `cairns-query` skill to practice the same retrieval order. The production version turns that pattern into a mediated service other agents can call.
 
 ## The problem with every agent doing its own retrieval
 
@@ -43,7 +43,7 @@ heartbeat         ─┘    (chooses strategy)
 
 For every incoming query, Librarian decides:
 
-**Which tier to hit.** L1 first (free, instant). L2 if the question needs detail. L3 only when it needs source material.
+**Which tier to hit.** L1 first (free, instant). L2 next (Chain-of-Density cards that explain what sources exist). L3 last, only when the answer needs raw evidence, exact quotes, timestamps, or details not preserved in the card.
 
 **Which retrieval strategy to use.** Vector search for "find me concepts similar to X." Graph traversal for "who reports to whom" or "what events led to Y." Full-text search for "find the exact phrase Z." MCP call for "what is the current state of system A." Often a combination.
 
@@ -87,7 +87,7 @@ Standard RAG is passive. You embed a query, you cosine-similarity against a vect
 
 Agentic RAG is active. Seven primitives that distinguish it from passive RAG:
 
-1. **Cascading retrieval with cache misses.** L1 first. L2 only if L1 misses. L3 only if L2 lacks specifics.
+1. **Cascading retrieval with cache misses.** L1 first. L2 only if L1 misses or points to relevant cards. L3 only if L2 lacks specifics or the answer needs raw evidence.
 2. **Strategy selection by Librarian.** Decides vector vs graph vs MCP vs combo based on query shape, not query embedding.
 3. **Triage and dedupe agents on capture.** "Regex plus agent everywhere." Fast regex for obvious cases, agent for ambiguous. Three-pass dedupe (URL hash, content hash, embedding similarity plus agent decision).
 4. **5-perspective enrichment pass.** Every captured entry gets analyzed across five lenses (for Tyler: builds, business, students, personal, agents) so retrieval can match by intent, not just text.
