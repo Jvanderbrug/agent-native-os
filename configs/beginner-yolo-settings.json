@@ -1,0 +1,65 @@
+{
+  "_comment": "Beginner YOLO config (Level 2: Trusted Crew). ~50 curated rules for Claude Code beginners. Does NOT auto-approve: rm, sudo, git push, ssh, docker, brew install. See guides/18-progressive-autonomy.md for the full progression.",
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Glob(**)",
+      "Grep(**)",
+      "Write(**)",
+      "Edit(**)",
+
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(git fetch:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git show:*)",
+
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)",
+
+      "Bash(node:*)",
+      "Bash(python3:*)",
+      "Bash(npm run:*)",
+      "Bash(npx:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run test:*)",
+
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(echo:*)",
+
+      "Bash(pwd:*)",
+      "Bash(whoami:*)",
+      "Bash(which:*)",
+      "Bash(date:*)",
+      "Bash(env:*)",
+
+      "Bash(gh:*)",
+      "Bash(gh api:*)",
+
+      "WebSearch",
+      "WebFetch",
+
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(cut:*)",
+      "Bash(diff:*)",
+      "Bash(jq:*)"
+    ]
+  }
+}

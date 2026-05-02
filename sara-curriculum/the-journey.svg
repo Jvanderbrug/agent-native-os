@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.18"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="capstoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="1500" fill="#FAFAF7"/>
+
+  <!-- Title -->
+  <text x="600" y="60" text-anchor="middle" font-size="32" font-weight="700" fill="#1A202C" letter-spacing="-0.5">The Workshop Journey</text>
+  <text x="600" y="92" text-anchor="middle" font-size="16" fill="#4A5568">Four layers stacked on top of each other. Each one unlocks the next.</text>
+
+  <!-- CAPSTONE -->
+  <g filter="url(#shadow)">
+    <rect x="280" y="130" width="640" height="100" rx="14" fill="url(#capstoneGrad)"/>
+  </g>
+  <text x="600" y="172" text-anchor="middle" font-size="14" font-weight="600" fill="#E9D5FF" letter-spacing="2">CAPSTONE</text>
+  <text x="600" y="202" text-anchor="middle" font-size="22" font-weight="700" fill="#FFFFFF">Agents that build agents</text>
+  <text x="600" y="222" text-anchor="middle" font-size="13" fill="#F3E8FF">13  ·  The /build skill</text>
+
+  <!-- Arrow capstone -->
+  <path d="M 600 245 L 600 280 M 588 268 L 600 280 L 612 268" stroke="#A855F7" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 4: AUTONOMY -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="295" width="1040" height="200" rx="14" fill="#B45309"/>
+  </g>
+  <text x="115" y="335" font-size="13" font-weight="700" fill="#FED7AA" letter-spacing="2">LAYER 4</text>
+  <text x="115" y="370" font-size="32" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">Autonomy</text>
+  <text x="115" y="397" font-size="15" fill="#FEF3C7">How the agent runs without you.</text>
+  <text x="115" y="438" font-size="13" fill="#FED7AA">It runs on a clock, sends output where you'll see it,</text>
+  <text x="115" y="458" font-size="13" fill="#FED7AA">and you direct it from anywhere. Stops being a tool. Starts being a teammate.</text>
+  <line x1="700" y1="320" x2="700" y2="475" stroke="#FBBF24" stroke-width="1" opacity="0.4"/>
+  <text x="730" y="345" font-size="12" font-weight="600" fill="#FED7AA" letter-spacing="1">COMPONENTS</text>
+  <text x="730" y="375" font-size="14" fill="#FFFFFF">9  ·  Scheduling</text>
+  <text x="730" y="400" font-size="14" fill="#FFFFFF">10  ·  Delivery channels</text>
+  <text x="730" y="425" font-size="14" fill="#FFFFFF">11  ·  Remote control</text>
+  <text x="730" y="450" font-size="14" fill="#FFFFFF">12  ·  Progressive autonomy</text>
+
+  <!-- Arrow -->
+  <path d="M 600 510 L 600 545 M 588 533 L 600 545 L 612 533" stroke="#B45309" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 3: TRIGGERS -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="560" width="1040" height="180" rx="14" fill="#C2410C"/>
+  </g>
+  <text x="115" y="600" font-size="13" font-weight="700" fill="#FED7AA" letter-spacing="2">LAYER 3</text>
+  <text x="115" y="635" font-size="32" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">Triggers</text>
+  <text x="115" y="662" font-size="15" fill="#FEE2E2">How you activate the agent.</text>
+  <text x="115" y="700" font-size="13" fill="#FED7AA">Capability without a fast trigger is friction.</text>
+  <text x="115" y="720" font-size="13" fill="#FED7AA">Turn complex workflows into one-word commands.</text>
+  <line x1="700" y1="585" x2="700" y2="720" stroke="#FBBF24" stroke-width="1" opacity="0.4"/>
+  <text x="730" y="610" font-size="12" font-weight="600" fill="#FED7AA" letter-spacing="1">COMPONENTS</text>
+  <text x="730" y="640" font-size="14" fill="#FFFFFF">7  ·  Custom slash commands</text>
+  <text x="730" y="665" font-size="14" fill="#FFFFFF">8  ·  Daily briefing config</text>
+
+  <!-- Arrow -->
+  <path d="M 600 755 L 600 790 M 588 778 L 600 790 L 612 778" stroke="#C2410C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 2: SENSES -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="805" width="1040" height="200" rx="14" fill="#2D7D6F"/>
+  </g>
+  <text x="115" y="845" font-size="13" font-weight="700" fill="#A7F3D0" letter-spacing="2">LAYER 2</text>
+  <text x="115" y="880" font-size="32" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">Senses</text>
+  <text x="115" y="907" font-size="15" fill="#D1FAE5">How the agent sees the world.</text>
+  <text x="115" y="948" font-size="13" fill="#A7F3D0">Each MCP is a new sense organ — a way for the agent</text>
+  <text x="115" y="968" font-size="13" fill="#A7F3D0">to reach beyond your screen and pull in real information.</text>
+  <line x1="700" y1="830" x2="700" y2="985" stroke="#34D399" stroke-width="1" opacity="0.4"/>
+  <text x="730" y="855" font-size="12" font-weight="600" fill="#A7F3D0" letter-spacing="1">COMPONENTS</text>
+  <text x="730" y="885" font-size="14" fill="#FFFFFF">4  ·  Exa MCP  →  the public web</text>
+  <text x="730" y="910" font-size="14" fill="#FFFFFF">5  ·  Firecrawl  →  full web pages</text>
+  <text x="730" y="935" font-size="14" fill="#FFFFFF">6  ·  Gmail · Calendar · Drive  →  your life</text>
+
+  <!-- Arrow -->
+  <path d="M 600 1020 L 600 1055 M 588 1043 L 600 1055 L 612 1043" stroke="#2D7D6F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 1: INFRASTRUCTURE -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="1070" width="1040" height="220" rx="14" fill="#2D3748"/>
+  </g>
+  <text x="115" y="1110" font-size="13" font-weight="700" fill="#A0AEC0" letter-spacing="2">LAYER 1</text>
+  <text x="115" y="1145" font-size="32" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">Infrastructure</text>
+  <text x="115" y="1172" font-size="15" fill="#CBD5E0">Where the agent lives and thinks.</text>
+  <text x="115" y="1213" font-size="13" fill="#A0AEC0">Set this up once. Everything else sits on top.</text>
+  <text x="115" y="1233" font-size="13" fill="#A0AEC0">Without it, Claude Code is just a chat box.</text>
+  <text x="115" y="1253" font-size="13" fill="#A0AEC0">With it, Claude Code is an operator with a brain, a workspace, and a vault.</text>
+  <line x1="700" y1="1095" x2="700" y2="1265" stroke="#718096" stroke-width="1" opacity="0.4"/>
+  <text x="730" y="1120" font-size="12" font-weight="600" fill="#A0AEC0" letter-spacing="1">COMPONENTS</text>
+  <text x="730" y="1150" font-size="14" fill="#FFFFFF">0  ·  Working with Claude Code</text>
+  <text x="730" y="1175" font-size="14" fill="#FFFFFF">1  ·  CLAUDE.md  →  standing instructions</text>
+  <text x="730" y="1200" font-size="14" fill="#FFFFFF">2  ·  Obsidian Vault  →  workspace</text>
+  <text x="730" y="1225" font-size="14" fill="#FFFFFF">3  ·  1Password  →  secrets</text>
+
+  <!-- Footer -->
+  <text x="600" y="1340" text-anchor="middle" font-size="14" font-weight="600" fill="#4A5568" letter-spacing="0.5">Read it bottom-up. Each layer needs the one below it.</text>
+  <text x="600" y="1365" text-anchor="middle" font-size="12" fill="#718096">AI Build Lab  ·  Claude Code Workshop</text>
+</svg>

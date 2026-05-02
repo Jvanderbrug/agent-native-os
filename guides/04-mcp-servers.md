@@ -40,61 +40,29 @@ You don't need to understand the internals. What matters is:
 
 ## Installing Your First MCP Server
 
-We're going to install the **Brave Search** MCP server. It's the simplest one — no authentication required, just install and go. We'll use it to verify that MCPs work before we move to the authenticated ones.
+We're going to install the **Brave Search** MCP server. It's the simplest one, no authentication required, just install and go. We'll use it to verify that MCPs work before we move to the authenticated ones.
 
 ### Step 1: Get a Brave Search API Key
 
 1. Go to **brave.com/search/api/**
 2. Click "Get Started for Free"
 3. Create an account
-4. Create an API key — the free tier gives you 2,000 queries/month, which is plenty for this workshop
+4. Create an API key. The free tier gives you 2,000 queries/month, which is plenty for this workshop.
 5. Copy the API key
 
-### Step 2: Add It to Your Claude Code Settings
+### Step 2: Add It Using `claude mcp add`
 
-Claude Code keeps its MCP configuration in a file called `settings.json`. Let's open it.
+The modern way to install an MCP server is with the built-in `claude mcp add` command. No npm install, no JSON editing, no path wrangling. Claude Code handles all of it for you.
 
-**Mac:**
 ```bash
-# Open the settings file in your default editor
-open ~/.claude/settings.json
+claude mcp add brave-search
 ```
 
-If the file doesn't exist yet:
-```bash
-mkdir -p ~/.claude && touch ~/.claude/settings.json
-open ~/.claude/settings.json
-```
+Claude Code will prompt you for any required environment variables (in this case, your `BRAVE_API_KEY`). Paste the key when asked.
 
-**Windows (WSL2):**
-```bash
-# Create the directory if needed
-mkdir -p ~/.claude
+That's it. The server is registered, the package is fetched on demand by `npx`, and Claude can use it on the next session start.
 
-# Open in VS Code (if installed)
-code ~/.claude/settings.json
-
-# Or open with the default text editor
-notepad.exe $(wslpath -w ~/.claude/settings.json)
-```
-
-The file should contain (or you should create it with):
-
-```json
-{
-  "mcpServers": {
-    "brave-search": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
-      "env": {
-        "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
-      }
-    }
-  }
-}
-```
-
-Replace `YOUR_API_KEY_HERE` with the key you copied from Brave.
+> **Legacy note:** Older docs (and the templates in `templates/settings/`) show a hand-rolled `mcpServers: { "brave-search": { "command": "npx", "args": [...] } }` block in `settings.json`. That format still works, but `claude mcp add` is the recommended path now. If you see the old format in a tutorial, you can translate it 1:1 to the new command.
 
 ### Step 3: Verify It Works
 
@@ -108,7 +76,12 @@ Type:
 > What's the weather like in Nashville today?
 ```
 
-If you see Claude actually searching the web and returning current results — your first MCP server is working.
+If you see Claude actually searching the web and returning current results, your first MCP server is working.
+
+You can also list your installed MCP servers any time with:
+```bash
+claude mcp list
+```
 
 ---
 
@@ -136,26 +109,14 @@ The Gmail integration is one of the most valuable. Here's how to set it up.
 ### Step 2: Install the Gmail MCP Server
 
 ```bash
-npm install -g @modelcontextprotocol/server-gmail
+claude mcp add gmail
 ```
 
-### Step 3: Add to settings.json
+When prompted, point it at the OAuth credentials JSON you downloaded in Step 1 (e.g. `~/.claude/credentials/gmail.json`). Claude Code will register the server and wire up the environment variable for you.
 
-Add this to your `mcpServers` section in `~/.claude/settings.json`:
+> **Legacy note:** The old way was `npm install -g @modelcontextprotocol/server-gmail` followed by hand-editing `~/.claude/settings.json` to add a `gmail: { command: "npx", args: [...], env: {...} }` block. That still works if you prefer, but `claude mcp add gmail` is the recommended path.
 
-```json
-"gmail": {
-  "command": "npx",
-  "args": ["-y", "@modelcontextprotocol/server-gmail"],
-  "env": {
-    "GMAIL_CREDENTIALS_FILE": "/Users/yourname/.claude/credentials/gmail.json"
-  }
-}
-```
-
-Replace the path with wherever you saved your credentials file.
-
-### Step 4: Authenticate
+### Step 3: Authenticate
 
 Start Claude Code: `claude`
 
@@ -210,13 +171,13 @@ This is especially useful because it helps Claude know to use these tools proact
 ## MCP Server Troubleshooting
 
 **"MCP server failed to start"**
-Usually means the npm package didn't install correctly. Try: `npm install -g @modelcontextprotocol/server-[name]` manually.
+Run `claude mcp list` to confirm the server is registered. If it is, the package may not have been fetched yet. Try `claude mcp remove [name]` and then re-run `claude mcp add [name]`.
 
 **"Authentication failed" on Gmail or Calendar**
 Delete the cached credentials and reauthenticate. Look in `~/.claude/` for any credential files from the affected service and delete them, then restart Claude.
 
-**"I can see the MCP server in settings but Claude doesn't seem to use it"**
-Make sure the JSON in your settings.json is valid (no missing commas, no extra curly braces). Use an online JSON validator if you're not sure.
+**"I can see the MCP server in `claude mcp list` but Claude doesn't seem to use it"**
+If you (or an older guide) hand-edited `~/.claude/settings.json` with a `mcpServers` block, make sure the JSON is valid (no missing commas, no extra curly braces). Use an online JSON validator if you're not sure. Going forward, prefer `claude mcp add` over editing settings.json by hand.
 
 **Claude says it can't access Gmail when I ask about emails**
 Try being more explicit: "Use the Gmail MCP server to show me my recent emails."

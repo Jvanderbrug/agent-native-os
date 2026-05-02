@@ -23,17 +23,19 @@ This guide is about adding the remaining connections.
 
 ## What We're Connecting
 
-By the end of this session, you'll have at least 3 of these connected. Pick the ones that match your actual tools.
+By the end of this session, you'll have at least 3 of these connected. Pick the ones that match your actual tools. Each one installs with a single `claude mcp add` command.
 
-| Tool | MCP Package | What You Get |
-|------|------------|--------------|
-| Gmail | `@modelcontextprotocol/server-gmail` | Read, draft, search email |
-| Google Calendar | `@modelcontextprotocol/server-google-calendar` | Read/create events, find availability |
-| Notion | `@modelcontextprotocol/server-notion` | Read/write pages and databases |
-| Slack | `@modelcontextprotocol/server-slack` | Read channels, post messages |
-| GitHub | `@modelcontextprotocol/server-github` | Repos, issues, PRs |
-| Airtable | `@modelcontextprotocol/server-airtable` | Read/write your bases |
-| n8n | Custom | Trigger your automation workflows |
+| Tool | Install Command | What You Get |
+|------|-----------------|--------------|
+| Gmail | `claude mcp add gmail` | Read, draft, search email |
+| Google Calendar | `claude mcp add google-calendar` | Read/create events, find availability |
+| Notion | `claude mcp add notion` | Read/write pages and databases |
+| Slack | `claude mcp add slack` | Read channels, post messages |
+| GitHub | `claude mcp add github` | Repos, issues, PRs |
+| Airtable | `claude mcp add airtable` | Read/write your bases |
+| n8n | Custom (see Guide 09) | Trigger your automation workflows |
+
+> **Legacy note:** Older docs (and the templates in `templates/settings/`) show a hand-rolled `mcpServers: { ... command: "npx", args: ["-y", "@modelcontextprotocol/server-X"] ... }` block in `~/.claude/settings.json`. That format still works, but `claude mcp add` is the recommended path now and handles the credentials/env wiring for you.
 
 ---
 
@@ -44,18 +46,14 @@ If you already did Gmail, Calendar is similar.
 ### Setup
 
 1. Enable the **Google Calendar API** in your Google Cloud project (console.cloud.google.com)
-2. Your existing OAuth credentials from Gmail should cover it — just add the Calendar scope
-3. Add to `~/.claude/settings.json`:
+2. Your existing OAuth credentials from Gmail should cover it. Just add the Calendar scope.
+3. Install the MCP server:
 
-```json
-"google-calendar": {
-  "command": "npx",
-  "args": ["-y", "@modelcontextprotocol/server-google-calendar"],
-  "env": {
-    "GOOGLE_CREDENTIALS_FILE": "op://Personal/Google OAuth Credentials/credential"
-  }
-}
+```bash
+claude mcp add google-calendar
 ```
+
+When prompted, point it at the same OAuth credentials JSON you used for Gmail.
 
 ### Test it:
 ```
@@ -82,17 +80,13 @@ Notion is powerful for teams and personal PKM. The MCP integration lets Claude r
 4. Copy the integration token
 5. Add the integration to each Notion page or database you want Claude to access (in Notion: click ... > Add connections > your integration)
 
-Store the token in 1Password, then add to settings.json:
+Store the token in 1Password, then install the MCP server:
 
-```json
-"notion": {
-  "command": "npx",
-  "args": ["-y", "@modelcontextprotocol/server-notion"],
-  "env": {
-    "NOTION_TOKEN": "op://Personal/Notion Claude Integration/credential"
-  }
-}
+```bash
+claude mcp add notion
 ```
+
+When prompted, paste your Notion integration token (or the 1Password reference, e.g. `op://Personal/Notion Claude Integration/credential`).
 
 ### Test it:
 ```
@@ -122,17 +116,13 @@ If your team uses Slack, this is a high-value connection.
 6. Install to workspace
 7. Copy the "Bot User OAuth Token" (starts with `xoxb-`)
 
-Store in 1Password, then:
+Store in 1Password, then install the MCP server:
 
-```json
-"slack": {
-  "command": "npx",
-  "args": ["-y", "@modelcontextprotocol/server-slack"],
-  "env": {
-    "SLACK_BOT_TOKEN": "op://Personal/Slack Claude Bot/credential"
-  }
-}
+```bash
+claude mcp add slack
 ```
+
+When prompted, paste the bot token (or the 1Password reference, e.g. `op://Personal/Slack Claude Bot/credential`).
 
 ### Test it:
 ```

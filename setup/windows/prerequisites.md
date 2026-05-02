@@ -160,7 +160,7 @@ sudo apt update && sudo apt install 1password-cli
 Inside your Ubuntu terminal:
 
 - [ ] Navigate somewhere sensible: `cd ~`
-- [ ] Clone the repo: `gh repo clone 8Dvibes/agent-native-os`
+- [ ] Clone the repo: `gh repo clone aibuild-lab/agent-native-os`
 - [ ] Enter the folder: `cd agent-native-os`
 
 ---

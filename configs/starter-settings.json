@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_FILE": "~/.claude/memory/memory.json"
+      }
+    },
+    "time": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-time"],
+      "env": {
+        "LOCAL_TIMEZONE": "America/Chicago"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic-ai/mcp-filesystem",
+        "--allow-dir", "~/GitHub",
+        "--allow-dir", "~/Documents"
+      ]
+    }
+  }
+}

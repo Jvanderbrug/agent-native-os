@@ -1,6 +1,7 @@
 {
-  "_comment": "Windows (WSL2) Claude Code Settings Template",
+  "_comment": "Windows (WSL2) Claude Code Settings Template (LEGACY mcpServers format)",
   "_instructions": "Copy this to ~/.claude/settings.json inside your WSL2/Ubuntu terminal. Replace op:// references with your actual 1Password paths. Replace YOURUSERNAME with your Linux username. Remove _comment and _instructions keys before using.",
+  "_legacy_note": "The mcpServers block below is the legacy hand-rolled format. The recommended path is now `claude mcp add <name>` (see guides/04-mcp-servers.md). This template still works and is kept for reference, but new users should prefer the CLI command.",
 
   "mcpServers": {
     "brave-search": {

@@ -38,14 +38,14 @@ If you're reading this on GitHub.com (not on your own machine), you need to clon
 **Mac:**
 ```bash
 cd ~/Documents
-gh repo clone 8Dvibes/agent-native-os
+gh repo clone aibuild-lab/agent-native-os
 cd agent-native-os
 ```
 
 **Windows (inside WSL2/Ubuntu terminal):**
 ```bash
 cd ~
-gh repo clone 8Dvibes/agent-native-os
+gh repo clone aibuild-lab/agent-native-os
 cd agent-native-os
 ```
 

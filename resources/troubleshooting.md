@@ -162,12 +162,16 @@ sudo apt install [package-name]
 
 ### "MCP server failed to start"
 
-**What's happening:** The npm package didn't install, there's a configuration error, or a dependency is missing.
+**What's happening:** The package didn't fetch, there's a configuration error, or a dependency is missing.
 
 **Fix:**
 ```bash
-# Try installing the MCP package manually
-npm install -g @modelcontextprotocol/server-brave-search
+# Confirm the server is registered
+claude mcp list
+
+# If it is, remove and re-add to force a fresh install
+claude mcp remove brave-search
+claude mcp add brave-search
 # (replace with your failing MCP name)
 
 # Then restart Claude Code

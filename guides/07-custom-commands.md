@@ -10,7 +10,59 @@ When you type `/exit` in Claude Code, something happens immediately. That's a bu
 
 You can build your own.
 
-Custom commands (also called **skills** in Claude Code's language) are reusable instructions you give Claude once and then trigger with a short `/name` command. Instead of typing the same detailed prompt over and over, you write it once and invoke it with one word.
+Custom commands are reusable instructions you give Claude once and then trigger with a short `/name` command. Instead of typing the same detailed prompt over and over, you write it once and invoke it with one word.
+
+---
+
+## Slash Command vs Skill (Important Distinction)
+
+Claude Code has two related but distinct concepts that often get confused. You should know which one you're building.
+
+| | Slash Command | Skill |
+|---|---|---|
+| **Lives at** | `~/.claude/commands/foo.md` | `~/.claude/skills/foo/SKILL.md` (or `~/.claude/skills/foo.md`) |
+| **Triggered by** | You type `/foo` explicitly | Claude auto-invokes when your request matches the skill's `description` |
+| **Format** | Plain markdown, no frontmatter required | YAML frontmatter required (`name`, `description`) |
+| **Use when** | You want a named shortcut you remember and run on demand | You want Claude to *automatically* reach for this capability when the situation calls for it |
+
+### Slash Command Example
+
+`~/.claude/commands/morning.md`:
+
+```markdown
+# Morning Briefing
+
+Pull today's calendar from Google Calendar, my Gmail since 5pm yesterday,
+and my Obsidian inbox. Give me a one-page brief with my top 3 priorities.
+```
+
+You invoke it by typing `/morning` in Claude Code.
+
+### Skill Example
+
+`~/.claude/skills/meeting-prep/SKILL.md`:
+
+```markdown
+---
+name: meeting-prep
+description: Research a person or company before a meeting. Use when the user mentions an upcoming call, meeting, intro, or first conversation with someone, or asks "what should I know about X before we meet."
+---
+
+When invoked:
+1. Search Obsidian for any prior notes on this person or their company.
+2. Search Gmail for the last 30 days of threads with them.
+3. Pull the relevant calendar event for context (attendees, agenda).
+4. Draft 3 good questions to ask, grounded in what you found.
+```
+
+You don't type `/meeting-prep`. You just say "I have a call with David at Summit Capital tomorrow, prep me." Claude reads the skill's `description`, recognizes the match, and invokes the skill automatically.
+
+### Which to Use When
+
+- **Pick a slash command** when *you* want to be the trigger. Daily briefings, weekly reviews, "draft an email reply to this," "summarize this." Anything where you'll deliberately type `/name`.
+- **Pick a skill** when you want Claude to *notice the situation* and reach for the capability without being told. Meeting prep, research-before-pitching, "always lint before committing," "always cite sources when answering factual questions."
+
+The rest of this guide focuses on slash commands because they're the simpler starting point. We'll touch skills again in later guides.
 
 **Before custom commands:**
 ```

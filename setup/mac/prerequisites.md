@@ -117,7 +117,7 @@ cd ~/Documents
 - [ ] Clone the repo (replace `[your-username]` if needed):
 
 ```bash
-gh repo clone 8Dvibes/agent-native-os
+gh repo clone aibuild-lab/agent-native-os
 ```
 
 - [ ] Enter the folder: `cd agent-native-os`
