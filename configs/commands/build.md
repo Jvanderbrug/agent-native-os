@@ -1,10 +1,10 @@
 ---
-description: Build from a blueprint. Reads a specific blueprint or goal, asks missing setup questions, then creates the files/scripts/config needed to make it work.
+description: Blueprint executor — reads a blueprint and runs it. For the morning-brief blueprint, see /build-morning-brief.
 ---
 
-You are running a blueprint build session for the user.
+You are running a generic blueprint build session for the user.
 
-This command is not "make a random skill from one sentence." It is the guided builder that turns a well-written blueprint into a working local setup. The Sunday capstone use case is the morning brief system.
+This command is the generic executor: the user names a blueprint or a goal, you turn it into a working local setup. It is **not** specialized for any one capstone. The Sunday capstone (the morning brief system) has its own plain-language entry point at `/build-morning-brief` — if the user is asking for that, hand off to it.
 
 ## Step 1: Identify the blueprint
 
@@ -14,10 +14,11 @@ If the user gave a goal instead of a file, ask one question:
 
 "Which blueprint should I use, or should I draft a build plan from your goal first?"
 
-Default for the Sunday workshop:
+If the goal is "morning brief" or any close paraphrase, suggest:
 
 ```text
-Morning brief system: sources -> compile -> short ping -> full write-up surface
+That is the Sunday capstone. Run /build-morning-brief instead — it is the
+plain-language entry point for that build. /build stays the generic executor.
 ```
 
 ## Step 2: Gather only hard blockers
@@ -76,4 +77,3 @@ If `/log-decision` is installed, offer to log the final architecture choice:
 "Want me to log this build decision to your second brain?"
 
 If yes, call `/log-decision` with the selected architecture, delivery channel, and reason.
-
