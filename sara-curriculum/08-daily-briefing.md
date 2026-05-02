@@ -216,7 +216,7 @@ Steal the pattern closest to your role, then tune for yourself.
 
 - **Component 9 (Scheduling):** runs `/morning-brief` overnight without you, so the brief is waiting when you wake up
 - **Component 10 (Delivery):** adds fancier channels -- Slack, email, voice/TTS, even a NotebookLM-style podcast version
-- **Component 13 (`/build` skill):** shows you how to use the same pattern to build *anything* -- not just briefings
+- **Component 13 (`/build` skill):** shows you how to use the same pattern inside the morning brief capstone
 
 ---
 

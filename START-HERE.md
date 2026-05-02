@@ -22,9 +22,9 @@ Your Claude knows what to do.
 - `configs/` — Personalization questionnaire, starter MCP settings, and the safe / auto / teams mode toggles for your Claude.
 - `guides/` — Numbered walk-throughs (00 through 10) covering everything from terminal basics to running an agent OS.
 - `blueprints/` — Pre-built reference projects you can clone and adapt.
-- `tracks/` — Suggested learning paths (beginner, builder, architect) so you know which guides to do in what order.
+- `tracks/` — Suggested learning paths for different comfort levels.
 - `setup/` — Mac and Windows machine prep — install lists, prereqs, and `verify.sh` checks.
-- `templates/` — Drop-in starter files (CLAUDE.md template, OS-specific settings.json).
+- `templates/` — Drop-in starter files, including the Obsidian/Cairns second-brain starter vault.
 - `resources/` — Glossary, keyboard shortcuts, troubleshooting, and Mac/Windows parity reference.
 
 ## What you'll be able to do after working through everything

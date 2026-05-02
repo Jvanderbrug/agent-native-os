@@ -71,13 +71,15 @@ Up to this point, you're still the one pressing the button. Layer 4 is where the
 
 ---
 
-## Capstone — Agents that build agents
+## Capstone - Morning Brief System
 
 | # | Component | What it gives you |
 |---|-----------|-------------------|
-| 13 | The `/build` skill | An agent that can build new agents for you |
+| 13 | Skills Library + `/build` | A blueprint-driven morning brief system you can customize |
 
-By now, you've built one full agent system from scratch. The capstone is the moment where you stop building agents one at a time and start building the thing that builds them. This is the unlock that compounds.
+By now, you have the pieces: a local agent, a second brain, safe secrets, data sources, scheduled runs, delivery channels, and remote control. The capstone pulls those pieces into one practical system: a morning brief that reads the sources you choose, writes the full brief somewhere useful, and sends you a short ping with the link or location.
+
+`/build` is the helper for that moment. It reads a blueprint, asks only the hard questions, then helps Claude Code set up the files, configuration, test run, and schedule. After Sunday, you can reuse the same pattern for other blueprints.
 
 ---
 

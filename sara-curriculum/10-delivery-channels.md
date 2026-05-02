@@ -2,9 +2,9 @@
 
 > **This is Block 10: Delivery Channels.**
 >
-> **What you'll have:** Your morning brief lands on your phone automatically — same content that hit Obsidian, forwarded to iMessage before you wake up. No laptop. No logging in. It comes to you.
+> **What you'll have:** Your morning brief notifies you automatically in the place you already check. The notification is short. The full brief lives in Obsidian, a Vercel page, or another surface you choose.
 >
-> **How this stacks toward the Capstone:** The Capstone (`/build`) is about building agents that act. But an agent that acts without reporting back to you isn't useful — you just don't know it did anything. Delivery channels are how your agent fleet tells you what it did while you were asleep.
+> **How this stacks toward the Capstone:** The Capstone is a morning brief system. Delivery channels are how the system tells you "the brief is ready" without dumping a wall of text into your phone.
 >
 > **Why now:** You needed the scheduled brief first (Component 9). You can't forward a brief that doesn't exist yet. Component 11 (Remote Control) builds on this too — you can't receive a reply from your agent if you haven't established a channel first.
 
@@ -17,7 +17,7 @@ Right now your morning brief:
 2. Writes a markdown file to your Obsidian vault
 
 After this component, it also:
-3. **Forwards that file to your iPhone via iMessage**
+3. **Sends you a short ping with the brief title, top priority, and where to read the full version**
 
 One small change to the launcher script. That's it.
 
@@ -54,16 +54,19 @@ Replace it with:
 ```bash
 /opt/homebrew/bin/claude -p --permission-mode bypassPermissions "/morning-brief"
 
-# ── Delivery Channel: iMessage ───────────────────────────────────────────────
+# Delivery Channel: iMessage short ping
 TODAY=$(date +%Y-%m-%d)
 BRIEF_FILE="$HOME/Documents/second-brain/daily-briefings/${TODAY}-brief.md"
 
 if [[ -f "$BRIEF_FILE" ]]; then
+    BRIEF_PREVIEW=$(head -20 "$BRIEF_FILE" | sed '/^$/d' | head -5)
     osascript <<APPLESCRIPT
 tell application "Messages"
     set targetService to 1st account whose service type = iMessage
-    set briefContent to (read POSIX file "$BRIEF_FILE" as text)
-    send briefContent to participant "+1XXXXXXXXXX" of targetService
+    set briefMessage to "Morning brief is ready: $BRIEF_FILE
+
+$BRIEF_PREVIEW"
+    send briefMessage to participant "+1XXXXXXXXXX" of targetService
 end tell
 APPLESCRIPT
 fi
@@ -83,7 +86,7 @@ Run the launcher manually to verify the full flow works before trusting it to th
 
 Wait 2–3 minutes. You should:
 1. See the brief write to your Obsidian vault
-2. Receive the full brief on your iPhone via iMessage
+2. Receive a short iMessage with the path to the full brief
 
 ---
 
@@ -91,7 +94,8 @@ Wait 2–3 minutes. You should:
 
 - [ ] Brief still writes to Obsidian (same as before)
 - [ ] iMessage arrives on your iPhone within ~3 minutes of the launcher running
-- [ ] The content matches what's in Obsidian
+- [ ] The iMessage is short enough to read quickly
+- [ ] The full brief location is clear
 - [ ] No errors in `~/Library/Logs/morning-brief/` (the launchd log)
 
 ---
@@ -104,23 +108,23 @@ The script targets the iMessage account specifically (`service type = iMessage`)
 **"The launcher runs but no iMessage arrives"**
 macOS requires your terminal or Claude Code app to have Automation permission to control Messages. Go to: System Settings → Privacy & Security → Automation → find your terminal app → check that Messages is ticked.
 
-**"I got a message but the content looked wrong"**
-The brief might contain special characters that display oddly in iMessage. Markdown formatting (headers, bullets) renders as plain text on phone. That's expected — it's still readable.
+**"I want the full brief on my phone"**
+You can send the whole file, but that usually becomes unreadable fast. The better pattern is short ping plus link or path to the full write-up.
 
-**"I don't want my full brief on iMessage — it's too long"**
-That's a valid preference. In Component 12 you'll configure what gets delivered where. For now, full brief on iMessage is the default.
+**"Where should the full brief live?"**
+For Sunday, use Obsidian as the reliable baseline. The 8D version can use a Vercel frontend and Supabase backend, which both have free tiers that are enough for a personal morning brief. If you use the brief for a business workflow, review the hosting terms and upgrade when needed.
 
 ---
 
-## Beginner track vs. Advanced track
+## 4D vs. 8D path
 
-| | Beginner | Advanced |
+| | 4D | 8D |
 |---|---|---|
-| **Delivery target** | Your own phone number — you message yourself | Route to any number, or a Slack channel |
-| **Channel** | iMessage via AppleScript | Slack incoming webhook (no AppleScript needed — works cross-platform) |
-| **What you edit** | Phone number in the launcher | Webhook URL from your Slack workspace |
+| **Delivery target** | Your own phone number | Slack channel, Telegram, or Vercel-hosted full brief |
+| **Channel** | iMessage short ping | Slack webhook, Claude Code Channel, or custom Slack app |
+| **What you edit** | Phone number in the launcher | Webhook URL, channel access, and full-brief destination |
 
-**Advanced: Slack delivery instead of iMessage**
+**8D: Slack delivery instead of iMessage**
 
 If you prefer Slack (or want to add it alongside iMessage):
 
@@ -129,7 +133,7 @@ If you prefer Slack (or want to add it alongside iMessage):
 3. Add this block to your launcher instead of the AppleScript block:
 
 ```bash
-BRIEF_CONTENT=$(cat "$BRIEF_FILE")
+BRIEF_CONTENT=$(head -40 "$BRIEF_FILE")
 curl -s -X POST "$SLACK_BRIEF_WEBHOOK_URL" \
     -H "Content-Type: application/json" \
     -d "{\"text\": $(echo "$BRIEF_CONTENT" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')}"
@@ -143,6 +147,6 @@ Store `SLACK_BRIEF_WEBHOOK_URL` in 1Password and reference it via `op read` — 
 
 You now have:
 - A brief that runs automatically (Component 9)
-- A brief that arrives on your phone (Component 10)
+- A short notification that tells you the full brief is ready (Component 10)
 
 What you don't have yet: the ability to reply from your phone and have the agent act on it. That's Component 11.

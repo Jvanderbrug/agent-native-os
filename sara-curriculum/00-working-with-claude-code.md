@@ -96,7 +96,7 @@ Two kinds of things can be a slash command:
 | What it is | Example |
 |------------|---------|
 | **A saved prompt.** A markdown file with instructions. When you type `/thing`, Claude reads the file and acts like you'd typed those instructions yourself. Think template. | `/weekly-review` that always pulls your calendar and asks what you learned |
-| **A packaged skill.** A folder with multiple files -- the prompt, reference material, sometimes scripts. More sophisticated, but feels the same to use. | `/build` (Tyler's meta-command that builds whole systems from a description) |
+| **A packaged skill.** A folder with multiple files -- the prompt, reference material, sometimes scripts. More sophisticated, but feels the same to use. | `/build` (Tyler's command for turning a blueprint into a working setup) |
 
 From where you sit, both feel identical -- you type `/name` and something happens. The difference is what's in the folder.
 

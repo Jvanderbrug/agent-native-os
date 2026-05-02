@@ -164,7 +164,7 @@ This pasted Sara's real `OP_SERVICE_ACCOUNT_TOKEN`, `GRAND_CENTRAL_API_KEY`, and
 ### Why this is a workshop catastrophe
 
 With 30+ students live:
-- If Claude does this for one student, that student's transcript is leaked to the Zoom recording, Slack screenshots, exported logs, and any breakout-room peers watching their screen.
+- If Claude does this for one student, that student's transcript is leaked to the Zoom recording, Slack screenshots, exported logs, and any other participants watching their screen.
 - If Claude does this for multiple students simultaneously (likely — they're all running the same curriculum on the same patterns), we have **30 simultaneous credential leaks** with multiple distribution surfaces.
 - We can't post-hoc redact a Zoom recording or pre-recorded transcript.
 
@@ -267,7 +267,7 @@ Add the redaction rule (above) to the template students install in Component 1. 
 | **Symptom** | Messages appear in the Messages app on Mac, but never show up in `~/Library/Messages/chat.db` (or appear very late). The poller script finds nothing to process. |
 | **Real cause** | When `CloudKitSyncingEnabled = 1` in Messages preferences, incoming messages are stored in iCloud rather than written to the local SQLite database immediately. The local database becomes a partial cache — not a reliable trigger source. |
 | **Diagnostic** | Run: `defaults read com.apple.madrid | grep CloudKitSyncingEnabled` — if result is `1`, the SQLite polling approach won't work reliably. |
-| **Fix** | Don't use iMessage SQLite polling as the Remote Control trigger. Use the iOS Shortcut + SSH queue approach instead (see Component 11 install). |
+| **Fix** | Don't use iMessage SQLite polling as the Remote Control trigger. Use native Claude Code Remote Control first. Use Claude Code Channels for iMessage/Telegram/Discord if you need app-based messaging. Treat the old iOS Shortcut + queue pattern as fallback. |
 | **Pre-work mitigation** | N/A — this is a design decision, not a student error. The Component 11 curriculum must use the SSH queue approach (works regardless of iCloud sync setting). |
 
 **Note discovered during Sara's April 30 student walkthrough:** The first self-message DID appear in the database (creating the conversation entry), but all subsequent messages in the same conversation were iCloud-only. This is consistent with iCloud handling conversation creation locally but keeping message content in the cloud.
@@ -291,4 +291,3 @@ Add the redaction rule (above) to the template students install in Component 1. 
 **Sara's April 30 experience:** Tried to decline a recurring team meeting via iMessage remote control. Claude asked "which meeting?" four times across the conversation because each reply arrived with no context. The meeting was never declined via remote control — had to be declined manually via Calendar MCP. Total time: ~20 minutes for a 30-second task.
 
 **Curriculum recommendation for Tyler:** Component 11 must either (a) demo ONLY one-shot commands in the workshop (e.g. "What's on my calendar today?" — no clarification needed), or (b) be redesigned around Slack which supports threaded conversation context.
-

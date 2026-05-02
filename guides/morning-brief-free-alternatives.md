@@ -1,17 +1,19 @@
 ---
-title: Free morning-brief delivery — 4 paths that don't add another paid tool
+title: Free morning-brief delivery - 4 paths that don't add another paid tool
 status: workshop-ready
 audience: Cohort 1 students who don't want to pay for Vercel + Supabase
 prereqs: Component 8 (Daily Briefing skill), Component 10 (Delivery Channels)
 ---
 
-# Free morning-brief delivery — 4 paths that don't add another paid tool
+# Free morning-brief delivery - 4 paths that don't add another paid tool
 
-We use **The Lookout** (Vercel + Supabase) to host our morning brief at `the-lookout.vercel.app`. It's nice. It's also another two paid tools you'd have to learn, configure, and maintain. **You do not need it.**
+The Sunday capstone path is a morning brief surface built with Vercel and Supabase. Both have free tiers that are enough for a personal morning brief, so this does not need to add another bill for most students.
+
+This guide is the fallback menu. Use it if you want the short ping and full brief without setting up a hosted dashboard during the workshop.
 
 Here are 4 paths that get the same outcome (your morning brief delivered somewhere you'll actually read it) without adding another bill.
 
-Pick the one that matches your existing stack. None require new accounts.
+Pick the one that matches your existing stack. Some require no new accounts.
 
 ---
 

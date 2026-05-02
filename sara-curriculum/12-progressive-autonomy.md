@@ -4,7 +4,7 @@
 >
 > **What you'll have:** A trust policy in your CLAUDE.md that tells your agent exactly what it's cleared to do without asking — and what it must always check first. Your agent stops being cautious by default and starts being decisive within the boundaries you've set.
 >
-> **How this stacks toward the Capstone:** `/build` writes files, creates slash commands, and modifies your agent setup. Without a trust policy, Claude stops and asks about every action. With it, Claude knows what it's authorized to do and moves. The Capstone only works if your agent trusts itself to act.
+> **How this stacks toward the Capstone:** `/build` reads a blueprint and sets up the morning brief system. That means it may write files, install commands, create folders, and test delivery. Without a trust policy, Claude stops and asks about every action. With it, Claude knows what it's authorized to do and moves.
 >
 > **Why now:** You have a fleet that runs scheduled tasks and responds to remote commands. Before Component 13 expands what it can do, you need an explicit answer to "what is this thing allowed to do on its own?" Without that answer in writing, every session starts from scratch.
 
@@ -109,9 +109,9 @@ Claude should ask before acting. If it does — the tiers are working correctly.
 
 ---
 
-## Beginner vs. Advanced track
+## 4D vs. 8D path
 
-| | Beginner | Advanced |
+| | 4D | 8D |
 |---|---|---|
 | **Starting point** | Use Sara's tier template verbatim, edit only the phone number | Author tiers from scratch based on your own installed components |
 | **Tier 1 scope** | Conservative — only items from the template | Expansive — may include Slack, Notion, databases you've wired in |

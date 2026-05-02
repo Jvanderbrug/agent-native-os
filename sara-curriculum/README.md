@@ -8,7 +8,7 @@ The architecture is 4 layers + a Capstone:
 - **Layer 2 (Components 4-6) — Senses:** how the agent sees the world (Exa, Firecrawl, Gmail/Calendar/Drive)
 - **Layer 3 (Components 7-8) — Triggers:** turning capability into one-word commands
 - **Layer 4 (Components 9-12) — Autonomy:** the agent runs without you (scheduling, delivery, remote control, progressive autonomy)
-- **Capstone (Component 13 + `/build`):** an agent that builds agents
+- **Capstone (Component 13 + `/build`):** a personal morning brief system with sources, memory, delivery, and a full write-up surface
 
 See [THE-JOURNEY.md](THE-JOURNEY.md) for the full 4-layer story.
 

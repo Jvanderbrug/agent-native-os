@@ -45,24 +45,23 @@ All times shown in CDT (the Maven listing timezone), with EDT in parentheses.
 | 1:00 PM / 2:00 PM | Co-Working Block (lunch + open build time) |
 | 1:45 PM / 2:45 PM | Lesson + Demo: Wiring Your OS Into the World |
 | 2:15 PM / 3:15 PM | Install Block Three: Connect Data Sources + First Fleet Run |
-| 2:45 PM / 3:45 PM | Install Block Four: Schedule the Fleet + First /build |
-| 4:15 PM / 5:15 PM | Showcase + Surprise Magic Show + Bonus Blueprint |
+| 2:45 PM / 3:45 PM | Install Block Four: Schedule the Fleet + Morning Brief Capstone |
+| 4:15 PM / 5:15 PM | Showcase + Magic Show + Bonus Blueprint |
 
 The 10 numbered guides in `guides/` are the curriculum you'll work through during the day, and the reference you'll come back to afterward. We'll move through them live, then they're yours to revisit any time.
 
 ---
 
-## The Three Tracks
+## The Two Workshop Paths
 
-You've been placed in one of three tracks based on your background. Don't worry about being in the "right" one. All three end up in the same place. They just take different paths to get there.
+The room will move together for the core teaching. At planned checkpoints, you can choose the path that fits what you need in that moment. You can move between paths during the day.
 
-| Track | Who It's For | Pace |
-|-------|-------------|------|
-| **Beginner** | New to terminal, new to Claude Code | Slower, more hand-holding, more context |
-| **Builder** | Comfortable with tools, some tech experience | Moderate, build while you learn |
-| **Architect** | Technical background or prior AI tool experience | Fast, more customization, more depth |
+| Path | Who It's For | Pace |
+|------|-------------|------|
+| **4D** | Students who want the baseline setup, slower explanations, and the practical why | Accessible, concept-first |
+| **8D** | Students already building in Claude Code who want deeper customization | Fast, build-along, more advanced questions |
 
-Your track exercises are in the `tracks/` folder.
+Same system, different depth. 4D is not remedial. 8D is not required. Pick the room that helps you keep moving.
 
 ---
 
@@ -75,6 +74,7 @@ Your track exercises are in the `tracks/` folder.
 - An Obsidian vault set up as your knowledge base
 - At least one custom slash command you built yourself
 - A workflow running on a schedule without you touching it
+- A morning brief system with a short ping and a full write-up surface
 - The mental model to keep building after the workshop ends
 
 ---

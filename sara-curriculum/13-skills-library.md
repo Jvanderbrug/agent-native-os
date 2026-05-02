@@ -2,9 +2,9 @@
 
 > **This is Block 13: Skills Library.**
 >
-> **What you'll have:** Two new slash commands — `/prep-for-meeting` and `/end-of-day` — plus a growing skills library that captures your most valuable capabilities as named, reusable tools. Each skill uses your full MCP stack (Calendar, Gmail, Exa) to do real work.
+> **What you'll have:** Three reusable commands: `/prep-for-meeting`, `/end-of-day`, and `/log-decision`. Together they prep context, close loops, and write durable memory into your second brain.
 >
-> **How this stacks toward the Capstone:** `/build` works by asking you to describe a new capability in plain English, then building a skill file from that description. It can only do that well if it has existing skills to learn the pattern from. Your skills library *is* the training data for `/build`. The more skills you have, the better `/build` understands what a skill looks like — and the better the agents it builds.
+> **How this stacks toward the Capstone:** The Capstone is a morning brief system. These skills give Claude reusable patterns for context gathering, memory writing, and decision logging. `/build` uses those patterns to execute a blueprint, not to improvise from a blank page.
 >
 > **Why now:** Trust tiers are set (Component 12). Your agent knows what it's cleared for. Component 13 gives it more things to be capable of within that clearance. The Capstone is one step away.
 
@@ -17,6 +17,8 @@ The same pattern you used in Component 7 (Slash Commands) and Component 8 (Daily
 1. **`/prep-for-meeting`** — Finds your next meeting, pulls recent email threads with attendees, researches them via Exa, delivers a one-screen prep brief in under 3 minutes of reading. Saves to `~/Documents/second-brain/meeting-prep/`.
 
 2. **`/end-of-day`** — Reviews what happened today via calendar and inbox, surfaces what's still open, names your top 3 priorities for tomorrow. Saves to `~/Documents/second-brain/daily-reviews/`.
+
+3. **`/log-decision`** — Captures a decision, the reasoning, reversibility, review date, and affected projects. Saves to `~/Documents/second-brain/decisions/` and updates `~/Documents/second-brain/cairns/L1/decisions-in-flight.md` when the Cairns starter structure exists.
 
 ---
 
@@ -126,7 +128,24 @@ Under 250 words. No padding.
 Save to: `~/Documents/second-brain/daily-reviews/[YYYY-MM-DD]-end-of-day.md`
 ````
 
-### Step 3 — Test both skills
+### Step 3 — Create `/log-decision`
+
+If you cloned this repo, the command already exists at:
+
+```bash
+configs/commands/log-decision.md
+```
+
+Install it globally:
+
+```bash
+mkdir -p ~/.claude/commands
+cp configs/commands/log-decision.md ~/.claude/commands/log-decision.md
+```
+
+This command is the bridge from "Claude did work" to "Claude remembers what we decided." It writes a structured decision file and, if present, updates the L1 Cairns waypoint file.
+
+### Step 4 — Test the skills
 
 ```bash
 /prep-for-meeting
@@ -141,35 +160,49 @@ At end of your workday:
 
 Check `~/Documents/second-brain/daily-reviews/`.
 
+Then test the memory bridge:
+
+```bash
+/log-decision We are using the 4D track for baseline setup and 8D for advanced customization because the cohort has mixed technical readiness.
+```
+
+Check:
+
+```bash
+ls ~/Documents/second-brain/decisions/
+cat ~/Documents/second-brain/cairns/L1/decisions-in-flight.md
+```
+
 ---
 
 ## Why this pattern matters for the Capstone
 
 Every skill you've built follows the same structure:
-1. Gather context (MCP calls in parallel)
-2. Compile structured output (a template)
-3. Save to a specific Obsidian path
-4. Report back what was done
+1. Gather context
+2. Ask only the follow-up questions needed
+3. Compile structured output
+4. Save to a specific second-brain path
+5. Report back what was done
 
-When you run `/build` in the Capstone, you describe a capability in plain English. `/build` looks at your existing skills, recognizes this pattern, and builds a new skill file that matches it. The more skills in your library, the richer the pattern — and the better the result.
+When you run `/build` in the Capstone, Claude reads a blueprint and turns it into a working setup. Your skills library gives it examples of the local patterns it should reuse: where to save files, when to ask follow-up questions, how to handle sources, and how to report back.
 
 You're not just adding capabilities. You're teaching your agent what "a skill" looks like.
 
 ---
 
-## Beginner vs. Advanced track
+## 4D vs. 8D path
 
-| | Beginner | Advanced |
+| | 4D | 8D |
 |---|---|---|
 | **Starting point** | Copy Sara's templates, replace name and paths | Author skills from scratch for your specific workflow |
 | **MCP usage** | Calendar + Gmail as shown | Add Notion, Slack, or custom data sources |
 | **Output location** | Sara's Obsidian vault structure | Your own vault or note-taking system |
-| **Third skill** | Use Sara's two as-is | Build a third skill that matters to your business (e.g., `/client-brief`, `/week-ahead`, `/pipeline-check`) |
+| **Third skill** | Install `/log-decision` | Extend `/log-decision`, or build a companion capture skill for scratchpad ingestion |
 
 ---
 
 ## What this unlocks
 
-Your agent now has a growing capability library. It can prepare you for meetings, close out your day, brief you every morning, and take remote commands from your phone — all operating within the trust tiers you defined.
+Your agent now has a growing capability library. It can prepare you for meetings, close out your day, brief you every morning, log decisions into memory, and take remote commands from your phone, all operating within the trust tiers you defined.
 
-One component left: the Capstone. You describe a new agent in plain English. The system builds it.
+One component left: the Capstone. You use `/build` to execute the morning brief blueprint and make the pieces work together.
