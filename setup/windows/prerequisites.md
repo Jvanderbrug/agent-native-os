@@ -1,16 +1,19 @@
 # Windows Setup, Before Workshop Day
 
-Windows takes a few more steps than Mac, but don't let that intimidate you. The key is WSL2 — a lightweight Linux environment that runs inside Windows. Once that's set up, everything else works exactly like the Mac instructions.
+> **Installer users:** If you already used the workshop installer, stay on the native Windows path: use **Git Bash** for terminal commands and **winget** for Windows app installs. Use **WSL2** only if you intentionally want the Linux-based setup or a facilitator tells you to switch.
 
-**Estimated time:** 60–90 minutes (most of it is installing WSL2 and letting things download)
+Windows now has two supported paths. The fastest workshop path is **Git Bash + winget**. **WSL2 + apt** remains the explicit alternative for students who want a Linux terminal inside Windows.
+
+**Estimated time:** 30-45 minutes for Git Bash + winget, or 60-90 minutes for WSL2
 
 ---
 
-## Why WSL2?
+## Which Path Should I Use?
 
-Claude Code and many developer tools are designed for Unix-based systems (Mac and Linux). WSL2 (Windows Subsystem for Linux) gives you a real Linux terminal running inside Windows. You get the best of both worlds: your Windows apps, plus a proper development environment.
+- **Use Git Bash + winget** if you used the installer, want the shortest setup, or want tools installed directly in Windows.
+- **Use WSL2 + apt** if you specifically want Ubuntu/Linux on Windows, already know WSL2, or need Linux tooling after the workshop.
 
-You'll do all your Claude Code work inside WSL2. Your Windows files are still accessible, and everything runs side by side.
+Do not run both paths unless a facilitator asks you to. Pick one terminal path and keep going.
 
 ---
 
@@ -20,12 +23,89 @@ You'll do all your Claude Code work inside WSL2. Your Windows files are still ac
 
 - [ ] Make sure Windows is up to date: Start > Settings > Windows Update > Check for updates
 - [ ] Your PC must be running **Windows 10 version 2004 or newer**, or **Windows 11**
-  - Check: Start > Settings > System > About — look for "Version" under Windows specifications
+  - Check: Start > Settings > System > About, then look for "Version" under Windows specifications
 - [ ] Restart after any updates
 
 ---
 
-### 2. Install WSL2 (Windows Subsystem for Linux)
+### 2A. Git Bash + winget Prerequisites (Recommended for Installer Users)
+
+Use this path if you used the workshop installer or want the native Windows setup.
+
+Open **PowerShell**:
+
+- [ ] Right-click Start > Terminal or PowerShell
+- [ ] Run these app installs:
+
+```powershell
+winget install Git.Git
+winget install GitHub.cli
+winget install OpenJS.NodeJS.LTS
+winget install AgileBits.1Password
+winget install AgileBits.1Password.CLI
+winget install Obsidian.Obsidian
+winget install Microsoft.VisualStudioCode
+winget install Microsoft.WindowsTerminal
+```
+
+- [ ] Close PowerShell after installs finish
+- [ ] Open **Git Bash** from the Start menu
+- [ ] Verify the core tools:
+
+```bash
+git --version
+node --version
+npm --version
+gh --version
+op --version
+```
+
+- [ ] Tell Git who you are:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@youremail.com"
+```
+
+- [ ] Sign into GitHub:
+
+```bash
+gh auth login
+gh auth status
+```
+
+Choose:
+- GitHub.com
+- HTTPS
+- Yes, authenticate with browser
+
+- [ ] Install Claude Code:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+claude --version
+```
+
+- [ ] Start Claude Code once to log in:
+
+```bash
+claude
+```
+
+Type `/exit` when done.
+
+- [ ] Sign into 1Password CLI:
+
+```bash
+op signin
+op whoami
+```
+
+> **Native Windows note:** Use **PowerShell** for `winget install ...` commands. Use **Git Bash** for `git`, `gh`, `npm`, `claude`, `op`, and `bash verify.sh`.
+
+---
+
+### 2B. WSL2 + apt Prerequisites (Explicit Alternative)
 
 This is the most important step. WSL2 gives you a Linux terminal inside Windows.
 
@@ -36,20 +116,22 @@ This is the most important step. WSL2 gives you a Linux terminal inside Windows.
 wsl --install
 ```
 
-- [ ] This installs WSL2 with Ubuntu (the default Linux distribution). Let it run — it may take 5–15 minutes.
+- [ ] This installs WSL2 with Ubuntu (the default Linux distribution). Let it run, which may take 5-15 minutes.
 - [ ] **Restart your computer** when prompted
 
 After restart:
 - [ ] Ubuntu will open automatically and finish setting up (takes a few minutes)
 - [ ] Create a Linux username and password when prompted
-  - This username can be different from your Windows username — something simple like your first name is fine
-  - Remember this password — you'll need it when installing software
+  - This username can be different from your Windows username. Something simple like your first name is fine
+  - Remember this password. You'll need it when installing software
 
 > **Troubleshooting:** If `wsl --install` doesn't work, you may need to enable virtualization in your BIOS. Search for your PC model + "enable virtualization BIOS" for instructions. This is a one-time setting.
 
+Steps 3-9 are for the WSL2 + apt path. If you chose Git Bash + winget, skip to Step 10.
+
 ---
 
-### 3. Windows Terminal
+### 3. Windows Terminal (WSL2 only)
 
 Windows Terminal is a much better way to access WSL2 than the default window.
 
@@ -64,7 +146,7 @@ From this point on, when we say "open your terminal," we mean open Windows Termi
 
 ---
 
-### 4. Update Ubuntu
+### 4. Update Ubuntu (WSL2 only)
 
 Inside your Ubuntu terminal:
 
@@ -74,7 +156,7 @@ Inside your Ubuntu terminal:
 
 ---
 
-### 5. Install Node.js
+### 5. Install Node.js (WSL2 only)
 
 - [ ] Inside Ubuntu terminal, run:
 
@@ -83,11 +165,11 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt install -y nodejs
 ```
 
-- [ ] Verify: `node --version` — should show v18 or higher
+- [ ] Verify: `node --version`, should show v18 or higher
 
 ---
 
-### 6. Install Git
+### 6. Install Git (WSL2 only)
 
 Git usually comes with Ubuntu, but let's make sure it's current:
 
@@ -103,7 +185,7 @@ git config --global user.email "you@youremail.com"
 
 ---
 
-### 7. GitHub Account and GitHub CLI
+### 7. GitHub Account and GitHub CLI (WSL2 only)
 
 - [ ] Create a free GitHub account at **github.com** (skip if you already have one)
 - [ ] Install GitHub CLI inside Ubuntu:
@@ -119,12 +201,12 @@ sudo apt update && sudo apt install gh -y
   - Choose: GitHub.com
   - Choose: HTTPS
   - Choose: Yes (authenticate with browser)
-  - A browser window will open — follow the prompts
+  - A browser window will open. Follow the prompts
 - [ ] Verify: `gh auth status`
 
 ---
 
-### 8. Claude Code CLI
+### 8. Claude Code CLI (WSL2 only)
 
 - [ ] Install: `npm install -g @anthropic-ai/claude-code`
 - [ ] Verify: `claude --version`
@@ -136,7 +218,7 @@ sudo apt update && sudo apt install gh -y
 
 ---
 
-### 9. 1Password CLI
+### 9. 1Password CLI (WSL2 only)
 
 - [ ] Install 1Password app for Windows from **1password.com** (standard Windows installer)
 - [ ] Create or sign into your 1Password account
@@ -168,9 +250,10 @@ gh repo view aibuild-lab/agent-native-os --web
 
 If the repo does not open, stop. Accept the GitHub invite from AI Build Lab, make sure you are signed into the correct GitHub account, then run the two commands again. If you have not received an invite yet, post your GitHub username in the `#agent-native-os` Slack channel to get added.
 
-Inside your Ubuntu terminal:
+Inside your selected terminal:
 
-- [ ] Navigate somewhere sensible: `cd ~`
+- [ ] In Git Bash, navigate somewhere sensible: `cd ~/Documents`
+- [ ] In WSL2, navigate somewhere sensible: `cd ~`
 - [ ] Clone the repo: `gh repo clone aibuild-lab/agent-native-os`
 - [ ] Enter the folder: `cd agent-native-os`
 
@@ -178,7 +261,7 @@ Inside your Ubuntu terminal:
 
 ### 11. Run the Verification Script
 
-- [ ] Inside the `agent-native-os` folder:
+- [ ] Inside the `agent-native-os` folder, in Git Bash or Ubuntu:
 
 ```bash
 bash verify.sh
@@ -190,10 +273,12 @@ bash verify.sh
 
 ### 12. Accessing Your Files
 
-One question everyone has: where are my WSL2 files in Windows Explorer?
+If you chose Git Bash + winget, your repo is in a normal Windows folder, usually under `C:\Users\[YourWindowsUsername]\Documents\agent-native-os`.
+
+If you chose WSL2 + apt, one question everyone has is where WSL2 files are in Windows Explorer:
 
 - Open File Explorer
-- Look in the left sidebar for "Linux" or "Ubuntu" — click it
+- Look in the left sidebar for "Linux" or "Ubuntu" and click it
 - Your home folder is at: `\\wsl$\Ubuntu\home\[yourusername]\`
 - You can drag this to your Quick Access bar
 
@@ -213,7 +298,7 @@ Open PowerShell as Admin and run: `wsl --update`
 Close your terminal completely and reopen it. Some installs require a fresh shell session.
 
 **Can't type my password when running sudo**
-This is normal in Linux terminals — the cursor doesn't move when you type passwords. Just type your password and press Enter.
+This is normal in Linux terminals. The cursor doesn't move when you type passwords. Just type your password and press Enter.
 
 **GitHub CLI opens a browser but WSL2 can't open browsers**
 Run `gh auth login` and choose the "Paste an authentication code" option instead of opening a browser. Or copy the URL it shows and open it manually in your Windows browser.
