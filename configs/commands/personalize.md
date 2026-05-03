@@ -1,35 +1,60 @@
 ---
-description: Walk the student through the personalization questionnaire and write their profile into CLAUDE.md
+description: Walk the student through the personalization questionnaire, write their CLAUDE.md profile, and optionally seed a local personal Cairns vault.
 ---
 
-You are running the one-time personalization conversation that transforms a generic Claude into a Claude that actually knows this student. This is the unlock for everything else in the repo. Do not skip it. Do not let the student skip it.
+You are running the one-time personalization conversation that turns a generic Claude into a Claude that knows this student. Do not skip it. Do not let the student skip it.
 
 ## Step 1: Load the questionnaire
 
-Read `configs/get-to-know-you.md` from the repo root. That file is the question bank: three sections (About You, About Your Work, How You Learn and Work). The bank totals roughly 21 questions; you will work through ALL of them, plus follow-ups, to produce a real profile.
+Read `configs/get-to-know-you.md` from the repo root. That file is the question bank with three sections:
+
+- About You
+- About Your Work
+- How You Learn and Work
+
+The bank totals roughly 21 questions. Work through all of them, plus follow-ups, to produce a real profile.
 
 ## Step 2: Set expectations, then start
 
-Tell the student, in your own words: "I'm going to ask you about 20 questions across three areas. We'll go in batches of 3-5 at a time so it stays conversational, not survey-like. Plan on 10-15 minutes. The output is a personalized CLAUDE.md that every future Claude session in this repo will read automatically, so the better your answers, the smarter your Claude gets."
+Tell the student, in your own words:
 
-## Step 3: Force the full conversation (CRITICAL)
+```text
+I'm going to ask you about 20 questions across three areas. We'll go in batches of 3-5 at a time so it stays conversational, not survey-like. Plan on 10-15 minutes. The output is a personalized CLAUDE.md that every future Claude session in this repo will read automatically, so the better your answers, the smarter your Claude gets.
+```
 
-If the student tries to short-circuit ("just treat me as a beginner", "skip it", "give me defaults", "I'll fill it in later"), push back once and proceed. Say: "I hear you, but the whole point of this repo is that your Claude is tuned to YOU, not a generic beginner. Sara learned this the hard way. She said 'treat me as a beginner' and ended up with a profile that knew nothing about her actual work. Three minutes per question. Let's do it." Then ask the next question.
+Ask once for the personal vault path while expectations are clear:
+
+```text
+Where should your local second-brain vault live? Press Enter for the default Documents/second-brain folder.
+```
+
+Default to the user's Documents folder, not a hard-coded machine path.
+
+## Step 3: Force the full conversation
+
+If the student tries to short-circuit with "just treat me as a beginner", "skip it", "give me defaults", or "I'll fill it in later", push back once and proceed:
+
+```text
+I hear you, but the whole point of this repo is that your Claude is tuned to you, not a generic beginner. A thin profile creates a thin assistant. Three minutes per question. Let's do it.
+```
+
+Then ask the next question.
 
 Do not accept "I don't know" as a final answer for more than two questions in a row. Reframe, give an example, then ask again.
 
 ## Step 4: Walk the bank in batches
 
-Go in this order, batches of 3-5 questions, conversational tone:
-- Section 1 (About You): all 7 questions
-- Section 2 (About Your Work): all 7 questions
-- Section 3 (How You Learn and Work): all 7 questions
+Go in this order, in batches of 3-5 questions:
+
+1. Section 1, About You: all 7 questions.
+2. Section 2, About Your Work: all 7 questions.
+3. Section 3, How You Learn and Work: all 7 questions.
 
 After each batch, briefly reflect what you heard back ("So you're spending most mornings on X and the bottleneck is Y. Got it.") before moving to the next batch. This builds trust and catches misinterpretations early.
 
-## Step 5: Write the profile into CLAUDE.md
+## Step 5: Write the profile into `CLAUDE.md`
 
-When the conversation is done, open the project root `CLAUDE.md` (create if missing). Add or update these sections, populating with the student's actual answers:
+When the conversation is done, open the project root `CLAUDE.md` and create it if missing. Add or update these sections with the student's actual answers:
 
 ```markdown
 # About Me
@@ -77,7 +102,13 @@ When matching future goals to tools, check `My Tools and Accounts` first. Skip a
 
 ## Step 6: Read back for confirmation
 
-Show the student the new CLAUDE.md sections you wrote. Ask: "Anything wrong, missing, or worded oddly? I'll fix it before we lock it in." Edit based on their corrections.
+Show the student the new `CLAUDE.md` sections you wrote. Ask:
+
+```text
+Anything wrong, missing, or worded oddly? I'll fix it before we lock it in.
+```
+
+Edit based on their corrections.
 
 ## Step 7: Check secret-management readiness
 
@@ -93,10 +124,67 @@ Which best describes your setup?
 
 If you picked option 1, you're ready. If option 2, run Guide 05 next. If option 3, ping in `#agent-native-os` for a pointer.
 
-## Step 8: Seed the starter Cairns vault
+## Step 8: Seed the personal Cairns vault
 
-If the student is doing (or planning to do) the Cairns blueprint, also seed `templates/obsidian-cairns-starter/L0-raw/` (or the student's own Obsidian vault) with one note per interview section. Use simple frontmatter (date, source: personalize-interview, section). These L0 notes are raw input; do not synthesize patterns or metrics that did not come up in the conversation.
+Ask exactly:
 
-If the student is not doing Cairns, skip this step. The repo `CLAUDE.md` is sufficient for personalization on its own.
+```text
+scaffold your personal Cairns vault now? [Y/n]
+```
 
-Both outputs (`CLAUDE.md` and the optional Cairns L0 notes) are derived from the same interview answers. Do not let them drift.
+Add this privacy note before they answer:
+
+```text
+It's a local folder. Nothing leaves your machine unless you later choose to connect remote services.
+```
+
+If the student answers no, stop after confirming that `CLAUDE.md` is the source of truth for now.
+
+If the student answers yes or presses Enter, invoke the `cairns-init` skill with:
+
+- `vault_path`: the path collected in Step 2, or the default Documents second-brain folder.
+- `mode`: `4D`.
+- `profile_source`: the completed `CLAUDE.md` sections and questionnaire answers.
+- `reseed`: `false` unless the student explicitly passed `--reseed`.
+
+## Step 9: 4D fast path requirements
+
+The 4D init path must complete in under 60 seconds on a normal laptop. It must not stand up Supabase, Neo4j, Docker, remote sync, or a graph database.
+
+The 4D critical path is:
+
+1. `<vault-root>/CLAUDE.md`
+2. `<vault-root>/cairns/L1/INDEX.md`
+3. `<vault-root>/cairns/L1/personal/my-self.md`
+4. `<vault-root>/cairns/L1/personal/my-tools.md`
+5. `<vault-root>/cairns/L1/personal/my-style.md`
+6. Vault privacy guardrail
+7. Minimal folder shape needed for future captures
+
+Do not create `my-projects.md`, `my-people.md`, `my-decisions.md`, or `my-learning-goals.md` during init. Those are created on first relevant capture.
+
+## Step 10: Idempotency and reseed
+
+`/personalize` is idempotent.
+
+Without `--reseed`:
+
+- Preserve existing `CLAUDE.md`.
+- Preserve existing `cairns/L1/INDEX.md`.
+- Preserve each existing `cairns/L1/personal/*.md` file.
+- Create only missing files and folders.
+- Report created, preserved, and skipped counts.
+
+With `--reseed`:
+
+- Ask for confirmation before replacing each existing file.
+- Never delete the whole vault.
+- Never overwrite user content silently.
+
+## Step 11: Demo the cascade
+
+After `cairns-init` completes, tell the student:
+
+```text
+Your local Cairns starter is ready. Next, run /log-decision with one harmless real decision so you can see the L1, L2, and L3 cascade.
+```

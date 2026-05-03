@@ -1,41 +1,78 @@
 ---
-description: Capture a decision into your second brain with structured frontmatter and an L1 Cairns waypoint update (when Cairns is wired)
+description: Capture a decision into the local second brain with a full record, L3 raw context, an L2 Chain-of-Density card, and an L1 Cairns waypoint update.
 ---
 
-You are logging a real decision so that future-you (and your agent fleet) remembers what was decided, why, and by whom. This is the bridge skill between "agents do work" and "agents remember what was decided."
+You are logging a real decision so future sessions remember what was decided, why, and what changes because of it.
 
 ## Step 1: Get the decision
 
-If the user gave you the decision in the prompt (e.g., "log decision: we're going with Mattermost over Slack for agent comms because it's self-hosted and unlimited"), use that.
+If the user gave the decision in the prompt, use it.
 
-If they invoked `/log-decision` with no content, ask: "What's the decision? One sentence. What you decided + why."
+If they invoked `/log-decision` with no content, ask:
+
+```text
+What's the decision? One sentence with what you decided and why.
+```
 
 ## Step 2: Get the structure
 
-Ask the user (or default if they say "use defaults"):
-- **Deciders**: who made this call? (default: just the user)
-- **Date**: today, unless they specify (default: today)
-- **Reasoning depth**: short (one paragraph) or full (multiple paragraphs)? (default: short)
-- **Related people**: anyone else this affects? (default: none)
-- **Related projects**: which project / repo / cohort? (default: ask)
-- **Reversibility**: can this be undone in <1 day, <1 week, <1 month, never? (default: ask)
-- **Review date**: when should this be reconsidered? (default: 90 days)
+Ask the user, or use defaults if they say "use defaults":
 
-## Step 3: Write the file
+- Deciders: who made this call? Default to the user.
+- Date: today unless they specify another date.
+- Reasoning depth: short or full. Default to short.
+- Related people: default to none.
+- Related projects: ask if unclear.
+- Reversibility: less than 1 day, less than 1 week, less than 1 month, or never.
+- Review date: default to 90 days from the decision date.
+- Tags: default to `decision`.
 
-Write to `~/Documents/second-brain/decisions/<YYYY-MM-DD>-<short-slug>.md`. Slug is 3-5 words from the decision summary, kebab-case.
+## Step 3: Resolve vault paths
+
+Default vault root:
+
+```text
+${HOME}/Documents/second-brain
+```
+
+On Windows, use the user's Documents folder. If the vault path is unclear, ask once.
+
+Create a slug from the one-line decision summary:
+
+```text
+YYYY-MM-DD-<3-to-5-word-kebab-slug>
+```
+
+## Step 4: Build the files in a temp stage
+
+Use a temp stage outside the vault:
+
+```text
+<vault-parent>/.log-decision-stage-<timestamp>/
+```
+
+Render all target files into the stage first. Do not write directly into the vault until every staged file validates.
+
+### Full decision record
+
+Target:
+
+```text
+<vault-root>/decisions/YYYY-MM-DD-<slug>.md
+```
 
 Format:
 
 ```markdown
 ---
 date: YYYY-MM-DD
-deciders: [name1, name2]
-related_people: [optional list]
-related_projects: [optional list]
+deciders: [name1]
+related_people: []
+related_projects: []
 reversibility: <1d | <1w | <1m | never
 review_date: YYYY-MM-DD
 status: active
+tags: [decision]
 ---
 
 # <One-line decision summary>
@@ -44,49 +81,151 @@ status: active
 <one paragraph>
 
 ## Why
-<one paragraph or full as requested>
+<one paragraph or full detail>
 
 ## What we considered and rejected
-<bullet list of alternatives + one-line why-not for each>
+- <alternative>: <why not>
 
 ## What changes because of this
-<one paragraph: what concrete thing happens differently going forward>
+<one paragraph>
 
 ## What would make us reverse this
-<one bullet list>
+- <condition>
 
 ## Provenance
 - Decision logged via /log-decision on YYYY-MM-DD HH:MM
 - Conversation context: <session ID or one-line note>
 ```
 
-## Step 4: Update L1 Cairns waypoint (if wired)
+### L3 raw decision context
 
-If the user has a `~/Documents/second-brain/cairns/L1/decisions-in-flight.md` file, append a new line:
+Target:
 
+```text
+<vault-root>/cairns/L3/decisions/YYYY-MM-DD-<slug>-raw.md
 ```
-- YYYY-MM-DD: <one-line summary> [<short-slug>]
+
+Write the raw decision context as captured. Include verbatim user input, relevant conversation excerpt, links, and provenance. Do not run Chain of Density here.
+
+### L2 Chain-of-Density card
+
+Target:
+
+```text
+<vault-root>/cairns/L2/decisions/YYYY-MM-DD-<slug>.md
 ```
 
-If the file does not exist, create it with a header. Cap the file at 50 lines (oldest entries trim out — they're still in the L3 raw).
+Use this frontmatter shape, matching `cairns-ingest`:
 
-If the user has Cairns L1 wired into their `~/.claude/CLAUDE.md` via include or symlink, the next Claude session will see this decision automatically.
+```markdown
+---
+layer: L2
+card_type: chain_of_density
+source_type: decision
+source_path: cairns/L3/decisions/YYYY-MM-DD-<slug>-raw.md
+source_url:
+created: YYYY-MM-DD
+cod_status: final
+cairns: [personal/my-decisions]
+entities: []
+tags: [decision]
+---
+```
 
-## Step 5: Optional Slack post
+Body:
 
-Ask the user: "Want me to post this to Slack so the team knows? (yes/no, channel name if yes)"
+```markdown
+# <One-line decision summary>
 
-If yes, post the one-line summary + a link to the full file via `slack-cli chat post <channel> "<message>"`.
+## Dense Summary
+<120-180 word final Chain-of-Density summary>
+
+## Retrieval Hooks
+- <question this decision should answer>
+
+## Key Entities
+- <entity>: <why it matters>
+
+## Source Notes
+- Raw source: [[cairns/L3/decisions/YYYY-MM-DD-<slug>-raw]]
+- Full record: [[decisions/YYYY-MM-DD-<slug>]]
+- Evidence level: raw decision context preserved
+
+## L1 Promotion Candidate
+<one sentence waypoint>
+```
+
+### L1 index row
+
+Target:
+
+```text
+<vault-root>/cairns/L1/INDEX.md
+```
+
+Append one row to the waypoint table:
+
+```markdown
+| YYYY-MM-DD | <one-line decision summary> | [[cairns/L2/decisions/YYYY-MM-DD-<slug>]] | decision, <tags> |
+```
+
+### L1 decisions waypoint
+
+Target:
+
+```text
+<vault-root>/cairns/L1/personal/my-decisions.md
+```
+
+If missing, create it:
+
+```markdown
+---
+layer: L1
+category: personal
+slug: my-decisions
+updated: YYYY-MM-DD
+---
+
+# My Decisions
+
+- YYYY-MM-DD: <one-line decision summary> [L2: [[cairns/L2/decisions/YYYY-MM-DD-<slug>]]]
+```
+
+If it exists, append only the dated pointer line and update the `updated` field if present.
+
+## Step 5: Commit the atomic write
+
+The full operation includes:
+
+1. Full record under `decisions/`.
+2. L3 raw under `cairns/L3/decisions/`.
+3. L2 card under `cairns/L2/decisions/`.
+4. L1 row appended to `cairns/L1/INDEX.md`.
+5. L1 `my-decisions.md` created or appended.
+
+Commit rule:
+
+- If every staged file validates, copy into the vault.
+- If any write fails, remove every file copied during this run and restore the previous `INDEX.md` and `my-decisions.md`.
+- If rollback fails, stop and report the exact paths requiring manual review.
+
+This command must never leave a half-written decision.
 
 ## Step 6: Read back
 
-Show the user the file you wrote, the L1 line you added, and confirm. If they want changes, edit and re-confirm.
+Show the user:
 
----
+- Full decision record path.
+- L3 raw path.
+- L2 card path.
+- L1 index row.
+- `my-decisions.md` pointer.
 
-This skill demonstrates the Cairns memory tiering pattern in miniature:
-- The full decision file is L3 raw (immutable, every detail preserved)
-- The L1 waypoint line is the always-on summary
-- The provenance line is the backlink
+Ask:
 
-When the full Cairns is built, this same skill writes to the production system. For now, it writes to the local filesystem and any agent that reads the second-brain folder gets the context.
+```text
+Anything wrong, missing, or worded oddly? I'll fix it now.
+```
+
+Edit only after confirmation.
