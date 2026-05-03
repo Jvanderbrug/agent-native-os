@@ -1,11 +1,25 @@
 {
-  "_comment": "Windows (WSL2) Claude Code Settings Template (LEGACY mcpServers format)",
-  "_instructions": "Copy this to ~/.claude/settings.json inside your WSL2/Ubuntu terminal. Replace op:// references with your actual 1Password paths. Replace YOURUSERNAME with your Linux username. Remove _comment and _instructions keys before using.",
+  "_comment": "Windows Claude Code Settings Template for WSL2 or native Windows/Git Bash (LEGACY mcpServers format)",
+  "_instructions": "Copy this to ~/.claude/settings.json inside WSL2/Ubuntu, or to the matching Claude settings path for native Windows/Git Bash. Replace op:// references with your actual 1Password paths. Replace YOURUSERNAME and WINDOWS_USERNAME. Remove _comment, _instructions, _legacy_note, _git_bash_note, and _path_examples keys before using.",
   "_legacy_note": "The mcpServers block below is the legacy hand-rolled format. The recommended path is now `claude mcp add <name>` (see guides/04-mcp-servers.md). This template still works and is kept for reference, but new users should prefer the CLI command.",
+  "_git_bash_note": "Native Windows Claude Code can use Git Bash. If Claude cannot find it, keep the env block below and point CLAUDE_CODE_GIT_BASH_PATH at Git for Windows' bin\\bash.exe. WSL2 students can leave this env value unused or remove it.",
+  "_path_examples": {
+    "wsl2_home": "/home/YOURUSERNAME",
+    "wsl2_windows_documents": "/mnt/c/Users/WINDOWS_USERNAME/Documents",
+    "git_bash_home": "/c/Users/WINDOWS_USERNAME",
+    "git_bash_documents": "/c/Users/WINDOWS_USERNAME/Documents",
+    "native_windows_documents": "C:\\Users\\WINDOWS_USERNAME\\Documents",
+    "powershell_session_env": "$env:CLAUDE_CODE_GIT_BASH_PATH=\"C:\\Program Files\\Git\\bin\\bash.exe\"",
+    "git_bash_session_env": "export CLAUDE_CODE_GIT_BASH_PATH=\"/c/Program Files/Git/bin/bash.exe\""
+  },
+
+  "env": {
+    "CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"
+  },
 
   "mcpServers": {
     "brave-search": {
-      "_comment": "Get API key from brave.com/search/api — free tier available",
+      "_comment": "Get API key from brave.com/search/api - free tier available",
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-brave-search"],
       "env": {
@@ -14,7 +28,7 @@
     },
 
     "gmail": {
-      "_comment": "Requires Google Cloud project with Gmail API enabled. See guides/04-mcp-servers.md. Path is WSL2 Linux path.",
+      "_comment": "Requires Google Cloud project with Gmail API enabled. See guides/04-mcp-servers.md. WSL2 example path is shown. Git Bash/native Windows students can use C:\\Users\\WINDOWS_USERNAME\\.claude\\credentials\\gmail-credentials.json.",
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-gmail"],
       "env": {
@@ -50,7 +64,7 @@
     },
 
     "filesystem": {
-      "_comment": "Gives Claude access to specific directories. WSL2 paths shown. Your Windows C: drive is at /mnt/c/ in WSL2.",
+      "_comment": "Gives Claude access to specific directories. WSL2 paths are active below. For Git Bash/native Windows, replace them with C:\\Users\\WINDOWS_USERNAME or /c/Users/WINDOWS_USERNAME paths from _path_examples.",
       "command": "npx",
       "args": [
         "-y",
@@ -86,10 +100,16 @@
   },
 
   "_windows_notes": [
-    "All paths in this file should use Linux paths (/home/... or /mnt/c/...)",
-    "Your Windows files are accessible at /mnt/c/Users/[WindowsUsername]/",
+    "WSL2 paths use /home/... and /mnt/c/...",
+    "Git Bash paths use /c/Users/[WindowsUsername]/...",
+    "Native Windows paths use C:\\Users\\[WindowsUsername]\\...",
+    "Use one path style per active MCP server config. Do not leave incompatible WSL2 and Git Bash paths active in the same filesystem args list.",
+    "For native Windows/Git Bash, CLAUDE_CODE_GIT_BASH_PATH usually points to C:\\Program Files\\Git\\bin\\bash.exe.",
+    "PowerShell one-session env style: $env:CLAUDE_CODE_GIT_BASH_PATH=\"C:\\Program Files\\Git\\bin\\bash.exe\"",
+    "Git Bash one-session env style: export CLAUDE_CODE_GIT_BASH_PATH=\"/c/Program Files/Git/bin/bash.exe\"",
+    "Your Windows files are accessible at /mnt/c/Users/[WindowsUsername]/ from WSL2 or /c/Users/[WindowsUsername]/ from Git Bash",
     "WSL2 cron runs only when WSL2 is active. For true scheduled tasks, use Windows Task Scheduler to invoke WSL2.",
-    "Claude Code runs inside WSL2 — always open your Ubuntu terminal to use it",
-    "The 1Password CLI (op) runs inside WSL2 separately from the 1Password Windows app"
+    "Claude Code can run inside WSL2 through Ubuntu, or on native Windows with Git Bash/PowerShell",
+    "The 1Password CLI (op) runs separately in WSL2 and native Windows/Git Bash"
   ]
 }

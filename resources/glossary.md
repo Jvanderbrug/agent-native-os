@@ -1,4 +1,4 @@
-# Glossary — Plain English Definitions
+# Glossary - Plain English Definitions
 
 Every term used in this workshop, explained without jargon.
 
@@ -9,7 +9,7 @@ If you hear a term in the workshop that's not here, write it down and ask. We'll
 ## A
 
 **Agent**
-An AI system that can take actions — not just answer questions. An agent can read files, call APIs, send emails, and complete multi-step tasks. Claude Code is an agent when it's doing things, not just talking.
+An AI system that can take actions - not just answer questions. An agent can read files, call APIs, send emails, and complete multi-step tasks. Claude Code is an agent when it's doing things, not just talking.
 
 **Agent OS (Agent Operating System)**
 The combination of tools, configurations, and connections that let you work with AI agents effectively. Your CLAUDE.md + MCP servers + custom commands + Obsidian vault = your agent OS.
@@ -18,7 +18,7 @@ The combination of tools, configurations, and connections that let you work with
 A way for software to talk to other software. When Claude uses your Gmail, it's using Gmail's API. APIs usually require an "API key" to prove who's asking.
 
 **API Key**
-A long string of letters and numbers (like a password) that proves your identity to a service. Keep these private — they give access to your accounts. Example: `sk-xxxxxxxxxxxxxxxx`.
+A long string of letters and numbers (like a password) that proves your identity to a service. Keep these private - they give access to your accounts. Example: `sk-xxxxxxxxxxxxxxxx`.
 
 **Anthropic**
 The company that makes Claude. Founded in 2021, focuses on AI safety.
@@ -41,7 +41,7 @@ In this workshop: a pre-built, documented workflow you can deploy without buildi
 ## C
 
 **CLI (Command Line Interface)**
-Another term for the terminal — the text-based interface for interacting with your computer. Claude Code CLI = Claude Code running in the terminal.
+Another term for the terminal - the text-based interface for interacting with your computer. Claude Code CLI = Claude Code running in the terminal.
 
 **Claude**
 The AI assistant made by Anthropic. Claude Code is the version that can take actions on your computer. Claude.ai is the web chat interface.
@@ -78,12 +78,18 @@ Configuration files on Unix/Mac systems that start with a `.` (dot). They're hid
 **Environment Variable**
 A named value stored in your terminal session. `BRAVE_API_KEY=mykey123` sets an environment variable called `BRAVE_API_KEY`. Programs can read these values without them being hardcoded.
 
+**ExecutionPolicy**
+A PowerShell security setting that controls whether scripts are allowed to run. If a Windows install command is blocked, set `RemoteSigned` for your current user instead of weakening policy for the whole machine.
+
 ---
 
 ## G
 
 **Git**
-Version control software — tracks changes to files over time. Think of it like Track Changes in Word, but for any file, forever. GitHub is a website for storing git repositories.
+Version control software - tracks changes to files over time. Think of it like Track Changes in Word, but for any file, forever. GitHub is a website for storing git repositories.
+
+**Git Bash**
+The Bash terminal that comes with Git for Windows. It gives Windows users familiar Unix-style commands without installing WSL2. Native Windows Claude Code may use Git Bash to run shell commands.
 
 **GitHub**
 A website for storing and sharing code repositories (folders tracked by git). You have a free account. We use it to store your workshop files.
@@ -92,7 +98,7 @@ A website for storing and sharing code repositories (folders tracked by git). Yo
 A command-line tool for interacting with GitHub. `gh auth login`, `gh repo clone`, `gh pr create` etc.
 
 **GUI (Graphical User Interface)**
-The visual, clickable interface for a program. The Claude Desktop App has a GUI. The Claude Code CLI does not — it's text only.
+The visual, clickable interface for a program. The Claude Desktop App has a GUI. The Claude Code CLI does not - it's text only.
 
 ---
 
@@ -102,7 +108,7 @@ The visual, clickable interface for a program. The Claude Desktop App has a GUI.
 Running a program without a visible interface. "Headless mode" for Claude Code = running a command without entering the interactive session. Example: `claude -p "Summarize this file"`.
 
 **Homebrew**
-The package manager for Mac — the easiest way to install developer tools. `brew install` is how you install things.
+The package manager for Mac - the easiest way to install developer tools. `brew install` is how you install things.
 
 **Hook**
 A function or command that runs automatically when a specific event happens. Claude Code hooks can run when a session starts, ends, or when a tool is called.
@@ -112,7 +118,7 @@ A function or command that runs automatically when a specific event happens. Cla
 ## J
 
 **JSON**
-JavaScript Object Notation — a text format for structured data. Your `settings.json` file is JSON. It uses `{curly braces}`, `"quotes"`, `[brackets]`, and commas. Very picky about syntax — one missing comma breaks the whole thing.
+JavaScript Object Notation - a text format for structured data. Your `settings.json` file is JSON. It uses `{curly braces}`, `"quotes"`, `[brackets]`, and commas. Very picky about syntax - one missing comma breaks the whole thing.
 
 ---
 
@@ -149,10 +155,10 @@ A program that runs on your computer and gives Claude access to a specific exter
 A workflow automation platform (like Zapier, but self-hostable and more powerful). Can trigger Claude Code workflows based on events like new emails, form submissions, or webhooks.
 
 **Node.js**
-A JavaScript runtime — the engine that runs JavaScript code outside of a browser. Required for Claude Code and many MCP servers. Installed with `brew install node` (Mac) or `sudo apt install nodejs` (WSL2).
+A JavaScript runtime - the engine that runs JavaScript code outside of a browser. Required for Claude Code and many MCP servers. Installed with `brew install node` (Mac) or `sudo apt install nodejs` (WSL2).
 
 **npm**
-Node Package Manager — the tool for installing JavaScript packages. `npm install -g` installs a package globally (available everywhere on your system).
+Node Package Manager - the tool for installing JavaScript packages. `npm install -g` installs a package globally (available everywhere on your system).
 
 ---
 
@@ -181,7 +187,7 @@ A knowledge organization system: Projects, Areas, Resources, Archive. A way to s
 A list of folders your computer looks in when you type a command. If `claude` isn't found, it means the folder containing Claude isn't in your PATH.
 
 **Permissions**
-Controls over what Claude Code is allowed to do without asking. Configured in `settings.json`. Safe by default — Claude asks before most actions.
+Controls over what Claude Code is allowed to do without asking. Configured in `settings.json`. Safe by default - Claude asks before most actions.
 
 **Prompt**
 1. In the terminal: the `$` or `%` symbol where you type commands.
@@ -205,7 +211,7 @@ The top-level directory of your computer (`/` on Mac/Linux, `C:\` on Windows). Y
 An autonomy level for Claude Code where it asks for confirmation before taking any action. Recommended for beginners and for new workflows.
 
 **Session**
-A single Claude Code run — from when you type `claude` to when you type `/exit`. Each session starts with your CLAUDE.md context.
+A single Claude Code run - from when you type `claude` to when you type `/exit`. Each session starts with your CLAUDE.md context.
 
 **settings.json**
 The main configuration file for Claude Code. Lives at `~/.claude/settings.json`. Controls MCP servers, permissions, and hooks.
@@ -217,10 +223,10 @@ The program that interprets terminal commands. On Mac: zsh (the default). On WSL
 A command triggered by typing `/name`. Built-in examples: `/exit`, `/help`. Your custom commands become slash commands.
 
 **SSH**
-Secure Shell — a way to securely connect to another computer's terminal over a network. Used for connecting to servers remotely.
+Secure Shell - a way to securely connect to another computer's terminal over a network. Used for connecting to servers remotely.
 
 **sudo**
-"Super user do" — runs a command with administrator privileges. Used when normal user permissions aren't sufficient. Will ask for your password.
+"Super user do" - runs a command with administrator privileges. Used when normal user permissions aren't sufficient. Will ask for your password.
 
 ---
 
@@ -251,6 +257,12 @@ Tracking changes to files over time so you can see history, revert changes, and 
 
 **WSL2 (Windows Subsystem for Linux 2)**
 A Linux environment that runs inside Windows. Gives Windows users a real Unix-like terminal. Required for Claude Code on Windows.
+
+**winget**
+Windows Package Manager. A command-line installer built into modern Windows. Example: `winget install --id Git.Git -e`.
+
+**winpty**
+A Git Bash helper that gives some Windows command-line programs a usable interactive terminal. If `claude` hangs or input behaves strangely in Git Bash, `winpty claude` may fix it.
 
 ---
 

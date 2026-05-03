@@ -1,8 +1,8 @@
-# Troubleshooting — Common Issues and Fixes
+# Troubleshooting - Common Issues and Fixes
 
 This covers the most common problems that come up during the workshop, on both Mac and Windows.
 
-**Rule #1:** Copy the exact error message. Then ask Claude: "I'm getting this error. What does it mean and how do I fix it?" — that's usually faster than Googling.
+**Rule #1:** Copy the exact error message. Then ask Claude: "I'm getting this error. What does it mean and how do I fix it?" - that's usually faster than Googling.
 
 **Rule #2:** If something worked yesterday and doesn't today, try restarting your terminal first. Many issues are stale sessions.
 
@@ -76,7 +76,14 @@ Follow the popup prompt. Restart terminal after it finishes.
 - Dell: BIOS > Virtualization Support > Enable
 - Lenovo: BIOS > Security > Virtualization
 - HP: BIOS > Advanced > Device Configurations > Virtualization Technology
-- Surface: Held by Microsoft, usually enabled by default — check Windows Features instead
+- Surface: Held by Microsoft, usually enabled by default - check Windows Features instead
+
+**Git Bash equivalent:** Git Bash does not use WSL2 virtualization. If you are trying to follow the Git Bash path, install Git for Windows instead:
+```powershell
+winget install --id Git.Git -e
+```
+
+During setup, choose **Add Git to PATH**, then restart Windows Terminal and open a Git Bash tab.
 
 ---
 
@@ -91,6 +98,13 @@ wsl --shutdown
 
 Then reopen Windows Terminal and select Ubuntu.
 
+**Git Bash equivalent:** Git Bash is installed through Git for Windows, not WSL2. If Git Bash opens and immediately closes, repair or upgrade Git for Windows:
+```powershell
+winget upgrade --id Git.Git -e
+```
+
+Then open **Git Bash** from the Start menu. If it still fails, uninstall and reinstall Git for Windows, choosing **Add Git to PATH** during setup.
+
 ---
 
 ## Claude Code Issues
@@ -102,7 +116,7 @@ Then reopen Windows Terminal and select Ubuntu.
 **Fix:**
 ```bash
 claude
-# It will prompt you to log in — follow the URL it provides
+# It will prompt you to log in - follow the URL it provides
 # After logging in, try again
 ```
 
@@ -118,12 +132,85 @@ Make sure your Claude.ai account is on **Claude Max 5x ($100/mo)** at minimum. P
 
 ---
 
+### "Claude Code on Windows requires git-bash" / "unable to find CLAUDE_CODE_GIT_BASH_PATH" (Windows/Git Bash)
+
+**What's happening:** Claude Code is running on native Windows and cannot find Git Bash.
+
+**Fix:**
+```powershell
+winget install --id Git.Git -e
+```
+
+Restart your terminal. If Claude still cannot find Git Bash, set the path in `~/.claude/settings.json`:
+```json
+{
+  "env": {
+    "CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"
+  }
+}
+```
+
+For a one-session test in PowerShell:
+```powershell
+$env:CLAUDE_CODE_GIT_BASH_PATH="C:\Program Files\Git\bin\bash.exe"
+claude
+```
+
+For a one-session test in Git Bash:
+```bash
+export CLAUDE_CODE_GIT_BASH_PATH="/c/Program Files/Git/bin/bash.exe"
+claude
+```
+
+---
+
+### `claude` hangs or the prompt acts broken in Git Bash (Windows)
+
+**What's happening:** Some Windows terminal combinations do not allocate an interactive TTY cleanly for native Windows CLI programs.
+
+**Fix:** Try launching Claude through `winpty`:
+```bash
+winpty claude
+```
+
+If that works, add an alias:
+```bash
+echo 'alias claude="winpty claude"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+If `winpty` is not found, update Git for Windows:
+```powershell
+winget upgrade --id Git.Git -e
+```
+
+---
+
+### PowerShell blocks the Claude installer / ExecutionPolicy error (Windows)
+
+**What's happening:** PowerShell is blocking install scripts for your user account.
+
+**Fix:** Open regular PowerShell, not PowerShell (x86), and run:
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+irm https://claude.ai/install.ps1 | iex
+```
+
+If you only want to bypass policy for one install attempt:
+```powershell
+powershell -ExecutionPolicy Bypass -NoProfile -Command "irm https://claude.ai/install.ps1 | iex"
+```
+
+Do not change `MachinePolicy` or `LocalMachine` policy on a work laptop. If those are locked, ask IT or use the Git Bash install path from the workshop instructions.
+
+---
+
 ### Claude Code is extremely slow to respond
 
 **What's happening:** Usually a network issue, or Claude's API is having a slow moment.
 
 **Fix:**
-1. Check **status.anthropic.com** — if there's an incident, wait for it to resolve
+1. Check **status.anthropic.com** - if there's an incident, wait for it to resolve
 2. Try a fresh terminal session
 3. Check your internet connection (Claude Code makes API calls for every response)
 
@@ -144,6 +231,17 @@ Same thing:
 sudo apt install [package-name]
 ```
 (You'll be asked for your Linux password)
+
+**Windows/Git Bash Fix:**
+Git Bash does not use `sudo`. If a global npm install fails with permissions, use a user-level npm prefix:
+```bash
+npm config set prefix "$HOME/.npm-global"
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+npm install -g @anthropic-ai/claude-code
+```
+
+If a Windows installer needs admin rights, close Git Bash, right-click PowerShell, choose **Run as administrator**, then rerun the installer command.
 
 ---
 
@@ -227,6 +325,20 @@ op --version
 
 **Windows/WSL2 Fix:** Follow the CLI installation steps in `setup/windows/prerequisites.md`.
 
+**Windows/Git Bash Fix:**
+Install the 1Password CLI on Windows, then restart Git Bash:
+```powershell
+winget install --id AgileBits.1Password.CLI -e
+```
+
+Back in Git Bash:
+```bash
+op --version
+op signin
+```
+
+If `op` still is not found, run `where.exe op` in PowerShell and add the containing folder to your Windows PATH.
+
 ---
 
 ### 1Password CLI asks for password every time
@@ -246,13 +358,16 @@ Open 1Password app > Settings > Developer > Enable "Integrate with 1Password CLI
 
 **Fix:**
 ```bash
-# Find your vault — look in common locations
+# Find your vault - look in common locations
 ls ~/Documents/
 ls ~/
 ls ~/Obsidian/
 
 # On Windows, your Obsidian vault is on the Windows side:
 ls /mnt/c/Users/YourWindowsName/Documents/
+
+# On Windows/Git Bash, the same Windows folder usually looks like:
+ls /c/Users/YourWindowsName/Documents/
 ```
 
 Once you find it, update the path in your CLAUDE.md exactly.
@@ -311,19 +426,30 @@ git stash pop  # Bring your changes back
 ### Cron job isn't running (Mac/WSL2)
 
 **Fix:**
-1. Verify cron syntax at **crontab.guru** — paste your cron expression and confirm it does what you think
+1. Verify cron syntax at **crontab.guru** - paste your cron expression and confirm it does what you think
 2. Check if cron is running: `ps aux | grep cron`
 3. Check cron logs:
    - Mac: `grep CRON /var/log/system.log | tail -20`
    - WSL2: `/var/log/syslog | grep CRON`
 4. Make sure the script is executable: `chmod +x ~/your-script.sh`
-5. Use absolute paths in your script — cron doesn't inherit your shell's PATH
+5. Use absolute paths in your script - cron doesn't inherit your shell's PATH
+
+**Git Bash equivalent:** Git Bash does not run `cron` as a background service by default. Use **Windows Task Scheduler** and point it at Git Bash:
+
+- Program/script: `C:\Program Files\Git\bin\bash.exe`
+- Arguments: `-lc "/c/Users/YourWindowsName/path/to/your-script.sh"`
+- Start in: `C:\Users\YourWindowsName`
+
+If it fails, check the task's **Last Run Result** and redirect script output to a log file:
+```bash
+/c/Users/YourWindowsName/path/to/your-script.sh >> /c/Users/YourWindowsName/claude-task.log 2>&1
+```
 
 ---
 
 ### Script runs manually but fails in cron
 
-**What's happening:** Cron runs with a minimal environment — no PATH, no shell variables, no 1Password session.
+**What's happening:** Cron runs with a minimal environment - no PATH, no shell variables, no 1Password session.
 
 **Fix:** At the top of your script, explicitly set everything:
 ```bash
@@ -335,13 +461,22 @@ export HOME="/Users/yourname"
 eval $(op signin --raw 2>/dev/null)
 ```
 
+**Git Bash / Windows Task Scheduler Fix:** Set the Windows/Git Bash paths explicitly:
+```bash
+#!/usr/bin/env bash
+export PATH="/c/Program Files/Git/usr/bin:/c/Program Files/Git/bin:/c/Users/YourWindowsName/.local/bin:$PATH"
+export HOME="/c/Users/YourWindowsName"
+
+op whoami >/dev/null || op signin
+```
+
 ---
 
 ## Still Stuck?
 
-1. **Copy the full error message** — the whole thing, not just the last line
+1. **Copy the full error message** - the whole thing, not just the last line
 2. **Ask Claude**: Open a terminal, type `claude`, and paste the error: "I'm getting this error: [paste]. I was trying to [describe what you were doing]. How do I fix it?"
 3. **Post in community Slack** with: your platform (Mac/Windows), which step you're on, and a screenshot of the error
 4. **Check if it's a known issue** on the workshop support channel
 
-We promise most issues have been seen before and have solutions. Don't spend more than 10 minutes stuck before asking — that's what the community is for.
+We promise most issues have been seen before and have solutions. Don't spend more than 10 minutes stuck before asking - that's what the community is for.
