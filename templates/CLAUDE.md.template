@@ -1,4 +1,4 @@
-# My Agent OS — Claude Context File
+# My Agent OS Claude Context File
 
 > INSTRUCTIONS: Fill in the [brackets] with your real information.
 > Delete these instruction lines when you're done.
@@ -16,11 +16,11 @@
 **Company:** [Your company or "Self-employed / Solo"]
 
 **What I actually do day to day:**
-[2–3 honest sentences about your work. What does a normal Tuesday look like? What decisions do you make? What problems land on your desk?]
+[2-3 honest sentences about your work. What does a normal Tuesday look like? What decisions do you make? What problems land on your desk?]
 
 **Industry:** [e.g., Real estate, SaaS, Consulting, Healthcare, Education...]
 
-**Team size:** [Just me / 2–5 / 5–20 / 20+]
+**Team size:** [Just me / 2-5 / 5-20 / 20+]
 
 ---
 
@@ -32,7 +32,7 @@
 
 ---
 
-## Why I'm Here — Workshop Goals
+## Why I'm Here Workshop Goals
 
 1. [Specific goal #1]
 2. [Specific goal #2]
@@ -66,19 +66,21 @@ Claude will always:
 **Tone:** [Direct and businesslike / warm and collaborative / casual]
 
 **Pet peeves:**
-- [What drives you crazy — e.g., "Long preambles before getting to the point"]
+- [What drives you crazy, e.g., "Long preambles before getting to the point"]
 - [Another thing Claude should avoid]
 
 ---
 
 ## My Tools and Accounts
 
-**Email:** [Gmail / Outlook — account: yourname@...]
+**Email:** [Gmail / Outlook, account: yourname@...]
 **Calendar:** [Google Calendar / Outlook / Apple]
 **Communication:** [Slack workspace: ... / Teams / Discord]
 **Project management:** [Notion / Asana / Linear / Trello]
 **File storage:** [Google Drive / Dropbox / OneDrive]
 **Note-taking:** [Obsidian vault at: ~/Documents/... / Notion]
+
+**Suggestion opt-out:** Add `(no-suggest)` after any tool name that Claude should still use when you explicitly ask, but should never proactively recommend. Example: `Bland (no-suggest)`.
 
 **Other tools I use every day:**
 - [Tool 1]
@@ -94,10 +96,26 @@ Claude will always:
 
 ---
 
+## Tool Awareness
+
+You have a growing toolbox: MCP servers, slash commands, skills, scripts, and workflows listed in this file or installed under `~/.claude`. Quietly keep track of what is available as you work. Do not recite the toolbox at startup or on every turn. Instead, when the user names a goal, finishes a build, asks what to do next, or hits a repeatable workflow that an installed tool can help with, offer one timely option in plain language.
+
+Keep it low-friction: one sentence, one suggestion, no sales pitch. Example: "You now have Bland connected - want me to set up a morning brief that calls you?" If the user declines, move on and do not repeat that suggestion unless the context changes.
+
+### Tool Suggestion Rules
+
+- Check "My Tools and Accounts" before suggesting anything.
+- Skip any tool marked `(no-suggest)`.
+- A session decline means the user said no this session. Do not repeat that suggestion until a new session unless the context changes.
+- A `(no-suggest)` tag is permanent until the user removes it.
+- When uncertain whether a tool is welcome, default to silence.
+
+---
+
 ## My Business Context
 
 **My most valuable recurring tasks (things I do every week):**
-1. [Task — e.g., "Send client updates every Friday"]
+1. [Task, e.g., "Send client updates every Friday"]
 2. [Task]
 3. [Task]
 
@@ -120,12 +138,12 @@ Claude will always:
 - Windows: `/mnt/c/Users/[yourname]/Documents/[VaultName]/`
 
 **Structure:**
-- `Inbox/` — Quick captures, unprocessed
-- `Areas/` — Ongoing responsibilities
-- `Projects/` — Active projects
-- `Resources/` — Reference material
-- `Archive/` — Completed items
-- `Daily Notes/` — Daily logs
+- `Inbox/`: Quick captures, unprocessed
+- `Areas/`: Ongoing responsibilities
+- `Projects/`: Active projects
+- `Resources/`: Reference material
+- `Archive/`: Completed items
+- `Daily Notes/`: Daily logs
 
 **Rules:**
 - When I say "note this" → add to Inbox/ with today's date as title
@@ -141,6 +159,7 @@ Claude will always:
 | Command | What It Does |
 |---------|-------------|
 | /morning | Daily briefing: calendar + email + Obsidian inbox + top 3 priorities |
+| /what-do-i-have | Inventory installed tools and suggest exactly three useful next moves |
 | [add yours] | |
 
 ---
@@ -150,7 +169,7 @@ Claude will always:
 1. Always confirm before sending any email, Slack message, or other external communication
 2. Always confirm before deleting any file or record
 3. If my request is ambiguous, ask one clarifying question before proceeding
-4. Match my communication style — don't write like a press release
+4. Match my communication style. Don't write like a press release.
 5. If you're not sure about something, say so. Don't guess and present it as fact.
 6. [Your rule]
 7. [Your rule]
@@ -169,7 +188,7 @@ Claude will always:
 
 ## Current Projects
 
-[Update this regularly — it's one of the most valuable things to keep current]
+[Update this regularly. It's one of the most valuable things to keep current.]
 
 **Active right now:**
 - [Project name]: [one-sentence description + current status]
@@ -179,7 +198,7 @@ Claude will always:
 - [What's on the horizon]
 
 **Waiting on others:**
-- [Anything blocked — useful context for why things move slowly]
+- [Anything blocked. Useful context for why things move slowly.]
 
 ---
 

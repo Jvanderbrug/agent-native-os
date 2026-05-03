@@ -25,7 +25,7 @@ Go in this order, batches of 3-5 questions, conversational tone:
 - Section 2 (About Your Work): all 7 questions
 - Section 3 (How You Learn and Work): all 7 questions
 
-After each batch, briefly reflect what you heard back ("So you're spending most mornings on X and the bottleneck is Y, got it") before moving to the next batch. This builds trust and catches misinterpretations early.
+After each batch, briefly reflect what you heard back ("So you're spending most mornings on X and the bottleneck is Y. Got it.") before moving to the next batch. This builds trust and catches misinterpretations early.
 
 ## Step 5: Write the profile into CLAUDE.md
 
@@ -51,7 +51,29 @@ When the conversation is done, open the project root `CLAUDE.md` (create if miss
 [brief vs detailed, direct critique vs suggestions, autonomy level they want]
 ```
 
+Also add or update `My Tools and Accounts`. Include the tools, accounts, commands, and MCP servers the student named. If the student has a tool Claude should use only when explicitly asked, write the tool as `<tool-name> (no-suggest)`.
+
+Add or update `My Custom Commands` with `/what-do-i-have`, described as the on-demand toolbox inventory command that returns exactly three useful next moves.
+
+Then add this Tool Awareness section exactly:
+
+```markdown
+## Tool Awareness
+
+You have a growing toolbox: MCP servers, slash commands, skills, scripts, and workflows listed in this file or installed under `~/.claude`. Quietly keep track of what is available as you work. Do not recite the toolbox at startup or on every turn. Instead, when the user names a goal, finishes a build, asks what to do next, or hits a repeatable workflow that an installed tool can help with, offer one timely option in plain language.
+
+Keep it low-friction: one sentence, one suggestion, no sales pitch. Example: "You now have Bland connected - want me to set up a morning brief that calls you?" If the user declines, move on and do not repeat that suggestion unless the context changes.
+```
+
+Add this note under `My Tools and Accounts`:
+
+```markdown
+**Suggestion opt-out:** Add `(no-suggest)` after any tool name that Claude should still use when you explicitly ask, but should never proactively recommend. Example: `Bland (no-suggest)`.
+```
+
 Preserve any existing CLAUDE.md content. Only add or update these sections.
+
+When matching future goals to tools, check `My Tools and Accounts` first. Skip anything marked `(no-suggest)`. Surface at most one timely suggestion, only when it directly fits the user's current goal. If the user declines a suggestion, do not repeat it for the rest of that session unless the context changes. The session decline resets next session. The `(no-suggest)` tag is permanent until removed.
 
 ## Step 6: Read back for confirmation
 
