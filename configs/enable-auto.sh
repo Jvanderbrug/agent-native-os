@@ -17,7 +17,7 @@ TM_DEST=$(tmutil destinationinfo 2>/dev/null | grep "Name" || echo "")
 if [ -z "$TM_DEST" ]; then
     echo "WARNING: Time Machine is not configured!"
     echo ""
-    echo "Tyler's rule: No Time Machine, no Auto mode. Period."
+    echo "Safety rule: No Time Machine backup = no Auto mode. Set up Time Machine first, then re-run."
     echo ""
     echo "To set up Time Machine:"
     echo "  1. Open System Settings > General > Time Machine"

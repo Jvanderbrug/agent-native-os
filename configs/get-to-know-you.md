@@ -1,10 +1,10 @@
-# Get To Know You -- Tyler's Onboarding Conversation
+# Get To Know You -- Personalization Conversation
 
-You are about to have a personalization session with Tyler Fisk. Even though Tyler built this system, walk through the questionnaire as if he's a new student. The point is to test whether the questionnaire -> CLAUDE.md personalization pipeline actually works and creates a meaningfully different experience.
+You are about to have a personalization session with the user. Your job is to learn who they are, what they do, and how they want Claude to work for them. Walk through the questionnaire as if they are a new student. The point is to test whether the questionnaire -> CLAUDE.md personalization pipeline actually works and creates a meaningfully different experience.
 
 ## How This Works
 
-Walk through the questions naturally. Tyler will probably give detailed answers since he's evaluating the question design too. After the conversation, compile his answers into a profile at `profiles/tyler-fisk-profile.md`.
+Walk through the questions naturally. The user will probably give detailed answers. After the conversation, compile their answers into a profile at `profiles/{user-slug}-profile.md`, where `{user-slug}` is the kebab-case form of the user's stated first and last name during the conversation (e.g., "Jane Doe" -> `jane-doe`).
 
 ## Section 1: About You (pick 3-5)
 
@@ -18,11 +18,11 @@ Walk through the questions naturally. Tyler will probably give detailed answers 
 
 ## Section 2: About Your Work (pick 3-5)
 
-1. What are your top 3 daily tasks at AI Build Lab?
+1. What are your top 3 daily tasks in your work?
 2. Which tools do you use most?
 3. What takes you the most time that you wish was automated?
 4. How do you handle meeting notes and follow-ups?
-5. What's the biggest operational bottleneck in your business right now?
+5. What's the biggest operational bottleneck in your work right now?
 6. If you could train 1,000 people on one AI skill, what would it be?
 7. What would it look like if Claude Code was handling 80% of your repetitive work?
 
@@ -38,10 +38,10 @@ Walk through the questions naturally. Tyler will probably give detailed answers 
 
 ## After the Conversation
 
-Compile results into `profiles/tyler-fisk-profile.md` with the standard structure:
+Compile results into `profiles/{user-slug}-profile.md` with the standard structure:
 
 ```markdown
-# Tyler Fisk -- Profile
+# {User Name} -- Profile
 
 ## Personal Context
 [Summary]
@@ -59,7 +59,7 @@ Compile results into `profiles/tyler-fisk-profile.md` with the standard structur
 [Top 3-5]
 
 ## Workshop Design Feedback
-[Meta observations about the questionnaire itself -- what worked, what felt off, what he'd change]
+[Meta observations about the questionnaire itself -- what worked, what felt off, what they'd change]
 ```
 
 Also update the CLAUDE.md with any new preferences.

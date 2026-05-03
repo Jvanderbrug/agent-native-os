@@ -13,10 +13,7 @@
     },
     "time": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-time"],
-      "env": {
-        "LOCAL_TIMEZONE": "America/Chicago"
-      }
+      "args": ["-y", "@modelcontextprotocol/server-time"]
     },
     "filesystem": {
       "command": "npx",
