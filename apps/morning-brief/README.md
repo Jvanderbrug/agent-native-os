@@ -62,7 +62,7 @@ If all of that worked, you've deployed your capstone. From here, generate a real
 
 ## Generating a real brief
 
-The slash command `/build-morning-brief` lives at `configs/commands/build-morning-brief.md` (on a separate worker branch awaiting Tyler's review). When merged, it walks Claude Code through compiling sources into the canonical JSON contract, posting to `POST /api/briefs`, then triggering `POST /api/deliver/telegram`.
+The slash command `/build-morning-brief` lives at `configs/commands/build-morning-brief.md` (on a separate worker branch awaiting review). When merged, it walks Claude Code through compiling sources into the canonical JSON contract, posting to `POST /api/briefs`, then triggering `POST /api/deliver/telegram`.
 
 Until then, you can hand-craft a brief by following the shape in `blueprints/morning-brief/brief-contract.json` and POSTing it directly.
 

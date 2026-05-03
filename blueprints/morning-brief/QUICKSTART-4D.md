@@ -36,7 +36,7 @@ Each step has a checkbox, an estimated duration, and a recovery line. Follow in 
 ## [ ] Step 3. Create the Telegram bot (5 min)
 
 - Open Telegram. Search `@BotFather`. Tap Start.
-- Send `/newbot`. Pick a display name. Pick a username ending in `bot` (e.g., `tyler_morning_brief_bot`).
+- Send `/newbot`. Pick a display name. Pick a username ending in `bot` (e.g., `your_morning_brief_bot`).
 - BotFather replies with your token. It looks like `123456789:ABCdef...`. Copy it into `.env.local` as `TELEGRAM_BOT_TOKEN`.
 
 ### [ ] Step 3a. Message your bot first (CRITICAL, 1 min)
