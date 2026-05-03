@@ -1,0 +1,15 @@
+timestamp,device_id,device_name,port,temperature_f,humidity_pct,vpd_kpa
+2026-04-25T08:00:00,sample-controller,Tent A,1,74.20,58.40,1.12
+2026-04-25T20:00:00,sample-controller,Tent A,1,76.80,55.10,1.31
+2026-04-26T08:00:00,sample-controller,Tent A,1,73.90,60.20,1.05
+2026-04-26T20:00:00,sample-controller,Tent A,1,77.10,53.80,1.38
+2026-04-27T08:00:00,sample-controller,Tent A,1,74.50,57.90,1.15
+2026-04-27T20:00:00,sample-controller,Tent A,1,77.40,52.30,1.42
+2026-04-28T08:00:00,sample-controller,Tent A,1,74.80,59.10,1.10
+2026-04-28T20:00:00,sample-controller,Tent A,1,78.20,51.40,1.48
+2026-04-29T08:00:00,sample-controller,Tent A,1,75.10,58.60,1.16
+2026-04-29T20:00:00,sample-controller,Tent A,1,77.90,52.80,1.40
+2026-04-30T08:00:00,sample-controller,Tent A,1,74.40,60.40,1.04
+2026-04-30T20:00:00,sample-controller,Tent A,1,77.30,53.20,1.35
+2026-05-01T08:00:00,sample-controller,Tent A,1,74.90,58.10,1.18
+2026-05-01T20:00:00,sample-controller,Tent A,1,78.10,51.90,1.45
