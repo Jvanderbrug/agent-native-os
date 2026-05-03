@@ -1,4 +1,4 @@
-# Guide 05 — Secrets Management
+# Guide 05, Secrets Management
 
 **When we cover this:** Install Block Three: Connect Data Sources + First Fleet Run (2:15 PM CDT, 3:15 PM EDT). Secrets management is part of wiring tools in safely. See the README for the full agenda.
 
@@ -6,7 +6,7 @@
 
 ## The Problem We're Solving
 
-When you connect Claude to external tools, you need API keys — little strings of text that prove to Gmail or Notion or Slack that you're authorized to use their APIs.
+When you connect Claude to external tools, you need API keys, little strings of text that prove to Gmail or Notion or Slack that you're authorized to use their APIs.
 
 The bad way to handle these: paste them directly into config files as plain text. The problem is those files can end up on GitHub, be read by other programs, or just sit there waiting to be found.
 
@@ -87,7 +87,7 @@ For extra security, you can also store the 1Password service account token itsel
 
 ### Step 1: Store Your First Secret in 1Password
 
-Same as Mac — open 1Password, create an API Credential item, add your key to a field called "credential."
+Same as Mac. Open 1Password, create an API Credential item, add your key to a field called "credential."
 
 ### Step 2: Install 1Password CLI in WSL2
 
@@ -100,7 +100,7 @@ op whoami
 
 ### Step 3: Use op:// References
 
-Same as Mac — replace plain API keys with `op://` references in your settings.json:
+Same as Mac. Replace plain API keys with `op://` references in your settings.json:
 
 ```json
 "env": {
@@ -133,7 +133,7 @@ if [ -f ~/.claude-secrets.env ]; then
 fi
 ```
 
-Now every terminal session automatically has these environment variables available — and they're all pulling from 1Password, never stored as plain text.
+Now every terminal session automatically has these environment variables available, and they're all pulling from 1Password, never stored as plain text.
 
 ---
 
@@ -150,7 +150,16 @@ Now every terminal session automatically has these environment variables availab
 - You've pasted an API key into a git commit
 - You have a file called `secrets.txt` anywhere on your computer
 
-If any of those apply, rotate the exposed key immediately (log into the service and generate a new one) — the old one should be considered compromised.
+If any of those apply, rotate the exposed key immediately (log into the service and generate a new one). The old one should be considered compromised.
+
+### Free / open-source alternatives
+
+If 1Password is a hard no for cost or other reasons, there are free alternatives that follow the same `op://`-style reference pattern. The workshop teaches 1Password as the default, but these are supported:
+
+- **Bitwarden** ([bitwarden.com](https://bitwarden.com)): free tier with personal vault. Has a CLI (`bw`) similar to `op`.
+- **Infisical** ([infisical.com](https://infisical.com)): open-source, self-hostable. Good for team-scale post-class.
+
+Both fit the "secrets in encrypted store, agents read by reference" pattern. If you go this route, use the `.env` with `chmod 600` path during the workshop and migrate to your manager of choice after.
 
 ---
 
@@ -160,7 +169,7 @@ When you need to change an API key (because it's expired, compromised, or you ju
 
 1. Generate a new key in the service (Gmail, Notion, etc.)
 2. Update the item in 1Password with the new key
-3. Restart Claude Code — it fetches fresh from 1Password on each session
+3. Restart Claude Code. It fetches fresh from 1Password on each session
 
 Since your config file uses `op://` references (not the key itself), you only update 1Password. Your config file doesn't change.
 
@@ -180,9 +189,9 @@ When someone (or Claude) asks "what API keys do you have?", you can answer clear
 
 ## A Word on Trust
 
-You're giving Claude access to real accounts — your Gmail, your calendar, your files. This deserves a moment of thought.
+You're giving Claude access to real accounts: your Gmail, your calendar, your files. This deserves a moment of thought.
 
-Claude Code is running locally on your machine. It's not sending your emails to a third-party server. It's using the same credentials *you* use when you log into Gmail — just doing it programmatically.
+Claude Code is running locally on your machine. It's not sending your emails to a third-party server. It's using the same credentials *you* use when you log into Gmail, just doing it programmatically.
 
 The risk model is similar to: "If someone else sat at my computer with my browser logged in, what could they do?" The answer is: a lot. That's why we:
 
@@ -204,7 +213,7 @@ The safety comes from the system, not from blind trust.
 
 ## Track Exercises
 
-See `tracks/[your-track]/exercises.md` — Exercise Set 05.
+See `tracks/[your-track]/exercises.md`, Exercise Set 05.
 
 ---
 

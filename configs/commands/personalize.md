@@ -6,15 +6,15 @@ You are running the one-time personalization conversation that transforms a gene
 
 ## Step 1: Load the questionnaire
 
-Read `configs/get-to-know-you.md` from the repo root. That file is the question bank — three sections (About You, About Your Work, How You Learn and Work). The bank totals roughly 21 questions; you will work through ALL of them, plus follow-ups, to produce a real profile.
+Read `configs/get-to-know-you.md` from the repo root. That file is the question bank: three sections (About You, About Your Work, How You Learn and Work). The bank totals roughly 21 questions; you will work through ALL of them, plus follow-ups, to produce a real profile.
 
 ## Step 2: Set expectations, then start
 
-Tell the student, in your own words: "I'm going to ask you about 20 questions across three areas. We'll go in batches of 3-5 at a time so it stays conversational, not survey-like. Plan on 10-15 minutes. The output is a personalized CLAUDE.md that every future Claude session in this repo will read automatically — so the better your answers, the smarter your Claude gets."
+Tell the student, in your own words: "I'm going to ask you about 20 questions across three areas. We'll go in batches of 3-5 at a time so it stays conversational, not survey-like. Plan on 10-15 minutes. The output is a personalized CLAUDE.md that every future Claude session in this repo will read automatically, so the better your answers, the smarter your Claude gets."
 
 ## Step 3: Force the full conversation (CRITICAL)
 
-If the student tries to short-circuit ("just treat me as a beginner", "skip it", "give me defaults", "I'll fill it in later"), push back once and proceed. Say: "I hear you, but the whole point of this repo is that your Claude is tuned to YOU, not a generic beginner. Sara learned this the hard way — she said 'treat me as a beginner' and ended up with a profile that knew nothing about her actual work. Three minutes per question. Let's do it." Then ask the next question.
+If the student tries to short-circuit ("just treat me as a beginner", "skip it", "give me defaults", "I'll fill it in later"), push back once and proceed. Say: "I hear you, but the whole point of this repo is that your Claude is tuned to YOU, not a generic beginner. Sara learned this the hard way. She said 'treat me as a beginner' and ended up with a profile that knew nothing about her actual work. Three minutes per question. Let's do it." Then ask the next question.
 
 Do not accept "I don't know" as a final answer for more than two questions in a row. Reframe, give an example, then ask again.
 
@@ -25,7 +25,7 @@ Go in this order, batches of 3-5 questions, conversational tone:
 - Section 2 (About Your Work): all 7 questions
 - Section 3 (How You Learn and Work): all 7 questions
 
-After each batch, briefly reflect what you heard back ("So you're spending most mornings on X and the bottleneck is Y — got it") before moving to the next batch. This builds trust and catches misinterpretations early.
+After each batch, briefly reflect what you heard back ("So you're spending most mornings on X and the bottleneck is Y, got it") before moving to the next batch. This builds trust and catches misinterpretations early.
 
 ## Step 5: Write the profile into CLAUDE.md
 
@@ -51,13 +51,27 @@ When the conversation is done, open the project root `CLAUDE.md` (create if miss
 [brief vs detailed, direct critique vs suggestions, autonomy level they want]
 ```
 
-Preserve any existing CLAUDE.md content — only add or update these sections.
+Preserve any existing CLAUDE.md content. Only add or update these sections.
 
 ## Step 6: Read back for confirmation
 
 Show the student the new CLAUDE.md sections you wrote. Ask: "Anything wrong, missing, or worded oddly? I'll fix it before we lock it in." Edit based on their corrections.
 
-## Step 7: Seed the starter Cairns vault
+## Step 7: Check secret-management readiness
+
+Before wrapping, ask the student about how they plan to handle API keys and other secrets. Use this exact prompt:
+
+**Secret Management Preference:**
+
+Which best describes your setup?
+
+- [ ] I have 1Password CLI installed and signed in (`op whoami` works)
+- [ ] I will use a `.env` file with `chmod 600` for the workshop and set up 1Password later
+- [ ] I want to use Bitwarden, Infisical, or another password manager (we'll point you at docs)
+
+If you picked option 1, you're ready. If option 2, run Guide 05 next. If option 3, ping in `#agent-native-os` for a pointer.
+
+## Step 8: Seed the starter Cairns vault
 
 If the student is doing (or planning to do) the Cairns blueprint, also seed `templates/obsidian-cairns-starter/L0-raw/` (or the student's own Obsidian vault) with one note per interview section. Use simple frontmatter (date, source: personalize-interview, section). These L0 notes are raw input; do not synthesize patterns or metrics that did not come up in the conversation.
 

@@ -30,6 +30,7 @@ Work through your platform setup guide first, then come back and verify everythi
 ### Step 1: Complete the Setup Guide for Your Platform
 - [ ] Mac: Completed `setup/mac/prerequisites.md` top to bottom
 - [ ] Windows: Completed `setup/windows/prerequisites.md` top to bottom
+- [ ] 1Password app installed AND CLI working (run `op whoami` in your terminal. should show your account email, not an error)
 
 ### Step 2: Clone This Repo
 
@@ -60,7 +61,7 @@ You want all green checkmarks. If something is red, the script will tell you exa
 
 ### Step 4: Start Filling In Your CLAUDE.md
 
-Open `CLAUDE.md` in any text editor (Notepad, TextEdit, VS Code — whatever you have). Fill in at least:
+Open `CLAUDE.md` in any text editor (Notepad, TextEdit, VS Code, whatever you have). Fill in at least:
 - Your name and what you do
 - Your primary computer type
 - Your goals for the workshop (at least one)
@@ -75,7 +76,7 @@ Don't worry about filling everything in. That's what the workshop is for. Just g
 - Any external monitors you want to use (having more screen space is very helpful)
 - Your GitHub username and password handy
 - Your Claude.ai login handy
-- A list of 2–3 real tasks or workflows from your actual job that you'd love to automate or improve
+- A list of 2-3 real tasks or workflows from your actual job that you'd love to automate or improve
 
 That last one is important. The workshop is most valuable when you apply it to your real work. Think now about what you'd actually use this for.
 
