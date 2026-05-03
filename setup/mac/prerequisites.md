@@ -108,6 +108,17 @@ This is the main thing we're building on all day.
 
 ### 8. Clone This Repo
 
+#### GitHub access gate
+
+Before cloning, run:
+
+```bash
+gh auth status
+gh repo view aibuild-lab/agent-native-os --web
+```
+
+If the repo does not open, stop. Accept the GitHub invite from AI Build Lab, make sure you are signed into the correct GitHub account, then run the two commands again. If you have not received an invite yet, post your GitHub username in the `#agent-native-os` Slack channel to get added.
+
 - [ ] Open Terminal and navigate to where you want the folder:
 
 ```bash

@@ -4,9 +4,14 @@ You are about to have a personalization session with the user. Your job is to le
 
 ## How This Works
 
-Walk through the questions naturally. The user will probably give detailed answers. After the conversation, compile their answers into a profile at `profiles/{user-slug}-profile.md`, where `{user-slug}` is the kebab-case form of the user's stated first and last name during the conversation (e.g., "Jane Doe" -> `jane-doe`).
+For the workshop, ask all 21 questions unless Tyler explicitly says to shorten the interview. Walk through the questions naturally in batches of 3-5 so it stays conversational. After the conversation, the answers feed two outputs in this order:
 
-## Section 1: About You (pick 3-5)
+1. **Repo `CLAUDE.md` and any `sub.md` files** for Claude Code's personalized memory, using the seven-section structure in `guides/03-your-first-claude-md.md`. This is the primary output and is required for every student.
+2. **Starter Cairns vault seed** at `templates/obsidian-cairns-starter/` (or the student's own Obsidian vault if they have one), so the personal second-brain system has L0 raw notes from the interview to build on. This is required when the student is also doing the Cairns blueprint and optional otherwise.
+
+Do not create a separate `profiles/{user-slug}-profile.md` unless the student explicitly asks for an archive copy. Both required outputs above are derived from the same set of answers; do not let them drift.
+
+## Section 1: About You (ask all 7)
 
 1. What does a typical workday look like for you right now?
 2. How would you rate your AI/tech expertise on a scale of 1-10?
@@ -16,7 +21,7 @@ Walk through the questions naturally. The user will probably give detailed answe
 6. What excites you most about where AI is headed?
 7. What part of Claude Code do you wish worked differently?
 
-## Section 2: About Your Work (pick 3-5)
+## Section 2: About Your Work (ask all 7)
 
 1. What are your top 3 daily tasks in your work?
 2. Which tools do you use most?
@@ -26,7 +31,7 @@ Walk through the questions naturally. The user will probably give detailed answe
 6. If you could train 1,000 people on one AI skill, what would it be?
 7. What would it look like if Claude Code was handling 80% of your repetitive work?
 
-## Section 3: How You Learn and Work (pick 3-5)
+## Section 3: How You Learn and Work (ask all 7)
 
 1. When you're evaluating a new tool, what's the first thing you do?
 2. Do you prefer structured walkthroughs or "give me the controls and I'll figure it out"?
@@ -38,28 +43,8 @@ Walk through the questions naturally. The user will probably give detailed answe
 
 ## After the Conversation
 
-Compile results into `profiles/{user-slug}-profile.md` with the standard structure:
+Write the answers into the repo's `CLAUDE.md` using the seven-section structure in `guides/03-your-first-claude-md.md`. Preserve any existing `CLAUDE.md` content; only add or update the personalization sections.
 
-```markdown
-# {User Name} -- Profile
+If the student is also doing the Cairns blueprint, seed their starter vault with L0 raw notes from the interview. Drop one note per section into `templates/obsidian-cairns-starter/L0-raw/` (or the student's own Obsidian vault) using simple frontmatter (date, source: personalize-interview, section). Do not invent metrics or production claims that did not come up in the conversation.
 
-## Personal Context
-[Summary]
-
-## Business Context
-[Summary]
-
-## Working Style
-[Summary]
-
-## AI Experience Level
-[Rating with context]
-
-## Priority Use Cases
-[Top 3-5]
-
-## Workshop Design Feedback
-[Meta observations about the questionnaire itself -- what worked, what felt off, what they'd change]
-```
-
-Also update the CLAUDE.md with any new preferences.
+Do not create `profiles/{user-slug}-profile.md` unless the student explicitly asks for an archive copy. The CLAUDE.md and Cairns L0 notes are the canonical outputs.

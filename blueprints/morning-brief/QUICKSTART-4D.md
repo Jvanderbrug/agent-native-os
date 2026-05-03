@@ -3,6 +3,8 @@
 > Goal: live Vercel URL + Supabase-backed brief + working Telegram ping by 6pm Sunday.
 > Estimated time: 35 minutes if accounts are ready, 60 minutes if you're starting cold.
 
+> **Source of truth note.** The canonical behavior of `/build-morning-brief` is defined in `configs/commands/build-morning-brief.md`. That command frames the strict 4D path as Obsidian markdown plus a Telegram ping, with web deploy recorded as 8D intent. This QUICKSTART is the optional Vercel + Supabase walkthrough for students who want to ship the hosted brief view in the same Sunday session. If the command and this QUICKSTART disagree, the command wins.
+
 Each step has a checkbox, an estimated duration, and a recovery line. Follow in order.
 
 ---

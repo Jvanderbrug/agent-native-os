@@ -57,8 +57,10 @@ Preserve any existing CLAUDE.md content — only add or update these sections.
 
 Show the student the new CLAUDE.md sections you wrote. Ask: "Anything wrong, missing, or worded oddly? I'll fix it before we lock it in." Edit based on their corrections.
 
-## Step 7: Optional Cairns ingestion
+## Step 7: Seed the starter Cairns vault
 
-Finally, ask: "Want me to also seed your knowledge graph with what you just told me, so future sessions can pull richer context? (yes/no)"
+If the student is doing (or planning to do) the Cairns blueprint, also seed `templates/obsidian-cairns-starter/L0-raw/` (or the student's own Obsidian vault) with one note per interview section. Use simple frontmatter (date, source: personalize-interview, section). These L0 notes are raw input; do not synthesize patterns or metrics that did not come up in the conversation.
 
-If yes, tell them: "Cairns RAG isn't wired up in this repo yet — we'll add it in a later guide. For now your CLAUDE.md is the source of truth, and that's enough to make every session feel personalized."
+If the student is not doing Cairns, skip this step. The repo `CLAUDE.md` is sufficient for personalization on its own.
+
+Both outputs (`CLAUDE.md` and the optional Cairns L0 notes) are derived from the same interview answers. Do not let them drift.
