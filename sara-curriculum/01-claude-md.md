@@ -163,6 +163,8 @@ There are four types of CLAUDE.md files. They work at different levels -- think 
 > **Tip:** The Personal CLAUDE.md lives in a hidden folder called `.claude` in your home directory. You can't see hidden folders in Finder by default. Press **Cmd + Shift + .** (period) to reveal them -- they'll look slightly faded. You'll see the `.claude` folder with your CLAUDE.md inside it. Press **Cmd + Shift + .** again to hide them when you're done.
 >
 > You don't need to find this folder yourself though -- just ask Claude Code to "save this as my personal CLAUDE.md" and it puts it in the right place.
+>
+> **Windows Git Bash note:** In Git Bash, your personal file still lives at `~/.claude/CLAUDE.md`. That `~` points to `C:\Users\<user>`. If older setup notes mention WSL2, treat that as one terminal option, not a requirement for this CLAUDE.md lesson.
 
 **They stack.** Claude reads all of them at the same time. Your Personal CLAUDE.md loads first, then the Project one adds on top.
 

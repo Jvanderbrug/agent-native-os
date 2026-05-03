@@ -1,4 +1,4 @@
-# 02 — Self-Host Langfuse On A VPS
+# 02 - Self-Host Langfuse On A VPS
 
 **Goal:** Run your own Langfuse instance on a $5-10/month VPS, with a real domain and SSL, that your agents talk to instead of Langfuse Cloud.
 
@@ -57,6 +57,30 @@ You should see version strings for both.
 
 ---
 
+## Windows: Native Git Bash + Docker Desktop
+
+If you are following this from Windows, you do not need to open a WSL terminal for the Docker commands. Native Git Bash plus Docker Desktop works for the local setup path.
+
+Install Docker Desktop, start it, then open Git Bash and confirm Docker is reachable:
+
+```bash
+docker --version
+docker compose version
+```
+
+For a local Windows Langfuse test, clone and run the stack from Git Bash:
+
+```bash
+mkdir -p ~/langfuse
+cd ~/langfuse
+git clone https://github.com/langfuse/langfuse.git .
+docker compose up -d
+```
+
+Git Bash paths like `~/langfuse` map to `C:\Users\<user>\langfuse`. Keep using forward slashes inside Git Bash commands. If you are installing Langfuse on a VPS, run the `ssh root@your-vps-ip` command from Git Bash and install Docker on the VPS as shown above.
+
+---
+
 ## Step 3: Clone Langfuse
 
 ```bash
@@ -73,15 +97,15 @@ The repo includes a `docker-compose.yml` at the root with everything you need.
 
 Open `docker-compose.yml` and look for lines marked `# CHANGEME`. There are several. The most important:
 
-- `NEXTAUTH_SECRET` — used to sign session cookies. Generate with `openssl rand -base64 32`.
-- `SALT` — used to hash API keys at rest. Generate with `openssl rand -base64 32`.
-- `ENCRYPTION_KEY` — used to encrypt sensitive fields. Generate with `openssl rand -hex 32` (must be exactly 64 hex chars).
-- `LANGFUSE_INIT_USER_PASSWORD` — your initial admin login. Pick something strong.
-- Database passwords (Postgres, ClickHouse, Redis, MinIO) — replace each `CHANGEME` with `openssl rand -base64 24`.
+- `NEXTAUTH_SECRET`: used to sign session cookies. Generate with `openssl rand -base64 32`.
+- `SALT`: used to hash API keys at rest. Generate with `openssl rand -base64 32`.
+- `ENCRYPTION_KEY`: used to encrypt sensitive fields. Generate with `openssl rand -hex 32` (must be exactly 64 hex chars).
+- `LANGFUSE_INIT_USER_PASSWORD`: your initial admin login. Pick something strong.
+- Database passwords (Postgres, ClickHouse, Redis, MinIO): replace each `CHANGEME` with `openssl rand -base64 24`.
 
 **Also set:**
 
-- `NEXTAUTH_URL` — must be the full public URL your instance will live at, e.g. `https://langfuse.yourdomain.com`. This must match exactly or login will fail.
+- `NEXTAUTH_URL`: must be the full public URL your instance will live at, e.g. `https://langfuse.yourdomain.com`. This must match exactly or login will fail.
 
 Save the file. Do not commit it to git anywhere.
 
@@ -93,7 +117,7 @@ Save the file. Do not commit it to git anywhere.
 docker compose up -d
 ```
 
-First run takes a few minutes — it pulls images and runs database migrations. Watch the logs:
+First run takes a few minutes because it pulls images and runs database migrations. Watch the logs:
 
 ```bash
 docker compose logs -f langfuse-web
@@ -114,7 +138,7 @@ curl http://localhost:3000
 
 In your DNS provider (Cloudflare, Namecheap, Route53, wherever your domain lives):
 
-- Create an `A` record: `langfuse.yourdomain.com` → your VPS IP
+- Create an `A` record: `langfuse.yourdomain.com` to your VPS IP
 - TTL 300 is fine
 
 Wait a minute, then verify:
@@ -209,7 +233,7 @@ If ClickHouse memory creeps up over time, give the VPS more RAM or tune ClickHou
 
 - **Login fails immediately after install:** Almost always `NEXTAUTH_URL` doesn't match the URL you typed in the browser. Edit, restart `langfuse-web`, retry.
 - **Caddy says certificate failed:** DNS hasn't propagated yet. Wait two minutes and try again. Check `journalctl -u caddy` for the actual error.
-- **All traces show wrong timestamps:** The Langfuse docs are explicit about this — every container in the stack must run in UTC, otherwise queries return wrong or empty results. Verify with `docker compose exec langfuse-web date`.
+- **All traces show wrong timestamps:** The Langfuse docs are explicit about this: every container in the stack must run in UTC, otherwise queries return wrong or empty results. Verify with `docker compose exec langfuse-web date`.
 - **Out of disk:** ClickHouse compresses well but does grow. Watch `df -h` on the VPS, especially under `/var/lib/docker/`.
 - **VPS reboot loses everything:** It shouldn't if you used named volumes (the default), but verify with `docker volume ls` and `docker volume inspect`. If you used bind mounts to ephemeral disk you'll lose data on reboot.
 

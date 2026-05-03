@@ -1,4 +1,4 @@
-# Guide 09 — Autonomous Workflows
+# Guide 09 - Autonomous Workflows
 
 **When we cover this:** Install Block Four: Schedule the Fleet + First /build (2:45 PM CDT, 3:45 PM EDT). See the README for the full agenda.
 
@@ -33,7 +33,7 @@ Mac has two built-in schedulers. We'll use **cron** because it's simpler for wha
 
 ### What is Cron?
 
-Cron is the Mac/Linux scheduler — it's been around for decades and it just works. You give it a command and a time pattern, and it runs that command on schedule.
+Cron is the Mac/Linux scheduler. It's been around for decades and it just works. You give it a command and a time pattern, and it runs that command on schedule.
 
 Open your cron table:
 ```bash
@@ -96,9 +96,35 @@ cat ~/Documents/briefings/$(date +%Y-%m-%d).md
 
 ---
 
-## Windows: Using Task Scheduler (or WSL2 Cron)
+## Windows: Using Task Scheduler, Git Bash, or WSL2 Cron
 
-**Option 1: WSL2 Cron (Easiest)**
+**Option 1: Native Git Bash + Task Scheduler (Recommended)**
+
+If you installed Claude Code in Git Bash, use Windows Task Scheduler to run Git Bash directly. This keeps the workflow on the same native Windows path you already use.
+
+First, make sure your script lives in your Windows home folder:
+
+```bash
+chmod +x ~/morning-briefing.sh
+~/morning-briefing.sh
+```
+
+Then create the scheduled task:
+
+1. Search for "Task Scheduler" in the Start menu
+2. Click "Create Basic Task"
+3. Name: "Morning Briefing"
+4. Trigger: Daily, at 7:30 AM
+5. Action: Start a program
+6. Program: `C:\Program Files\Git\bin\bash.exe`
+7. Arguments: `-l C:\Users\<user>\morning-briefing.sh`
+8. Finish
+
+If Task Scheduler asks for the full command in one field, use: `"C:\Program Files\Git\bin\bash.exe" -l C:\Users\<user>\morning-briefing.sh`.
+
+Replace `<user>` with your Windows username. This tells Task Scheduler to start Git Bash as a login shell and run your script every morning.
+
+**Option 2: WSL2 Cron**
 
 If your computer is always on (or you leave WSL2 running), you can use cron inside WSL2.
 
@@ -117,7 +143,7 @@ crontab -e
 
 > Note: WSL2 cron only runs when WSL2 is actively running. If you close your terminal, it stops. For truly scheduled automation on Windows, use Task Scheduler.
 
-**Option 2: Windows Task Scheduler**
+**Option 3: WSL2 + Windows Task Scheduler**
 
 1. Search for "Task Scheduler" in the Start menu
 2. Click "Create Basic Task"
@@ -189,7 +215,7 @@ What it does: Looks at your content calendar in Notion. Lists what needs to be w
 
 For workflows that involve multiple steps, conditions, or external webhooks, **n8n** is a better tool than cron.
 
-n8n is a workflow automation platform — think Zapier but self-hosted and more powerful. You can run it for free on your own computer or on a cheap cloud server.
+n8n is a workflow automation platform. Think Zapier but self-hosted and more powerful. You can run it for free on your own computer or on a cheap cloud server.
 
 Claude + n8n is a powerful combination:
 - **n8n** handles the triggers, conditions, and multi-step flows
@@ -206,7 +232,7 @@ Claude + n8n is a powerful combination:
 
 This runs automatically for every new form submission. You never touch it.
 
-Setting up n8n is a full session on its own — we'll point you to the blueprint in `blueprints/` that walks through a complete n8n + Claude setup.
+Setting up n8n is a full session on its own. We'll point you to the blueprint in `blueprints/` that walks through a complete n8n + Claude setup.
 
 ---
 
@@ -214,22 +240,22 @@ Setting up n8n is a full session on its own — we'll point you to the blueprint
 
 Think of autonomous workflows as a ladder:
 
-**Rung 1 — You ask, Claude does (interactive)**
+**Rung 1 - You ask, Claude does (interactive)**
 You type a request, Claude responds.
 
-**Rung 2 — You trigger, Claude executes (command)**
+**Rung 2 - You trigger, Claude executes (command)**
 You type `/morning`, Claude does the full workflow.
 
-**Rung 3 — Scheduled, Claude executes (automated)**
+**Rung 3 - Scheduled, Claude executes (automated)**
 Cron or Task Scheduler runs the command, Claude executes, output delivered to you.
 
-**Rung 4 — Event-triggered, Claude executes (reactive)**
+**Rung 4 - Event-triggered, Claude executes (reactive)**
 Something happens (new email, form submission, webhook), n8n detects it, Claude responds.
 
-**Rung 5 — Multi-agent, continuous (fully autonomous)**
+**Rung 5 - Multi-agent, continuous (fully autonomous)**
 Multiple agents working together on ongoing tasks, Claude directing and executing.
 
-You're currently moving from Rung 1 to Rung 3. Rungs 4 and 5 are the next frontier — and they're more accessible than they sound.
+You're currently moving from Rung 1 to Rung 3. Rungs 4 and 5 are the next frontier, and they're more accessible than they sound.
 
 ---
 
@@ -261,8 +287,8 @@ Over time, as you trust specific workflows, you can remove the review step. But 
 
 ## Track Exercises
 
-See `tracks/[your-track]/exercises.md` — Exercise Set 09.
+See `tracks/[your-track]/exercises.md` for Exercise Set 09.
 
 ---
 
-*Next up: Guide 10 — Your Agent OS (Putting It All Together)*
+*Next up: Guide 10 - Your Agent OS (Putting It All Together)*
