@@ -1,4 +1,4 @@
-# Guide 07 — Custom Commands (Slash Commands)
+# Guide 07 - Custom Commands (Slash Commands)
 
 **When we cover this:** Install Block Two: Custom Commands + Second Brain (12:15 PM CDT, 1:15 PM EDT, right before the co-working block). See the README for the full agenda.
 
@@ -87,7 +87,7 @@ Each file is one command. The filename becomes the slash command.
 A file named `morning.md` → triggers with `/morning`
 A file named `weekly-review.md` → triggers with `/weekly-review`
 
-The content of the file is the prompt Claude runs when you trigger the command. It can be as simple or complex as you want — and it has full access to all your MCP servers, your CLAUDE.md, everything Claude Code normally has access to.
+The content of the file is the prompt Claude runs when you trigger the command. It can be as simple or complex as you want, and it has full access to all your MCP servers, your CLAUDE.md, everything Claude Code normally has access to.
 
 ---
 
@@ -109,6 +109,12 @@ open ~/.claude/commands/
 
 # Windows (WSL2)
 code ~/.claude/commands/
+
+# Windows (Git Bash)
+code ~/.claude/commands/
+
+# Git Bash fallback if VS Code is not on PATH
+explorer.exe "$(cygpath -w ~/.claude/commands)"
 ```
 
 Create a new file called `morning.md` with this content:
@@ -120,17 +126,17 @@ Run my morning briefing. Here's what to include:
 
 1. **Today's date and day of week**
 
-2. **Calendar** — Pull today's events from Google Calendar (via MCP). List them in time order with start times. Flag any conflicts.
+2. **Calendar** - Pull today's events from Google Calendar (via MCP). List them in time order with start times. Flag any conflicts.
 
-3. **Email Triage** — Check Gmail for anything that arrived since yesterday at 5 PM. Categorize as:
+3. **Email Triage** - Check Gmail for anything that arrived since yesterday at 5 PM. Categorize as:
    - Urgent (needs response today)
    - Important (response this week)
    - FYI (no response needed)
    List only the urgent and important ones with a one-sentence summary.
 
-4. **Obsidian Inbox** — Check my Obsidian inbox folder. List any unprocessed notes.
+4. **Obsidian Inbox** - Check my Obsidian inbox folder. List any unprocessed notes.
 
-5. **Today's Top 3** — Based on everything above, suggest my top 3 priorities for the day. Be specific and actionable.
+5. **Today's Top 3** - Based on everything above, suggest my top 3 priorities for the day. Be specific and actionable.
 
 Format: Use headers and bullets. Keep it scannable. Total length should be under one page.
 ```
@@ -158,20 +164,20 @@ Create `~/.claude/commands/weekly-review.md`:
 
 Run my weekly review. Today is {date}.
 
-**Step 1 — Capture Loose Ends**
+**Step 1 - Capture Loose Ends**
 Check my Obsidian inbox for anything unprocessed. List what's there.
 
-**Step 2 — Review Last Week**
+**Step 2 - Review Last Week**
 Look at my Google Calendar for last week (Mon–Fri). What was I actually doing? Note any patterns.
 
-**Step 3 — Projects Status**
+**Step 3 - Projects Status**
 Read my Obsidian Projects folder. For each active project, give me a one-sentence status.
 
-**Step 4 — Email Backlog**
+**Step 4 - Email Backlog**
 Are there any emails in my Gmail that I've left unresponded for more than 3 days? List them.
 
-**Step 5 — Plan Next Week**
-Based on everything above, suggest 3–5 priorities for the coming week. Don't just echo my calendar — tell me what actually needs attention.
+**Step 5 - Plan Next Week**
+Based on everything above, suggest 3–5 priorities for the coming week. Don't just echo my calendar - tell me what actually needs attention.
 
 **Format:** Present this as a structured review I can read in 5 minutes. Use headers. Be concise.
 ```
@@ -180,7 +186,7 @@ Based on everything above, suggest 3–5 priorities for the coming week. Don't j
 
 ## Command Variables
 
-Commands can include dynamic elements. Claude handles these naturally — just write your command using plain language that refers to things Claude has access to.
+Commands can include dynamic elements. Claude handles these naturally - just write your command using plain language that refers to things Claude has access to.
 
 **Date references work automatically:**
 ```markdown
@@ -205,25 +211,25 @@ When you trigger this with `/meeting-prep`, Claude will prompt you for `{name}` 
 ## Command Ideas for Common Business Roles
 
 **For anyone:**
-- `/morning` — Daily briefing
-- `/weekly-review` — Weekly review
-- `/draft-email` — Draft a reply to the email I'm about to paste
-- `/summarize` — Summarize the content I'm about to paste
+- `/morning` - Daily briefing
+- `/weekly-review` - Weekly review
+- `/draft-email` - Draft a reply to the email I'm about to paste
+- `/summarize` - Summarize the content I'm about to paste
 
 **For operators/managers:**
-- `/team-update` — Pull info and draft weekly team update
-- `/project-status` — Status report on all active projects
-- `/decision` — Help me think through a decision (paste the situation)
+- `/team-update` - Pull info and draft weekly team update
+- `/project-status` - Status report on all active projects
+- `/decision` - Help me think through a decision (paste the situation)
 
 **For sales/BD:**
-- `/meeting-prep` — Research a person before a call
-- `/follow-up` — Draft a follow-up email after a meeting I'll describe
-- `/proposal-outline` — Build a proposal outline for an opportunity I'll describe
+- `/meeting-prep` - Research a person before a call
+- `/follow-up` - Draft a follow-up email after a meeting I'll describe
+- `/proposal-outline` - Build a proposal outline for an opportunity I'll describe
 
 **For content creators:**
-- `/content-brief` — Create a brief for a piece I describe
-- `/repurpose` — Take this content and repurpose it for [format]
-- `/post-week` — Plan this week's content calendar
+- `/content-brief` - Create a brief for a piece I describe
+- `/repurpose` - Take this content and repurpose it for [format]
+- `/post-week` - Plan this week's content calendar
 
 ---
 
@@ -239,7 +245,7 @@ Don't just say "give me a summary." Say "give me a bullet-point summary, 5 bulle
 Claude already has your context, but you can reinforce key things in the command: "Remember I prefer options over recommendations for decisions like this."
 
 **Iterate.**
-Your first version of a command probably won't be perfect. Use it a few times, notice what's missing or annoying, edit the file. The file is just text — tweak it anytime.
+Your first version of a command probably won't be perfect. Use it a few times, notice what's missing or annoying, edit the file. The file is just text - tweak it anytime.
 
 ---
 
@@ -276,10 +282,10 @@ Claude will look in `~/.claude/commands/` and list them.
 
 ## Track Exercises
 
-See `tracks/[your-track]/exercises.md` — Exercise Set 07.
+See `tracks/[your-track]/exercises.md` - Exercise Set 07.
 
 ---
 
-*Lunch break — back at 2:00 PM EDT*
+*Lunch break - back at 2:00 PM EDT*
 
-*Next up: Guide 08 — Connecting Your World*
+*Next up: Guide 08 - Connecting Your World*

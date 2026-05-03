@@ -89,7 +89,28 @@ For extra security, you can also store the 1Password service account token itsel
 
 Same as Mac. Open 1Password, create an API Credential item, add your key to a field called "credential."
 
-### Step 2: Install 1Password CLI in WSL2
+### Step 2: Install 1Password CLI in Your Windows Terminal
+
+You have two supported paths. Use the one that matches the terminal where you run Claude Code.
+
+**Option A: Git Bash with native Windows `op.exe`**
+
+Install the native 1Password CLI:
+
+```bash
+winget install --id AgileBits.1Password.CLI -e
+```
+
+Then verify from Git Bash:
+
+```bash
+op.exe --version
+op.exe whoami
+```
+
+If `op` is on your PATH, `op whoami` may also work. `op.exe whoami` is the explicit native Windows check.
+
+**Option B: WSL2/Ubuntu with Linux `op`**
 
 You should have done this in prerequisites. Verify:
 
@@ -98,9 +119,11 @@ op --version
 op whoami
 ```
 
+Both paths work the same for Claude Code. The native Windows `op.exe` installed by `winget` and the WSL2 `op` installed inside Ubuntu both resolve the same `op://` secret references.
+
 ### Step 3: Use op:// References
 
-Same as Mac. Replace plain API keys with `op://` references in your settings.json:
+Same as Mac. Replace plain API keys with `op://` references in your settings.json. The reference format is identical on Mac, Git Bash, and WSL2:
 
 ```json
 "env": {
@@ -125,7 +148,7 @@ export NOTION_TOKEN="op://Personal/Notion API Token/credential"
 export OPENAI_API_KEY="op://Personal/OpenAI API Key/credential"
 ```
 
-Then in your shell config (`.zshrc` on Mac or `.bashrc` on WSL2):
+Then in your shell config (`.zshrc` on Mac, `.bashrc` on WSL2, or `.bashrc` / `.bash_profile` in Git Bash):
 ```bash
 # Load Claude secrets
 if [ -f ~/.claude-secrets.env ]; then

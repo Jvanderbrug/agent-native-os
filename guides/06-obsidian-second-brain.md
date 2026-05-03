@@ -1,4 +1,4 @@
-# Guide 06 — Obsidian: Your Second Brain
+# Guide 06 - Obsidian: Your Second Brain
 
 **When we cover this:** Install Block Two: Custom Commands + Second Brain (12:15 PM CDT, 1:15 PM EDT). See the README for the full agenda.
 
@@ -22,11 +22,11 @@ This is what your second brain stores. And Obsidian is the best tool for buildin
 
 Obsidian is a note-taking app with two properties that make it perfect for an agent OS:
 
-1. **Everything is plain text files.** Your notes are `.md` files on your computer — not locked in some company's cloud database. They're yours, forever.
+1. **Everything is plain text files.** Your notes are `.md` files on your computer - not locked in some company's cloud database. They're yours, forever.
 
 2. **Claude can read them.** Because they're plain text files in a folder, Claude Code can search through them, reference them, and even update them. Your knowledge base becomes accessible to your agent.
 
-Contrast this with Notion, Google Docs, or Evernote — those are great apps, but they lock your data in cloud databases that Claude can't directly access (you'd need an MCP server, and even then it's limited).
+Contrast this with Notion, Google Docs, or Evernote - those are great apps, but they lock your data in cloud databases that Claude can't directly access (you'd need an MCP server, and even then it's limited).
 
 Obsidian gives you something simpler and more powerful: a folder of text files that both you and Claude can work with directly.
 
@@ -43,7 +43,7 @@ brew install --cask obsidian
 Or download from **obsidian.md**
 
 **Windows:**
-Download the Windows installer from obsidian.md. Install to your Windows side (not inside WSL2) — Obsidian is a desktop app.
+Download the Windows installer from obsidian.md. Install to your Windows side, not inside WSL2. Obsidian is a desktop app. This is the same whether you use Git Bash or WSL2 for Claude Code.
 
 ### Create Your Vault
 
@@ -52,7 +52,7 @@ Download the Windows installer from obsidian.md. Install to your Windows side (n
 3. Name it something like "My Second Brain" or your name
 4. **Choose the location carefully:**
    - **Mac:** Put it in `~/Documents/` or `~/Obsidian/`
-   - **Windows:** Put it in `C:\Users\[YourName]\Documents\Obsidian\` — NOT inside WSL2
+   - **Windows:** Put it in `C:\Users\[YourName]\Documents\Obsidian\`, not inside WSL2
 
 This vault is a folder. Inside it, every note is a `.md` file.
 
@@ -70,7 +70,7 @@ Your Vault/
 └── Daily Notes/    ← Daily log (optional but powerful)
 ```
 
-This structure is based on the PARA method by Tiago Forte — one of the most widely used second-brain frameworks.
+This structure is based on the PARA method by Tiago Forte - one of the most widely used second-brain frameworks.
 
 For the workshop Cairns pattern, add this folder too:
 
@@ -99,14 +99,15 @@ Add this to your `CLAUDE.md`:
 
 My Obsidian vault is located at:
 [Mac]: /Users/[yourname]/Documents/My Second Brain/
-[Windows]: /mnt/c/Users/[yourname]/Documents/Obsidian/My Second Brain/
+[Windows WSL2]: /mnt/c/Users/[yourname]/Documents/Obsidian/My Second Brain/
+[Windows Git Bash]: /c/Users/[yourname]/Documents/Obsidian/My Second Brain/
 
 Structure:
-- Inbox/ — unprocessed captures
-- Areas/ — ongoing responsibilities
-- Projects/ — active projects
-- Resources/ — reference material
-- Archive/ — completed
+- Inbox/ - unprocessed captures
+- Areas/ - ongoing responsibilities
+- Projects/ - active projects
+- Resources/ - reference material
+- Archive/ - completed
 
 When I ask about something that might be in my notes, search this vault first.
 When I ask you to capture something, add it to Inbox/ as a new note.
@@ -130,7 +131,7 @@ If your vault path is correct in CLAUDE.md, Claude will navigate to your Inbox f
 > Create a new note in my Obsidian Inbox called "Workshop Notes" and add my key takeaways from today
 ```
 
-Claude will create a new `.md` file in your Inbox folder. Open Obsidian — you'll see it there.
+Claude will create a new `.md` file in your Inbox folder. Open Obsidian and you'll see it there.
 
 ---
 
@@ -208,13 +209,13 @@ Claude will look at your Google Calendar (via MCP) and write the entries into yo
 
 Obsidian has a plugin ecosystem. These are worth installing (in Obsidian: Settings > Community Plugins):
 
-**Templater** — More powerful templates than the built-in one. Worth it if you want to automate note creation.
+**Templater** - More powerful templates than the built-in one. Worth it if you want to automate note creation.
 
-**Dataview** — Query your notes like a database. Show all notes tagged `#client` modified in the last 7 days, etc. Very powerful once you have a large vault.
+**Dataview** - Query your notes like a database. Show all notes tagged `#client` modified in the last 7 days, etc. Very powerful once you have a large vault.
 
-**Calendar** — Visual calendar in the sidebar showing which days have daily notes.
+**Calendar** - Visual calendar in the sidebar showing which days have daily notes.
 
-**Omnisearch** — Better full-text search across your whole vault.
+**Omnisearch** - Better full-text search across your whole vault.
 
 ---
 
@@ -222,9 +223,9 @@ Obsidian has a plugin ecosystem. These are worth installing (in Obsidian: Settin
 
 Obsidian stores files locally. If you use multiple computers, you'll need a sync solution:
 
-- **Obsidian Sync** (~$4/month) — The official solution, end-to-end encrypted
-- **iCloud** (Mac only) — Free, works fine if you only use Macs
-- **Dropbox / OneDrive / Google Drive** — Free options, work across platforms
+- **Obsidian Sync** (~$4/month) - The official solution, end-to-end encrypted
+- **iCloud** (Mac only) - Free, works fine if you only use Macs
+- **Dropbox / OneDrive / Google Drive** - Free options, work across platforms
 
 For the workshop, local is fine. Think about sync when you're ready to use this daily.
 
@@ -242,8 +243,8 @@ For the advanced Cairns layer, read `guides/cairns/00-what-is-cairns.md` through
 
 ## Track Exercises
 
-See `tracks/[your-track]/exercises.md` — Exercise Set 06.
+See `tracks/[your-track]/exercises.md` - Exercise Set 06.
 
 ---
 
-*Next up: Guide 07 — Custom Commands*
+*Next up: Guide 07 - Custom Commands*

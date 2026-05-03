@@ -30,7 +30,7 @@ Work through your platform setup guide first, then come back and verify everythi
 ### Step 1: Complete the Setup Guide for Your Platform
 - [ ] Mac: Completed `setup/mac/prerequisites.md` top to bottom
 - [ ] Windows: Completed `setup/windows/prerequisites.md` top to bottom
-- [ ] 1Password app installed AND CLI working (run `op whoami` in your terminal. should show your account email, not an error)
+- [ ] 1Password app installed AND CLI working. Run `op whoami` in your terminal. On Git Bash, `op whoami` or `op.exe whoami` should work. On WSL2/Ubuntu, run `op whoami` inside Ubuntu. Either path should show your account email, not an error.
 
 ### Step 2: Clone This Repo
 
@@ -46,6 +46,13 @@ cd agent-native-os
 **Windows (inside WSL2/Ubuntu terminal):**
 ```bash
 cd ~
+gh repo clone aibuild-lab/agent-native-os
+cd agent-native-os
+```
+
+**Windows (Git Bash):**
+```bash
+cd ~/Documents
 gh repo clone aibuild-lab/agent-native-os
 cd agent-native-os
 ```
