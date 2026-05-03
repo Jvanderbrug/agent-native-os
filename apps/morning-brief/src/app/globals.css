@@ -1,0 +1,264 @@
+@import "../styles/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Field-manual base. Paper background, 46px grid, near-black ink. */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.58;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 46px 46px;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Lime highlight applied to key noun phrases. inline-block so it stays a tight pill. */
+.highlight {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--on-lime);
+  padding: 0.015em 0.14em 0.08em;
+  margin: 0.02em 0;
+  line-height: 1.02;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+/* Section three-block: mono caps label, big display title, calmer sub. */
+.section-label {
+  display: inline-block;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 0.34rem 0.58rem 0.38rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--caution);
+  margin-bottom: 0.85rem;
+}
+
+.section-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.6rem;
+  max-width: 760px;
+  font-weight: 700;
+}
+
+.section-sub {
+  max-width: 650px;
+  color: var(--ink-2);
+  font-size: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+/* File-tab card. The product version of the personnel-file pattern. */
+.file-tab-card {
+  position: relative;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: 1.25rem 1.25rem 1.1rem;
+  margin-top: 1.4rem;
+}
+.file-tab-card.tilt-left { transform: rotate(-0.35deg); }
+.file-tab-card.tilt-right { transform: rotate(0.35deg); background: var(--paper-2); }
+
+.file-tab {
+  position: absolute;
+  top: -18px;
+  left: 1rem;
+  background: var(--lime);
+  color: var(--on-lime);
+  border: 2px solid var(--border);
+  padding: 0.26rem 0.58rem 0.3rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  z-index: 3;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+}
+
+/* Live-dot pulse for real-time indicators. */
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+  animation: blink 1.5s infinite;
+  flex: 0 0 auto;
+  display: inline-block;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.18; }
+}
+
+/* Hero kicker pill (white surface, mono, 3x3 shadow). */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 0.45rem 0.75rem 0.48rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  width: fit-content;
+  line-height: 1.25;
+}
+
+/* Stat card pattern. */
+.stat-card {
+  border: 2px solid var(--border);
+  background: var(--paper-2);
+  padding: 0.85rem;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.stat-number {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+.stat-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.63rem;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+/* Status pills for delivery channels and source registry. */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 2px solid var(--border);
+  padding: 0.22rem 0.5rem 0.26rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  white-space: nowrap;
+  background: var(--surface);
+  color: var(--ink);
+}
+.status-pill.ok { background: var(--lime); color: var(--on-lime); }
+.status-pill.warn { background: var(--caution); color: #fff; }
+.status-pill.muted { background: var(--paper-3); color: var(--ink-2); }
+
+/* Brand logo. Black slab with lime slash + dim pipe + wordmark. */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  border: 2px solid var(--border);
+  padding: 0.38rem 0.55rem;
+  box-shadow: var(--shadow-sm);
+  transform: rotate(-0.35deg);
+  text-decoration: none;
+  min-width: 160px;
+  height: 46px;
+  overflow: hidden;
+}
+.brand-logo img { height: 32px; width: auto; display: block; object-fit: contain; }
+.logo-fallback {
+  display: none;
+  align-items: center;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 1.45rem;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+.logo-fallback .slash, .logo-fallback .bar {
+  color: var(--lime);
+  font-size: 1.65rem;
+  line-height: 1;
+}
+.logo-fallback .bar { opacity: 0.75; margin-right: 0.22rem; }
+
+/* Terminal blueprint block, used for the brief-of-the-day raw view. */
+.terminal {
+  background: var(--terminal-bg);
+  color: #E8EAED;
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+.terminal h3 { color: var(--lime); font-family: "Space Grotesk", sans-serif; margin-bottom: 0.5rem; }
+
+/* Verified stamp (success-green border, slight rotation). */
+.stamp {
+  display: inline-block;
+  border: 1.5px solid var(--success);
+  color: var(--success);
+  padding: 0.16rem 0.34rem 0.2rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.56rem;
+  transform: rotate(-4deg);
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.stamp.warn { border-color: var(--caution); color: var(--caution); }
+
+/* CTA button. Caution red, hard offset, snaps in on hover. */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 0.78rem 1.25rem 0.82rem;
+  text-decoration: none;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  transition: transform 0.12s, box-shadow 0.12s;
+  background: var(--caution);
+  color: #fff;
+  cursor: pointer;
+}
+.btn-primary:hover { transform: translate(3px, 3px); box-shadow: var(--shadow-sm); }
