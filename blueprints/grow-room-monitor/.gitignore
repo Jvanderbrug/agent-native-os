@@ -1,0 +1,7 @@
+# Local runtime artifacts. Real readings, real credentials, real tokens never get committed.
+server/.env
+server/__pycache__/
+server/*.pyc
+dashboards/index.html
+dashboards/*.png
+!dashboards/sample-screenshot.png
