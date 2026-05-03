@@ -1,0 +1,19 @@
+node_modules/
+.next/
+.vercel/
+out/
+build/
+dist/
+
+# Env files. Real secrets never go to git.
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS junk
+.DS_Store
+*.log
+.idea/
+.vscode/

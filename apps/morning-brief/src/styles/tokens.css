@@ -1,0 +1,29 @@
+/* Design tokens. Sourced verbatim from STYLE.md (AI Build Lab field-manual aesthetic).
+   If you edit a value here, also edit tailwind.config.ts so utilities stay aligned. */
+
+:root {
+  --paper: #F5F2EB;
+  --paper-2: #EBE7DE;
+  --paper-3: #DDD7CA;
+  --surface: #FFFFFF;
+  --terminal-bg: #080808;
+
+  --ink: #0F0F0F;
+  --ink-2: #4A4A52;
+  --ink-3: #7A7A85;
+  --border: #0F0F0F;
+
+  --lime: #C8FF00;
+  --lime-dim: #A8D600;
+  --caution: #FF3300;
+  --blueprint: #0055FF;
+  --success: #00D084;
+  --on-lime: #0F0F0F;
+
+  --shadow-sm: 3px 3px 0 var(--border);
+  --shadow: 5px 5px 0 var(--border);
+  --shadow-lg: 9px 9px 0 var(--border);
+
+  --grid: rgba(15, 15, 15, 0.055);
+  --tape: rgba(255, 247, 185, 0.82);
+}

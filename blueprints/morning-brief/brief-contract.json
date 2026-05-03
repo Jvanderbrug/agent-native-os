@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MorningBrief",
+  "description": "Canonical JSON shape for a morning brief. Mirrors apps/morning-brief/src/lib/brief-contract.ts. If you change one, change both.",
+  "type": "object",
+  "required": ["date", "title", "summary", "top_priority", "sections", "source_status", "delivery_status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "uuid. Server-assigned on insert."
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "YYYY-MM-DD. The day this brief is for."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Single-sentence headline. Render in Space Grotesk display."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One to three sentences. Top-of-page summary above the fold."
+    },
+    "top_priority": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Single thing the human should do first today."
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "required": ["heading", "body"],
+        "properties": {
+          "heading": { "type": "string" },
+          "body": { "type": "string" },
+          "citations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["label"],
+              "properties": {
+                "label": { "type": "string" },
+                "url": { "type": "string", "format": "uri" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_status": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "enabled", "last_pulled_at", "item_count"],
+        "properties": {
+          "name": { "type": "string" },
+          "enabled": { "type": "boolean" },
+          "last_pulled_at": { "type": ["string", "null"], "format": "date-time" },
+          "item_count": { "type": "integer", "minimum": 0 },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "delivery_status": {
+      "type": "object",
+      "required": ["channel", "delivered_at", "recipient", "ok"],
+      "properties": {
+        "channel": {
+          "type": "string",
+          "enum": ["telegram", "slack", "imessage", "email", "none"]
+        },
+        "delivered_at": { "type": ["string", "null"], "format": "date-time" },
+        "recipient": { "type": ["string", "null"] },
+        "ok": { "type": "boolean" },
+        "error": { "type": ["string", "null"] }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}
