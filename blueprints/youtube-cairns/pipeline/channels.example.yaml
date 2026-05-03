@@ -1,0 +1,12 @@
+channels:
+  - slug: favorite-channel
+    name: Favorite Channel
+    url: https://www.youtube.com/@YourFavoriteChannel
+    status: active
+    max_videos: 3
+
+  - slug: second-channel
+    name: Second Channel
+    url: https://www.youtube.com/@AnotherPublicChannel
+    status: paused
+    max_videos: 2
