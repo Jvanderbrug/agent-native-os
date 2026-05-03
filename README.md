@@ -50,6 +50,10 @@ All times shown in CDT (the Maven listing timezone), with EDT in parentheses.
 
 The 10 numbered guides in `guides/` are the curriculum you'll work through during the day, and the reference you'll come back to afterward. We'll move through them live, then they're yours to revisit any time.
 
+### The Morning Brief Capstone
+
+The Sunday capstone — the morning brief system — has its own plain-language slash command: `/build-morning-brief`. It accepts an optional source list (e.g. `/build-morning-brief gmail,calendar,slack,obsidian`) and walks you through a 4D path (Obsidian-only output) or an 8D path (full web deploy). The generic blueprint executor at `/build` is still available for any other build you want to run from a blueprint file.
+
 ---
 
 ## The Two Workshop Paths
@@ -74,7 +78,7 @@ Same system, different depth. 4D is not remedial. 8D is not required. Pick the r
 - An Obsidian vault set up as your knowledge base
 - At least one custom slash command you built yourself
 - A workflow running on a schedule without you touching it
-- A morning brief system with a short ping and a full write-up surface
+- A morning brief system with a short ping and a full write-up surface (built via `/build-morning-brief`)
 - The mental model to keep building after the workshop ends
 
 ---
