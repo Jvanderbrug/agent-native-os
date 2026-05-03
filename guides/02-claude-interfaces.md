@@ -1,12 +1,14 @@
-# Guide 02 — The Three Ways to Use Claude
+# Guide 02 - The Three Ways to Use Claude
 
 **When we cover this:** Lesson + Demo: Claude Code Is Not a Chatbot (10:20 AM CDT, 11:20 AM EDT). See the README for the full agenda.
+
+> **Installer-flow students:** If your installer put you on native Windows Git Bash instead of WSL2/Ubuntu, use the Git Bash notes below. Start Claude with `claude`; use `winpty claude` only when an interactive command has TTY trouble.
 
 ---
 
 ## Three Doors, Same Room
 
-Claude Code has three main entry points. You don't have to choose one forever — they complement each other. But knowing which one to reach for and when will make you dramatically more effective.
+Claude Code has three main entry points. You don't have to choose one forever. They complement each other. But knowing which one to reach for and when will make you dramatically more effective.
 
 | Interface | Best For | Power Level |
 |-----------|---------|-------------|
@@ -18,7 +20,7 @@ Let's set each one up and understand when to use it.
 
 ---
 
-## Interface 1 — Claude Code CLI (Terminal)
+## Interface 1 - Claude Code CLI (Terminal)
 
 This is the one we focus on all day. It's the most powerful because:
 
@@ -34,7 +36,7 @@ This is the one we focus on all day. It's the most powerful because:
 
 You should have done this in prerequisites, but let's verify:
 
-**Mac and Windows (WSL2):**
+**Mac and Windows (WSL2/Ubuntu):**
 ```bash
 # Check if it's installed
 claude --version
@@ -45,6 +47,20 @@ npm install -g @anthropic-ai/claude-code
 # Log in (opens browser)
 claude
 ```
+
+**Windows (native Git Bash):**
+```bash
+# Check if Claude Code is visible on the Windows PATH
+claude --version
+
+# Start Claude Code
+claude
+
+# If an interactive session has TTY/input trouble
+winpty claude
+```
+
+On native Git Bash, launch with `claude`. If a TTY-sensitive command misbehaves, use the installer alias `winpty claude` for that command or session. If `claude` works in WSL2/Ubuntu but not Git Bash, it was probably installed only inside WSL2. Use the terminal your installer selected.
 
 When you type `claude` and press Enter, Claude Code opens in your terminal. You'll see a welcome screen and a `>` prompt where you type your requests.
 
@@ -82,9 +98,9 @@ claude --continue
 
 ---
 
-## Interface 2 — Claude Desktop App
+## Interface 2 - Claude Desktop App
 
-The Claude desktop app recently gained built-in Claude Code support. This is the friendliest interface — it looks like a chat application, but it can access your files and run Claude Code under the hood.
+The Claude desktop app recently gained built-in Claude Code support. This is the friendliest interface. It looks like a chat application, but it can access your files and run Claude Code under the hood.
 
 **Think of it as:** The visual, point-and-click version of Claude Code. Great for things you want to see on screen while you work.
 
@@ -108,7 +124,7 @@ For Claude Desktop App to access your files, you need to tell it where to look:
 
 1. Open Claude Desktop App
 2. Start a new conversation
-3. Click the paperclip icon (attach) — you can drag files directly into the chat
+3. Click the paperclip icon (attach). You can drag files directly into the chat
 4. Or in Settings, you can configure a workspace folder Claude has persistent access to
 
 ### When to Use the Desktop App
@@ -121,9 +137,9 @@ For Claude Desktop App to access your files, you need to tell it where to look:
 
 ---
 
-## Interface 3 — VS Code Extension
+## Interface 3 - VS Code Extension
 
-If you're comfortable with a code editor, the VS Code extension puts Claude directly inside your editor — you can see your files, make selections, and have Claude work on specific parts of documents.
+If you're comfortable with a code editor, the VS Code extension puts Claude directly inside your editor. You can see your files, make selections, and have Claude work on specific parts of documents.
 
 **Think of it as:** Claude looking over your shoulder while you work in your editor, and able to touch what you're looking at.
 
@@ -132,14 +148,14 @@ If you're comfortable with a code editor, the VS Code extension puts Claude dire
 **Mac and Windows:**
 1. Open VS Code (install from code.visualstudio.com if you haven't)
 2. Press `Cmd/Ctrl + Shift + X` to open the Extensions panel
-3. Search for "Claude" — install the official Anthropic extension
+3. Search for "Claude" and install the official Anthropic extension
 4. Sign in with your Claude.ai account when prompted
 
 ### How to Use It
 
 - Press `Cmd/Ctrl + Shift + P` and type "Claude" to see available commands
 - Highlight any code or text, right-click, and look for Claude options in the menu
-- The Claude panel appears in the sidebar — click it to open a conversation
+- The Claude panel appears in the sidebar. Click it to open a conversation
 - Ask Claude to work on selected text, explain something, or modify the current file
 
 ### When to Use VS Code
@@ -155,10 +171,10 @@ If you're comfortable with a code editor, the VS Code extension puts Claude dire
 
 You don't pick one and ignore the others. Here's how a typical workflow might look:
 
-1. **Morning briefing** — Open Claude Desktop App, paste your schedule and ask for priorities
-2. **File work** — Switch to CLI: `claude` in the terminal, have it update your project notes
-3. **Document editing** — Open in VS Code with the extension, have Claude help draft a proposal
-4. **Automation** — Back to CLI: set up a scheduled task to run every morning
+1. **Morning briefing:** Open Claude Desktop App, paste your schedule and ask for priorities
+2. **File work:** Switch to CLI: `claude` in the terminal, have it update your project notes
+3. **Document editing:** Open in VS Code with the extension, have Claude help draft a proposal
+4. **Automation:** Back to CLI: set up a scheduled task to run every morning
 
 ---
 
@@ -168,7 +184,7 @@ Here's something important: **MCP servers (your tool integrations) primarily wor
 
 When you connect Gmail, Calendar, Notion, or Slack, those connections live in your Claude Code configuration file. The CLI has access to all of them. The desktop app has some MCP support but it's more limited. The VS Code extension is focused on file editing.
 
-This is why we spend so much time in the terminal — it's where the full power lives.
+This is why we spend so much time in the terminal. It's where the full power lives.
 
 ---
 
@@ -196,11 +212,11 @@ Open the Claude panel and ask it to help you expand that section.
 
 ## Mac vs. Windows: Interface Notes
 
-| Interface | Mac | Windows |
-|-----------|-----|---------|
-| CLI | `claude` in any terminal | `claude` inside WSL2/Ubuntu terminal |
-| Desktop App | Native Mac app (.dmg) | Windows installer (.exe), runs on Windows side |
-| VS Code | Mac native | Windows native (can also connect to WSL2) |
+| Interface | Mac | Windows (WSL2/Ubuntu) | Windows (Git Bash) |
+|-----------|-----|------------------------|--------------------|
+| CLI | `claude` in any terminal | `claude` inside WSL2/Ubuntu terminal | `claude` in Git Bash; `winpty claude` for TTY-sensitive sessions |
+| Desktop App | Native Mac app (.dmg) | Windows installer (.exe), runs on Windows side | Windows installer (.exe), runs on Windows side |
+| VS Code | Mac native | Windows native, can connect to WSL2 | Windows native, opens Windows-side files |
 
 > **Windows note:** When using VS Code on Windows with files in WSL2, install the "WSL" extension in VS Code. This lets VS Code work with your Linux files as if they're local.
 
@@ -209,16 +225,16 @@ Open the Claude panel and ask it to help you expand that section.
 ## What You Just Learned
 
 - Three interfaces: CLI (most powerful), Desktop App (friendliest), VS Code (best for files)
-- The CLI is the foundation — MCP servers and full automation live here
+- The CLI is the foundation. MCP servers and full automation live here
 - Desktop App and VS Code complement the CLI for different kinds of work
-- You'll use all three — pick the right tool for the moment
+- You'll use all three. Pick the right tool for the moment
 
 ---
 
 ## Track Exercises
 
-See `tracks/[your-track]/exercises.md` — Exercise Set 02.
+See `tracks/[your-track]/exercises.md` - Exercise Set 02.
 
 ---
 
-*Next up: Guide 03 — Your First CLAUDE.md (The AHA Moment)*
+*Next up: Guide 03 - Your First CLAUDE.md (The AHA Moment)*
